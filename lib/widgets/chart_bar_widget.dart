@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import '../constants.dart';
+
+class ChartBarWidget extends StatelessWidget {
+  final double amount;
+  final String weekDay;
+  final double percentage;
+
+  ChartBarWidget({this.amount, this.weekDay, this.percentage});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(3),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            weekDay,
+            style: kChartTextStyle,
+          ),
+          SizedBox(
+            height: 2,
+          ),
+          Container(
+            height: 60,
+            width: 13,
+            child: Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: <Widget>[
+                Container(
+                  color: Theme.of(context).primaryColor,
+                ),
+                FractionallySizedBox(
+                  heightFactor: percentage,
+                  child: Container(
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          FittedBox(
+            child: Text(
+              '${amount.toStringAsFixed(0)} EG ',
+              style: kChartTextStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
