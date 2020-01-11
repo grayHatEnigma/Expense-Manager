@@ -20,8 +20,7 @@ class Chart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: chartBars
             .map((barData) {
-              return Flexible(
-                fit: FlexFit.tight,
+              return Expanded(
                 child: ChartBarWidget(
                   amount: barData.amount,
                   weekDay: barData.weekDay,

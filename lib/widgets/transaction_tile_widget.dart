@@ -18,14 +18,17 @@ class TransactionTile extends StatelessWidget {
           CircleAvatar(
             backgroundColor: Theme.of(context).primaryColor,
             radius: 48,
-            child: FittedBox(
-              child: Text(
-                '${transaction.amount.toStringAsFixed(2)} ج.م',
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+            child: Padding(
+              padding: EdgeInsets.all(5.0),
+              child: FittedBox(
+                child: Text(
+                  '${transaction.amount.toStringAsFixed(2)} ج.م',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
