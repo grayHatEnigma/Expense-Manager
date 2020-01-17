@@ -1,11 +1,7 @@
-import 'package:expense_manager/models/transactions_data.dart';
 import 'package:flutter/material.dart';
 import '../screens/add_transaction_screen.dart';
 import '../widgets/chart_widget.dart';
 import '../widgets/transactions_list_widget.dart';
-import 'package:provider/provider.dart';
-import '../models/transactions_data.dart';
-import '../constants.dart';
 
 class MyHomePage extends StatelessWidget {
   final String title;
@@ -13,9 +9,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final length =
-        Provider.of<TransactionsData>(context).transactionsList.length;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -45,20 +38,13 @@ class MyHomePage extends StatelessWidget {
           addNewTransaction(context);
         },
       ),
-      body: Column(
-        children: <Widget>[
-          Chart(),
-          length == 0
-              ? Expanded(
-                  child: Center(
-                    child: Text(
-                      'No Transaction added yet!',
-                      style: kEmptyListTextStyle,
-                    ),
-                  ),
-                )
-              : TransactionsList(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Chart(),
+            TransactionsList(),
+          ],
+        ),
       ),
     );
   }

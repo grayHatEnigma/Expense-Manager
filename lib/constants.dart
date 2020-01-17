@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final kChartTextStyle = TextStyle(color: Colors.white, fontSize: 16);
+final kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 
 final kEmptyListTextStyle = TextStyle(
   fontSize: 20,

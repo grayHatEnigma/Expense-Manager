@@ -10,14 +10,18 @@ class ChartBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(3),
+      margin: EdgeInsets.symmetric(vertical: 5),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Text(
-            weekDay,
-            style: kChartTextStyle,
+          Container(
+            child: FittedBox(
+              child: Text(
+                weekDay,
+                style: kChartTextStyle,
+              ),
+            ),
           ),
           SizedBox(
             height: 2,
@@ -43,10 +47,14 @@ class ChartBarWidget extends StatelessWidget {
           SizedBox(
             height: 5,
           ),
-          FittedBox(
-            child: Text(
-              '${amount.toStringAsFixed(0)} EG ',
-              style: kChartTextStyle,
+          Container(
+            height: 20,
+            child: FittedBox(
+              child: Text(
+                '${amount.toStringAsFixed(0)} EG ',
+                style: kChartTextStyle,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],

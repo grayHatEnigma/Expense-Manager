@@ -16,92 +16,99 @@ class _AddTransactionState extends State<AddTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: <Widget>[
-          TextField(
-            decoration: InputDecoration(labelText: 'Title'),
-            controller: titleController,
-          ),
-          TextField(
-            decoration: InputDecoration(labelText: 'Amount'),
-            controller: amountController,
-            keyboardType: TextInputType.numberWithOptions(decimal: true),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                chosenDateText,
-                style: TextStyle(color: Colors.grey[700]),
-              ),
-              FlatButton(
-                  child: Text(
-                    'Chose Date',
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                  onPressed: () async {
-                    var userDate = await showDatePicker(
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(
+            top: 15,
+            left: 15,
+            right: 15,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(labelText: 'Title'),
+              controller: titleController,
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Amount'),
+              controller: amountController,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  chosenDateText,
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+                FlatButton(
+                    child: Text(
+                      'Chose Date',
+                      style: TextStyle(color: Theme.of(context).primaryColor),
+                    ),
+                    onPressed: () async {
+                      var userDate = await showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
-                        firstDate: DateTime(1990),
-                        lastDate: DateTime(2050));
+                        firstDate: DateTime(2020),
+                        lastDate: DateTime.now(),
+                      );
 
-                    if (userDate != null) {
-                      // update the chosen date on the screen
-                      setState(() {
-                        chosenDate = userDate;
-                        chosenDateText =
-                            'Picked Date: ${formatDate(chosenDate, [
-                          DD,
-                          ' , ',
-                          dd,
-                          '/',
-                          mm,
-                          '/',
-                          yy,
-                        ])}';
-                      });
-                    }
-                  }),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          RaisedButton(
-            color: Theme.of(context).primaryColor,
-            child: Text(
-              'Add Transaction',
-              style: TextStyle(color: Colors.white, fontSize: 17),
+                      if (userDate != null) {
+                        // update the chosen date on the screen
+                        setState(() {
+                          chosenDate = userDate;
+                          chosenDateText =
+                              'Picked Date: ${formatDate(chosenDate, [
+                            DD,
+                            ' , ',
+                            dd,
+                            '/',
+                            mm,
+                            '/',
+                            yy,
+                          ])}';
+                        });
+                      }
+                    }),
+              ],
             ),
-            onPressed: () {
-              double inputAmount = 0;
-              try {
-                inputAmount = double.parse(amountController.text);
-              } catch (e) {
-                print('Invaild amount input');
-              }
-              if (inputAmount > 0 && titleController.text.isNotEmpty) {
-                Provider.of<TransactionsData>(context, listen: false)
-                    .addTransaction(
-                        title: titleController.text,
-                        amount: double.parse(amountController.text),
-                        date: chosenDate,
-                        id: chosenDate.hashCode.toString());
+            SizedBox(
+              height: 15,
+            ),
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
+              child: Text(
+                'Add Transaction',
+                style: TextStyle(color: Colors.white, fontSize: 17),
+              ),
+              onPressed: () {
+                double inputAmount = 0;
+                try {
+                  inputAmount = double.parse(amountController.text);
+                } catch (e) {
+                  print('Invaild amount input');
+                }
+                if (inputAmount > 0 && titleController.text.isNotEmpty) {
+                  Provider.of<TransactionsData>(context, listen: false)
+                      .addTransaction(
+                          title: titleController.text,
+                          amount: double.parse(amountController.text),
+                          date: chosenDate,
+                          id: chosenDate.hashCode.toString());
 
-                // clear the controllers
-                amountController.clear();
-                titleController.clear();
+                  // clear the controllers
+                  amountController.clear();
+                  titleController.clear();
 
-                // pop the bottom sheet
-                Navigator.pop(context);
-              }
-            },
-          ),
-        ],
+                  // pop the bottom sheet
+                  Navigator.pop(context);
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
