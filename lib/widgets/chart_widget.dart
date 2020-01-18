@@ -14,7 +14,7 @@ class Chart extends StatelessWidget {
 
     return Card(
       elevation: 6,
-      margin: EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 2),
+      margin: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 2),
       color: Theme.of(context).primaryColorLight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -7,8 +7,8 @@ import './screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+//  SystemChrome.setPreferredOrientations(
+//      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {

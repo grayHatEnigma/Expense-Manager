@@ -16,12 +16,15 @@ class TransactionsData with ChangeNotifier {
         id: 't2', title: 'سندوتش بروست', amount: 25, date: DateTime.now()),
     Transaction(id: 't3', title: 'تذكرة قطر', amount: 40, date: DateTime.now()),
     Transaction(
-        id: 't3', title: 'كوتشي جديد', amount: 565, date: DateTime(2020, 1, 8)),
+        id: 't3',
+        title: 'كوتشي جديد',
+        amount: 565,
+        date: DateTime(2020, 1, 13)),
     Transaction(
         id: 't4',
         title: 'بنطلون جديد',
         amount: 250,
-        date: DateTime(2020, 1, 7)),
+        date: DateTime(2020, 1, 13)),
   ];
 
   /// Recent Transactions ( Last week ) .
