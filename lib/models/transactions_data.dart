@@ -1,8 +1,13 @@
+//flutter core
 import 'dart:collection';
 import 'package:flutter/widgets.dart';
+
+//external packages
+import 'package:date_format/date_format.dart';
+
+//my imports
 import './transaction.dart';
 import './chart_bar.dart';
-import 'package:date_format/date_format.dart';
 
 class TransactionsData with ChangeNotifier {
   /// List of Transactions
@@ -19,12 +24,12 @@ class TransactionsData with ChangeNotifier {
         id: 't3',
         title: 'كوتشي جديد',
         amount: 565,
-        date: DateTime(2020, 1, 13)),
+        date: DateTime(2020, 1, 16)),
     Transaction(
         id: 't4',
         title: 'بنطلون جديد',
         amount: 250,
-        date: DateTime(2020, 1, 13)),
+        date: DateTime(2020, 1, 15)),
   ];
 
   /// Recent Transactions ( Last week ) .

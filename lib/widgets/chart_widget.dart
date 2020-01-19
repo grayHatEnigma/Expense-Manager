@@ -1,8 +1,13 @@
+//flutter core
+import 'package:flutter/material.dart';
+
+//external packages
+import 'package:provider/provider.dart';
+
+//my imports
 import '../models/chart_bar.dart';
 import '../models/transactions_data.dart';
 import './chart_bar_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Chart extends StatelessWidget {
   @override

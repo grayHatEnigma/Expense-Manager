@@ -1,7 +1,12 @@
-import '../models/transactions_data.dart';
+//flutter core
 import 'package:flutter/material.dart';
+
+//external packages
 import 'package:provider/provider.dart';
 import 'package:date_format/date_format.dart';
+
+//my imports
+import '../models/transactions_data.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
@@ -22,8 +27,9 @@ class _AddTransactionState extends State<AddTransaction> {
             top: 15,
             left: 15,
             right: 15,
-            bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+            bottom: MediaQuery.of(context).viewInsets.bottom + 5),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(

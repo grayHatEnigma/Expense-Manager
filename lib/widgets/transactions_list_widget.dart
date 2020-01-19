@@ -1,9 +1,13 @@
-import '../widgets/transaction_tile_widget.dart';
+//flutter core
 import 'package:flutter/material.dart';
 
-import '../models/transactions_data.dart';
+//external packages
 import 'package:provider/provider.dart';
+
+// my imports
 import '../constants.dart';
+import '../models/transactions_data.dart';
+import '../widgets/transaction_tile_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override

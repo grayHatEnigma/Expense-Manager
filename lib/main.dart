@@ -1,14 +1,15 @@
-import 'package:flutter/services.dart';
-
-import './models/transactions_data.dart';
+//flutter core
 import 'package:flutter/material.dart';
+
+//external packages
 import 'package:provider/provider.dart';
+
+//my imports
+import './models/transactions_data.dart';
 import './screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
-//  SystemChrome.setPreferredOrientations(
-//      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {

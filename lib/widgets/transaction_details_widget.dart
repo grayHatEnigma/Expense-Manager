@@ -1,6 +1,11 @@
+//flutter core
 import 'package:flutter/material.dart';
-import '../models/transaction.dart';
+
+//external packages
 import 'package:date_format/date_format.dart';
+
+//my imports
+import '../models/transaction.dart';
 
 class TransactionDetails extends StatelessWidget {
   final Transaction transaction;

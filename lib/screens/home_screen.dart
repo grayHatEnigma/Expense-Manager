@@ -1,5 +1,8 @@
+//flutter core
 import 'package:flutter/material.dart';
+import 'dart:io';
 
+//my imports
 import '../screens/add_transaction_screen.dart';
 import '../widgets/chart_widget.dart';
 import '../widgets/transactions_list_widget.dart';
@@ -38,18 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(
-          Icons.add,
-          color: Colors.black,
-          size: 30,
-        ),
-        backgroundColor: Theme.of(context).accentColor,
-        onPressed: () {
-          /// open modal bottom sheet
-          addNewTransaction(context);
-        },
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(
+                Icons.add,
+                color: Colors.black,
+                size: 30,
+              ),
+              backgroundColor: Theme.of(context).accentColor,
+              onPressed: () {
+                /// open modal bottom sheet
+                addNewTransaction(context);
+              },
+            ),
       body: SafeArea(
         child: isLandscape
             ? Column(
@@ -85,16 +90,24 @@ class _MyHomePageState extends State<MyHomePage> {
   // This to open the Add new transaction screen.
   void addNewTransaction(BuildContext context) {
     showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return AddTransaction();
-        });
+      context: context,
+      builder: (context) {
+        return AddTransaction();
+      },
+      isScrollControlled: true,
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+    );
   }
 
   /// Stateful widget life cycle debugging
 
   // This method will be called when the device orientation changes
-  // so I re-initialize _showChart variable to false .
+  // so I re-initialize _showChart variable to false each time it is called.
   @override
   void didChangeDependencies() {
     _showChart = false;

@@ -1,3 +1,4 @@
+//flutter core
 import 'package:flutter/material.dart';
 
 class AdaptiveSwitch extends StatefulWidget {

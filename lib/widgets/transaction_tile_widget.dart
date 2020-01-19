@@ -1,5 +1,8 @@
-import '../models/transaction.dart';
+//flutter core
 import 'package:flutter/material.dart';
+
+//my imports
+import '../models/transaction.dart';
 import './transaction_details_widget.dart';
 
 class TransactionTile extends StatelessWidget {
@@ -10,6 +13,7 @@ class TransactionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQueryData = MediaQuery.of(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 12.0),
       child: Row(
@@ -37,10 +41,20 @@ class TransactionTile extends StatelessWidget {
           ),
           GestureDetector(
             onLongPress: deleteCallback,
-            child: Icon(
-              Icons.delete,
-              size: 25,
-              color: Colors.red,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                if (mediaQueryData.size.width > 450)
+                  Text(
+                    'Delete',
+                    style: TextStyle(color: Theme.of(context).errorColor),
+                  ),
+                Icon(
+                  Icons.delete,
+                  size: 25,
+                  color: Colors.red,
+                ),
+              ],
             ),
           ),
         ],

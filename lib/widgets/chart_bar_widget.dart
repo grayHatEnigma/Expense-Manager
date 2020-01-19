@@ -1,4 +1,7 @@
+//flutter core
 import 'package:flutter/material.dart';
+
+//my imports
 import '../constants.dart';
 
 class ChartBarWidget extends StatelessWidget {
