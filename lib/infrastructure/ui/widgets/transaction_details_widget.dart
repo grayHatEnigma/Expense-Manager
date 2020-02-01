@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 
 //my imports
-import '../models/transaction.dart';
+import 'package:expense_manager/domain/models/transaction.dart';
 
 class TransactionDetails extends StatelessWidget {
   final Transaction transaction;

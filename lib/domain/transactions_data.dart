@@ -6,8 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:date_format/date_format.dart';
 
 //my imports
-import './transaction.dart';
-import './chart_bar.dart';
+import './models/transaction.dart';
+import './models/chart_bar.dart';
 
 class TransactionsData with ChangeNotifier {
   /// List of Transactions

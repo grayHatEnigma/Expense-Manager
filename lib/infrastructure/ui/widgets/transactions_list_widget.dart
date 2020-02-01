@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // my imports
-import '../constants.dart';
-import '../models/transactions_data.dart';
+import 'package:expense_manager/constants.dart';
+import 'package:expense_manager/domain/transactions_data.dart';
 import '../widgets/transaction_tile_widget.dart';
 
 class TransactionsList extends StatelessWidget {

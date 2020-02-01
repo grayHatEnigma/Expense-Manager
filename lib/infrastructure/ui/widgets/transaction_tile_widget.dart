@@ -1,9 +1,8 @@
 //flutter core
-import 'dart:math';
 import 'package:flutter/material.dart';
 
 //my imports
-import '../models/transaction.dart';
+import 'package:expense_manager/domain/models/transaction.dart';
 import './transaction_details_widget.dart';
 
 class TransactionTile extends StatelessWidget {

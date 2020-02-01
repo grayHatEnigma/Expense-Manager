@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //my imports
-import './models/transactions_data.dart';
-import './screens/home_screen.dart';
+import './domain/transactions_data.dart';
+import './infrastructure/ui/screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());

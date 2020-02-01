@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:date_format/date_format.dart';
 
 //my imports
-import '../models/transactions_data.dart';
+import 'package:expense_manager/domain/transactions_data.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
