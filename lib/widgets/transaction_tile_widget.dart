@@ -1,4 +1,5 @@
 //flutter core
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 //my imports
@@ -9,7 +10,7 @@ class TransactionTile extends StatelessWidget {
   final Transaction transaction;
   final Function deleteCallback;
 
-  TransactionTile({this.transaction, this.deleteCallback});
+  TransactionTile({@required this.transaction, @required this.deleteCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +46,11 @@ class TransactionTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 if (mediaQueryData.size.width > 450)
-                  Text(
+                  const Text(
                     'Delete',
-                    style: TextStyle(color: Theme.of(context).errorColor),
+                    style: TextStyle(color: Colors.red),
                   ),
-                Icon(
+                const Icon(
                   Icons.delete,
                   size: 25,
                   color: Colors.red,

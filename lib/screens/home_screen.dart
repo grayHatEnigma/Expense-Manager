@@ -16,11 +16,32 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   bool _showChart = false;
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+    super.didChangeAppLifecycleState(state);
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    /// this line here will make this widget listens to changes from MediaQuery
+    /// so whenever data in MediaQuery changes this widget will call:
+    /// didChangeDependencies() function
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
@@ -34,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.white,
             ),
             onPressed: () {
-              /// open modal bottom sheet
+              // open modal bottom sheet
               addNewTransaction(context);
             },
           )
@@ -51,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               backgroundColor: Theme.of(context).accentColor,
               onPressed: () {
-                /// open modal bottom sheet
+                // open modal bottom sheet
                 addNewTransaction(context);
               },
             ),

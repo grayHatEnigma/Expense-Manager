@@ -30,7 +30,7 @@ class TransactionsList extends StatelessWidget {
                 return TransactionTile(
                     transaction: transactions[index],
                     deleteCallback: () {
-                      transactionsData.deleteTransaction(index);
+                      transactionsData.deleteTransaction(index: index);
                     });
               },
               itemCount: length,
@@ -38,3 +38,17 @@ class TransactionsList extends StatelessWidget {
           );
   }
 }
+
+/*
+ListView.builder(
+              itemBuilder: (context, index) {
+                return TransactionTile(
+                    key: ValueKey(transactions[index].id),
+                    transaction: transactions[index],
+                    deleteCallback: () {
+                      transactionsData.deleteTransaction(index);
+                    });
+              },
+              itemCount: length,
+            ),
+ */

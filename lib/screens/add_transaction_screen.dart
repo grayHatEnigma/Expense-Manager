@@ -102,7 +102,8 @@ class _AddTransactionState extends State<AddTransaction> {
                           title: titleController.text,
                           amount: double.parse(amountController.text),
                           date: chosenDate,
-                          id: chosenDate.hashCode.toString());
+                          id: chosenDate.hashCode.toString() +
+                              titleController.text.hashCode.toString());
 
                   // clear the controllers
                   amountController.clear();

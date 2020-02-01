@@ -23,13 +23,13 @@ class TransactionsData with ChangeNotifier {
     Transaction(
         id: 't3',
         title: 'كوتشي جديد',
-        amount: 565,
-        date: DateTime(2020, 1, 16)),
+        amount: 535,
+        date: DateTime(2020, 1, 23)),
     Transaction(
         id: 't4',
         title: 'بنطلون جديد',
         amount: 250,
-        date: DateTime(2020, 1, 15)),
+        date: DateTime(2020, 1, 24)),
   ];
 
   /// Recent Transactions ( Last week ) .
@@ -82,8 +82,13 @@ class TransactionsData with ChangeNotifier {
   }
 
   // Delete an existing transaction from the list
-  void deleteTransaction(int index) {
-    _transactions.removeAt(index);
+  void deleteTransaction({int index, String id}) {
+    if (id == null) {
+      _transactions.removeAt(index);
+    } else {
+      _transactions.removeWhere((tx) => tx.id == id);
+    }
+
     notifyListeners();
   }
 } // TransactionsData class end
