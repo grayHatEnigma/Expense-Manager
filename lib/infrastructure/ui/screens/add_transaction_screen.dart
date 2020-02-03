@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:date_format/date_format.dart';
 
 //my imports
-import 'package:expense_manager/domain/transactions_data.dart';
+import 'package:expense_manager/domain/manager_ui_contract.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
@@ -97,7 +97,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   print('Invaild amount input');
                 }
                 if (inputAmount > 0 && titleController.text.isNotEmpty) {
-                  Provider.of<TransactionsData>(context, listen: false)
+                  Provider.of<ManagerUiContract>(context, listen: false)
                       .addTransaction(
                           title: titleController.text,
                           amount: double.parse(amountController.text),

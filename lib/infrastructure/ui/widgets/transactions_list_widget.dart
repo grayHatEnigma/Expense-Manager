@@ -6,13 +6,13 @@ import 'package:provider/provider.dart';
 
 // my imports
 import 'package:expense_manager/constants.dart';
-import 'package:expense_manager/domain/transactions_data.dart';
+import 'package:expense_manager/domain/manager_ui_contract.dart';
 import '../widgets/transaction_tile_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transactionsData = Provider.of<TransactionsData>(context);
+    final transactionsData = Provider.of<ManagerUiContract>(context);
     final transactions = transactionsData.transactionsList;
     final length = transactions.length;
     return length == 0
@@ -38,17 +38,3 @@ class TransactionsList extends StatelessWidget {
           );
   }
 }
-
-/*
-ListView.builder(
-              itemBuilder: (context, index) {
-                return TransactionTile(
-                    key: ValueKey(transactions[index].id),
-                    transaction: transactions[index],
-                    deleteCallback: () {
-                      transactionsData.deleteTransaction(index);
-                    });
-              },
-              itemCount: length,
-            ),
- */

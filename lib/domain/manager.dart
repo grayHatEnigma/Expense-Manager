@@ -8,40 +8,27 @@ import 'package:date_format/date_format.dart';
 //my imports
 import './models/transaction.dart';
 import './models/chart_bar.dart';
+import 'package:expense_manager/domain/manager_database_contract.dart';
+import 'package:expense_manager/domain/manager_ui_contract.dart';
 
-class TransactionsData with ChangeNotifier {
-  /// List of Transactions
-  List<Transaction> _transactions = [
-    Transaction(
-        id: 't1',
-        title: 'رواية الظل خارج الزمان',
-        amount: 35,
-        date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'سندوتش بروست', amount: 25, date: DateTime.now()),
-    Transaction(id: 't3', title: 'تذكرة قطر', amount: 40, date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'كوتشي جديد',
-        amount: 535,
-        date: DateTime(2020, 1, 23)),
-    Transaction(
-        id: 't4',
-        title: 'بنطلون جديد',
-        amount: 250,
-        date: DateTime(2020, 1, 24)),
-  ];
-
-  /// Recent Transactions ( Last week ) .
+/// The heart of the app
+class Manager
+    with ChangeNotifier
+    implements ManagerUiContract, ManagerDatabaseContract {
   // a function to get the last week transactions
-
   List<Transaction> get _recentTransactions {
     return _transactions.where((tx) {
       return (DateTime.now().difference(tx.date).inDays < 7);
     }).toList();
   }
 
-// a function to get the total spending amount during the last week
+  // Unmodified Version Of our transactions list
+  UnmodifiableListView<Transaction> get transactionsList =>
+      UnmodifiableListView(_transactions);
+
+  /// UI Contract Functions
+  // a function to get the total spending amount during the last week
+  @override
   double get totalRecentSpending {
     double total = 0;
     _recentTransactions.forEach((tx) {
@@ -51,6 +38,7 @@ class TransactionsData with ChangeNotifier {
   }
 
   // a function to get transactions that are grouped by day of the week
+  @override
   List<ChartBar> get groupedTransactions {
     return List.generate(7, (index) {
       final currentDay = DateTime.now().subtract(Duration(days: index));
@@ -66,13 +54,8 @@ class TransactionsData with ChangeNotifier {
     });
   }
 
-  /// Unmodified Version Of our transactions list
-  UnmodifiableListView<Transaction> get transactionsList =>
-      UnmodifiableListView(_transactions);
-
-  /// Add and Delete Transactions
-
   // Add a new transaction to the list
+  @override
   void addTransaction({String title, double amount, DateTime date, String id}) {
     // add a new transaction
     _transactions.add(
@@ -82,6 +65,7 @@ class TransactionsData with ChangeNotifier {
   }
 
   // Delete an existing transaction from the list
+  @override
   void deleteTransaction({int index, String id}) {
     if (id == null) {
       _transactions.removeAt(index);
@@ -91,4 +75,38 @@ class TransactionsData with ChangeNotifier {
 
     notifyListeners();
   }
+
+  /// Database Contract Functions
+  @override
+  List<Transaction> loadTXList() {
+    // TODO: implement loadTXList
+    return null;
+  }
+
+  @override
+  void saveTXList() {
+    // TODO: implement saveTXList
+  }
+
+  // List of Transactions
+  List<Transaction> _transactions = [
+    Transaction(
+        id: 't1',
+        title: 'رواية الظل خارج الزمان',
+        amount: 35,
+        date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'سندوتش بروست', amount: 25, date: DateTime.now()),
+    Transaction(id: 't3', title: 'تذكرة قطر', amount: 40, date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'كوتشي جديد',
+        amount: 535,
+        date: DateTime(2020, 1, 30)),
+    Transaction(
+        id: 't4',
+        title: 'بنطلون جديد',
+        amount: 250,
+        date: DateTime(2020, 1, 29)),
+  ];
 } // TransactionsData class end

@@ -8,15 +8,15 @@ import '../widgets/chart_widget.dart';
 import '../widgets/transactions_list_widget.dart';
 import '../widgets/adaptive_switch_widget.dart';
 
-class MyHomePage extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   final String title;
-  MyHomePage({this.title});
+  HomeScreen({this.title});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   bool _showChart = false;
 
   @override
