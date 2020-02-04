@@ -20,7 +20,7 @@ class TransactionTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           CircleAvatar(
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: transaction.categoryColor,
             radius: 48,
             child: Padding(
               padding: EdgeInsets.all(5.0),

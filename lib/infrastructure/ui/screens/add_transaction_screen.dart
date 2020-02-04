@@ -1,4 +1,5 @@
 //flutter core
+import 'package:expense_manager/domain/models/category.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -17,7 +18,8 @@ class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
   String chosenDateText = 'No Date Chosen!';
-  var chosenDate = DateTime.now();
+  DateTime chosenDate = DateTime.now();
+  Category chosenCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,35 @@ class _AddTransactionState extends State<AddTransaction> {
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(5),
+                child: DropdownButton<Category>(
+                  items: Category.values.map((value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(value.toText()),
+                    );
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      chosenCategory = newValue;
+                    });
+                  },
+                  value: chosenCategory,
+                  hint: Text('Choose Category '),
+                  icon: Icon(
+                    Icons.assessment,
+                    color: Theme.of(context).accentColor,
+                  ),
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 16,
+                  ),
+                  isExpanded: false,
+                ),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,7 +134,8 @@ class _AddTransactionState extends State<AddTransaction> {
                           amount: double.parse(amountController.text),
                           date: chosenDate,
                           id: chosenDate.hashCode.toString() +
-                              titleController.text.hashCode.toString());
+                              titleController.text.hashCode.toString(),
+                          category: chosenCategory);
 
                   // clear the controllers
                   amountController.clear();
@@ -127,5 +159,14 @@ class _AddTransactionState extends State<AddTransaction> {
     // dispose the text fields controllers
     amountController.dispose();
     titleController.dispose();
+  }
+}
+
+extension on Category {
+  String toText() {
+    String lowerCaseCategoryName =
+        this.toString().split('.').last.toLowerCase();
+    return lowerCaseCategoryName[0].toUpperCase() +
+        lowerCaseCategoryName.substring(1);
   }
 }

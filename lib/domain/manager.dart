@@ -1,5 +1,6 @@
 //flutter core
 import 'dart:collection';
+import 'package:expense_manager/domain/models/category.dart';
 import 'package:flutter/widgets.dart';
 
 //external packages
@@ -56,10 +57,16 @@ class Manager
 
   // Add a new transaction to the list
   @override
-  void addTransaction({String title, double amount, DateTime date, String id}) {
+  void addTransaction(
+      {String title,
+      double amount,
+      DateTime date,
+      String id,
+      Category category}) {
     // add a new transaction
     _transactions.add(
-      Transaction(title: title, amount: amount, date: date, id: id),
+      Transaction(
+          title: title, amount: amount, date: date, id: id, category: category),
     );
     notifyListeners();
   }
@@ -94,19 +101,49 @@ class Manager
         id: 't1',
         title: 'رواية الظل خارج الزمان',
         amount: 35,
+        category: Category.ENTERTAINING,
         date: DateTime.now()),
     Transaction(
-        id: 't2', title: 'سندوتش بروست', amount: 25, date: DateTime.now()),
-    Transaction(id: 't3', title: 'تذكرة قطر', amount: 40, date: DateTime.now()),
+        id: 't2',
+        title: 'بطاطس',
+        amount: 25,
+        date: DateTime.now(),
+        category: Category.GROCERY),
+    Transaction(
+        id: 't3',
+        title: 'تذكرة قطر',
+        amount: 40,
+        date: DateTime.now(),
+        category: Category.TRANSPORTATION),
     Transaction(
         id: 't3',
         title: 'كوتشي جديد',
         amount: 535,
-        date: DateTime(2020, 1, 30)),
+        date: DateTime(2020, 1, 30),
+        category: Category.SHOPPING),
     Transaction(
         id: 't4',
         title: 'بنطلون جديد',
         amount: 250,
-        date: DateTime(2020, 1, 29)),
+        date: DateTime(2020, 1, 29),
+        category: Category.SHOPPING),
+    Transaction(
+        id: 't7',
+        title: 'فاتورة التليفون الأرضي',
+        amount: 79,
+        date: DateTime(2020, 2, 3),
+        category: Category.BILLS),
+    Transaction(
+        id: 't5',
+        title: 'زيارات عائلية',
+        amount: 150,
+        date: DateTime(2020, 2, 2),
+        category: Category.OTHERS),
+    Transaction(
+        id: 't6',
+        title: 'أدوات مكتبية',
+        amount: 250,
+        date: DateTime(2020, 2, 2),
+        category: Category.OTHERS),
   ];
 } // TransactionsData class end

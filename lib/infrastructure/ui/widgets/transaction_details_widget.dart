@@ -24,7 +24,7 @@ class TransactionDetails extends StatelessWidget {
                 transaction.title,
                 style: TextStyle(
                     fontSize: 17,
-                    color: Theme.of(context).primaryColor,
+                    color: transaction.categoryColor,
                     fontWeight: FontWeight.bold),
               ),
             ),
