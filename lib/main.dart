@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           '/analysis': (context) => AnalysisScreen(),
           '/income': (context) => IncomeScreen(),
         },
-        initialRoute: '/home',
+        initialRoute: '/',
       ),
     );
   }

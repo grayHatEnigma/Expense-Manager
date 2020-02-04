@@ -12,40 +12,40 @@ class Transaction {
       {this.id,
       this.title,
       this.amount,
-      this.category = Category.OTHERS,
+      this.category = Category.Others,
       this.date});
 
   Color get categoryColor {
     Color transactionColor;
     switch (category) {
-      case Category.TRAVELLING:
-        transactionColor = Colors.pinkAccent;
+      case Category.Travelling:
+        transactionColor = Colors.green;
         break;
-      case Category.ENTERTAINING:
+      case Category.Entertaining:
         transactionColor = Colors.black;
         break;
-      case Category.BILLS:
+      case Category.Bills:
         transactionColor = Colors.red[700];
         break;
-      case Category.GROCERY:
+      case Category.Grocery:
         transactionColor = Colors.redAccent;
         break;
-      case Category.MEDICINE:
+      case Category.Medicine:
         transactionColor = Colors.deepOrange;
         break;
-      case Category.MAINTENANCE:
+      case Category.Maintenance:
         transactionColor = Colors.blue;
         break;
-      case Category.TRANSPORTATION:
+      case Category.Transportation:
         transactionColor = Colors.lightBlue;
         break;
-      case Category.SHOPPING:
+      case Category.Shopping:
         transactionColor = Colors.pink[400];
         break;
-      case Category.EMERGENCY:
+      case Category.Emergency:
         transactionColor = Colors.yellow;
         break;
-      case Category.OTHERS:
+      case Category.Others:
         transactionColor = Colors.grey;
         break;
     }

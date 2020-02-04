@@ -81,7 +81,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 FlatButton(
                     child: Text(
-                      'Chose Date',
+                      'Choose Date',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () async {
@@ -163,10 +163,5 @@ class _AddTransactionState extends State<AddTransaction> {
 }
 
 extension on Category {
-  String toText() {
-    String lowerCaseCategoryName =
-        this.toString().split('.').last.toLowerCase();
-    return lowerCaseCategoryName[0].toUpperCase() +
-        lowerCaseCategoryName.substring(1);
-  }
+  String toText() => this.toString().split('.').last;
 }

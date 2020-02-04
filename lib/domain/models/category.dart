@@ -1,12 +1,12 @@
 enum Category {
-  TRAVELLING,
-  ENTERTAINING,
-  BILLS,
-  GROCERY,
-  MEDICINE,
-  MAINTENANCE,
-  TRANSPORTATION,
-  SHOPPING,
-  EMERGENCY,
-  OTHERS,
+  Bills,
+  Emergency,
+  Entertaining,
+  Grocery,
+  Maintenance,
+  Medicine,
+  Others,
+  Shopping,
+  Transportation,
+  Travelling
 }
