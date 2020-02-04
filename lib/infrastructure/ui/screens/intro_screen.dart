@@ -72,4 +72,11 @@ class _IntroScreenState extends State<IntroScreen>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // dispose the animation controller to avoid memory leaks.
+    controller.dispose();
+  }
 }

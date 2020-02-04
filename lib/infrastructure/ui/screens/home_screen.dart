@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           )
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Platform.isIOS
           ? Container()
           : FloatingActionButton(
@@ -75,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 // open modal bottom sheet
                 addNewTransaction(context);
               },
+              mini: true,
             ),
       body: SafeArea(
         child: isLandscape

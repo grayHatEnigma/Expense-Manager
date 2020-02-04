@@ -25,15 +25,18 @@ class TransactionsList extends StatelessWidget {
             ),
           )
         : Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return TransactionTile(
-                    transaction: transactions[index],
-                    deleteCallback: () {
-                      transactionsData.deleteTransaction(index: index);
-                    });
-              },
-              itemCount: length,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return TransactionTile(
+                      transaction: transactions[index],
+                      deleteCallback: () {
+                        transactionsData.deleteTransaction(index: index);
+                      });
+                },
+                itemCount: length,
+              ),
             ),
           );
   }
