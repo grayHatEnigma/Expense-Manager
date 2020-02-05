@@ -1,6 +1,7 @@
 //flutter core
 import 'dart:collection';
-import 'package:expense_manager/domain/models/category.dart';
+import "package:collection/collection.dart";
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
 //external packages
@@ -9,6 +10,7 @@ import 'package:date_format/date_format.dart';
 //my imports
 import './models/transaction.dart';
 import './models/chart_bar.dart';
+import 'package:expense_manager/domain/models/category.dart';
 import 'package:expense_manager/domain/manager_database_contract.dart';
 import 'package:expense_manager/domain/manager_ui_contract.dart';
 
@@ -16,85 +18,6 @@ import 'package:expense_manager/domain/manager_ui_contract.dart';
 class Manager
     with ChangeNotifier
     implements ManagerUiContract, ManagerDatabaseContract {
-  // a function to get the last week transactions
-  List<Transaction> get _recentTransactions {
-    return _transactions.where((tx) {
-      return (DateTime.now().difference(tx.date).inDays < 7);
-    }).toList();
-  }
-
-  // Unmodified Version Of our transactions list
-  UnmodifiableListView<Transaction> get transactionsList =>
-      UnmodifiableListView(_transactions);
-
-  /// UI Contract Functions
-  // a function to get the total spending amount during the last week
-  @override
-  double get totalRecentSpending {
-    double total = 0;
-    _recentTransactions.forEach((tx) {
-      total += tx.amount;
-    });
-    return total;
-  }
-
-  // a function to get transactions that are grouped by day of the week
-  @override
-  List<ChartBar> get groupedTransactions {
-    return List.generate(7, (index) {
-      final currentDay = DateTime.now().subtract(Duration(days: index));
-      double totalSum = 0;
-      _recentTransactions.forEach((tx) {
-        if (tx.date.day == currentDay.day &&
-            tx.date.month == currentDay.month &&
-            tx.date.year == currentDay.year) {
-          totalSum += tx.amount;
-        }
-      });
-      return ChartBar(weekDay: formatDate(currentDay, [D]), amount: totalSum);
-    });
-  }
-
-  // Add a new transaction to the list
-  @override
-  void addTransaction(
-      {String title,
-      double amount,
-      DateTime date,
-      String id,
-      Category category}) {
-    // add a new transaction
-    _transactions.add(
-      Transaction(
-          title: title, amount: amount, date: date, id: id, category: category),
-    );
-    notifyListeners();
-  }
-
-  // Delete an existing transaction from the list
-  @override
-  void deleteTransaction({int index, String id}) {
-    if (id == null) {
-      _transactions.removeAt(index);
-    } else {
-      _transactions.removeWhere((tx) => tx.id == id);
-    }
-
-    notifyListeners();
-  }
-
-  /// Database Contract Functions
-  @override
-  List<Transaction> loadTXList() {
-    // TODO: implement loadTXList
-    return null;
-  }
-
-  @override
-  void saveTXList() {
-    // TODO: implement saveTXList
-  }
-
   // List of Transactions
   List<Transaction> _transactions = [
     Transaction(
@@ -137,13 +60,105 @@ class Manager
         id: 't5',
         title: 'زيارات عائلية',
         amount: 150,
-        date: DateTime(2020, 2, 2),
+        date: DateTime(2020, 2, 1),
         category: Category.Others),
     Transaction(
         id: 't6',
         title: 'أدوات مكتبية',
         amount: 250,
-        date: DateTime(2020, 2, 2),
+        date: DateTime(2020, 2, 1),
         category: Category.Others),
   ];
+
+  /// Sorting and Grouping Functions
+
+  // Sort Transaction List
+  UnmodifiableListView<Transaction> get transactionsList {
+    _transactions.sort((a, b) {
+      return a.date.compareTo(b.date);
+    });
+    return UnmodifiableListView(_transactions.reversed.toList());
+  }
+
+  // Group Transactions by Date
+  @override
+  List<List<Transaction>> get groupedTransactionsByDate {
+    var newGroup = groupBy(transactionsList, (Transaction tx) => tx.dayDate);
+    return newGroup.values.toList();
+  }
+
+  // a function to get the last week transactions list
+  List<Transaction> get _lastWeekTransactions {
+    return _transactions.where((tx) {
+      return (DateTime.now().difference(tx.date).inDays < 7);
+    }).toList();
+  }
+
+  // a function to get the total spending amount during the last week
+  @override
+  double get lastWeekTotalSpending {
+    double total = 0;
+    _lastWeekTransactions.forEach((tx) {
+      total += tx.amount;
+    });
+    return total;
+  }
+
+  // a function to get spending that are grouped by day of the week
+  @override
+  List<ChartBar> get lastWeekSpendingByDay {
+    return List.generate(7, (index) {
+      final currentDay = DateTime.now().subtract(Duration(days: index));
+      double totalSum = 0;
+      _lastWeekTransactions.forEach((tx) {
+        if (tx.date.day == currentDay.day &&
+            tx.date.month == currentDay.month &&
+            tx.date.year == currentDay.year) {
+          totalSum += tx.amount;
+        }
+      });
+      return ChartBar(weekDay: formatDate(currentDay, [D]), amount: totalSum);
+    });
+  }
+
+  /// Add , Delete Functions
+  // Add a new transaction to the list
+  @override
+  void addTransaction(
+      {String title,
+      double amount,
+      DateTime date,
+      String id,
+      Category category}) {
+    // add a new transaction
+    _transactions.add(
+      Transaction(
+          title: title, amount: amount, date: date, id: id, category: category),
+    );
+    notifyListeners();
+  }
+
+  // Delete an existing transaction from the list
+  @override
+  void deleteTransaction({int index, String id}) {
+    if (id == null) {
+      _transactions.removeAt(index);
+    } else {
+      _transactions.removeWhere((tx) => tx.id == id);
+    }
+
+    notifyListeners();
+  }
+
+  /// Database Contract Functions
+  @override
+  List<Transaction> loadTXList() {
+    // TODO: implement loadTXList
+    return null;
+  }
+
+  @override
+  void saveTXList() {
+    // TODO: implement saveTXList
+  }
 } // TransactionsData class end

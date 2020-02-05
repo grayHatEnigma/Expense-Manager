@@ -1,20 +1,22 @@
 //flutter core
+
+import 'package:expense_manager/infrastructure/ui/widgets/transactions_card_widget.dart';
 import 'package:flutter/material.dart';
 
 //external packages
 import 'package:provider/provider.dart';
 
 // my imports
+import './transaction_tile_widget.dart';
 import 'package:expense_manager/constants.dart';
 import 'package:expense_manager/domain/manager_ui_contract.dart';
-import '../widgets/transaction_tile_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final transactionsData = Provider.of<ManagerUiContract>(context);
-    final transactions = transactionsData.transactionsList;
-    final length = transactions.length;
+    final manager = Provider.of<ManagerUiContract>(context);
+    final groupedTransactions = manager.groupedTransactionsByDate;
+    final length = groupedTransactions.length;
     return length == 0
         ? Expanded(
             child: Center(
@@ -28,12 +30,8 @@ class TransactionsList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 15),
               child: ListView.builder(
-                itemBuilder: (context, index) {
-                  return TransactionTile(
-                      transaction: transactions[index],
-                      deleteCallback: () {
-                        transactionsData.deleteTransaction(index: index);
-                      });
+                itemBuilder: (_, index) {
+                  return TransactionsCard(groupedTransactions[index]);
                 },
                 itemCount: length,
               ),
@@ -41,3 +39,21 @@ class TransactionsList extends StatelessWidget {
           );
   }
 }
+
+/*
+Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: ListView.builder(
+                itemBuilder: (_, index) {
+                  return TransactionTile(
+                      transaction: transactions[index],
+                      deleteCallback: () {
+                        manager.deleteTransaction(index: index);
+                      });
+                },
+                itemCount: length,
+              ),
+            ),
+          );
+ */

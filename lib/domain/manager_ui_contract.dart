@@ -6,12 +6,16 @@ import './models/chart_bar.dart';
 import './models/transaction.dart';
 
 abstract class ManagerUiContract with ChangeNotifier {
+  //List of transactions
   UnmodifiableListView<Transaction> get transactionsList;
 
-  double get totalRecentSpending;
+  List<List<Transaction>> get groupedTransactionsByDate;
 
-  List<ChartBar> get groupedTransactions;
+  // Recent spending and transactions
+  double get lastWeekTotalSpending;
+  List<ChartBar> get lastWeekSpendingByDay;
 
+  // Add , Remove a transaction
   void addTransaction(
       {String title,
       double amount,

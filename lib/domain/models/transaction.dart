@@ -53,6 +53,7 @@ class Transaction {
     return transactionColor;
   }
 
+  String get dayDate => '${date.day}${date.month}${date.year}';
   @override
   String toString() {
     return this.title;

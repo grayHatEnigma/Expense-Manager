@@ -13,9 +13,9 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final totalRecentSpending =
-        Provider.of<ManagerUiContract>(context).totalRecentSpending;
+        Provider.of<ManagerUiContract>(context).lastWeekTotalSpending;
     final List<ChartBar> chartBars =
-        Provider.of<ManagerUiContract>(context).groupedTransactions;
+        Provider.of<ManagerUiContract>(context).lastWeekSpendingByDay;
 
     return Card(
       elevation: 6,

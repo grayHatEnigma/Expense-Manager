@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 //my imports
 import 'package:expense_manager/domain/models/transaction.dart';
-import './transaction_details_widget.dart';
 
 class TransactionTile extends StatelessWidget {
   final Transaction transaction;
@@ -21,7 +20,7 @@ class TransactionTile extends StatelessWidget {
         children: <Widget>[
           CircleAvatar(
             backgroundColor: transaction.categoryColor,
-            radius: 48,
+            radius: 40,
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: FittedBox(
@@ -36,8 +35,17 @@ class TransactionTile extends StatelessWidget {
               ),
             ),
           ),
-          TransactionDetails(
-            transaction: transaction,
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+            child: FittedBox(
+              child: Text(
+                transaction.title,
+                style: TextStyle(
+                    fontSize: 17,
+                    color: transaction.categoryColor,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
           GestureDetector(
             onLongPress: deleteCallback,
