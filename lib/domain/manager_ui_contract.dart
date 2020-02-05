@@ -12,8 +12,11 @@ abstract class ManagerUiContract with ChangeNotifier {
   List<List<Transaction>> get groupedTransactionsByDate;
 
   // Recent spending and transactions
-  double get lastWeekTotalSpending;
+  List<Transaction> get lastWeekTransactions;
   List<ChartBar> get lastWeekSpendingByDay;
+
+  // total spending for a list
+  double calculateTotalSpending(List<Transaction> list);
 
   // Add , Remove a transaction
   void addTransaction(

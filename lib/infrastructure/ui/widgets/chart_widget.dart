@@ -1,21 +1,20 @@
-//flutter core
-import 'package:expense_manager/domain/manager_ui_contract.dart';
 import 'package:flutter/material.dart';
 
 //external packages
 import 'package:provider/provider.dart';
 
 //my imports
+import 'package:expense_manager/domain/manager_ui_contract.dart';
 import 'package:expense_manager/domain/models/chart_bar.dart';
 import './chart_bar_widget.dart';
 
 class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final manager = Provider.of<ManagerUiContract>(context);
     final totalRecentSpending =
-        Provider.of<ManagerUiContract>(context).lastWeekTotalSpending;
-    final List<ChartBar> chartBars =
-        Provider.of<ManagerUiContract>(context).lastWeekSpendingByDay;
+        manager.calculateTotalSpending(manager.lastWeekTransactions);
+    final List<ChartBar> chartBars = manager.lastWeekSpendingByDay;
 
     return Card(
       elevation: 6,

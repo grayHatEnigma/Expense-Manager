@@ -39,7 +39,7 @@ class TransactionsCard extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   Text(
-                    'Expenses: ${calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   )
                 ],
@@ -65,11 +65,5 @@ class TransactionsCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  double calculateTotalSpending(List<Transaction> list) {
-    double sum = 0;
-    list.forEach((tx) => sum += tx.amount);
-    return sum;
   }
 }

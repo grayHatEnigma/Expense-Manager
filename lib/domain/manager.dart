@@ -85,20 +85,17 @@ class Manager
   }
 
   // a function to get the last week transactions list
-  List<Transaction> get _lastWeekTransactions {
+  List<Transaction> get lastWeekTransactions {
     return _transactions.where((tx) {
       return (DateTime.now().difference(tx.date).inDays < 7);
     }).toList();
   }
 
-  // a function to get the total spending amount during the last week
-  @override
-  double get lastWeekTotalSpending {
-    double total = 0;
-    _lastWeekTransactions.forEach((tx) {
-      total += tx.amount;
-    });
-    return total;
+  // a function to get the total spending amount for a transaction list
+  double calculateTotalSpending(List<Transaction> list) {
+    double sum = 0;
+    list.forEach((tx) => sum += tx.amount);
+    return sum;
   }
 
   // a function to get spending that are grouped by day of the week
@@ -107,7 +104,7 @@ class Manager
     return List.generate(7, (index) {
       final currentDay = DateTime.now().subtract(Duration(days: index));
       double totalSum = 0;
-      _lastWeekTransactions.forEach((tx) {
+      lastWeekTransactions.forEach((tx) {
         if (tx.date.day == currentDay.day &&
             tx.date.month == currentDay.month &&
             tx.date.year == currentDay.year) {
