@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:date_format/date_format.dart';
 import 'package:provider/provider.dart';
+import 'package:expandable/expandable.dart';
 
 import 'package:expense_manager/domain/manager_ui_contract.dart';
 import 'package:expense_manager/domain/models/transaction.dart';
@@ -15,44 +16,51 @@ class TransactionsCard extends StatelessWidget {
     final manager = Provider.of<ManagerUiContract>(context);
 
     return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        elevation: 5,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    formatDate(transactions[0].date, [
-                      DD,
-                      ', ',
-                      dd,
-                      '/',
-                      mm,
-                      '/',
-                      yy,
-                    ]),
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                  Text(
-                    'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  )
-                ],
+      padding: const EdgeInsets.all(20.0),
+      child: ExpandablePanel(
+        theme: ExpandableThemeData(
+            iconColor: Theme.of(context).primaryColor,
+            collapseIcon: Icons.list,
+            expandIcon: Icons.arrow_drop_up,
+            headerAlignment: ExpandablePanelHeaderAlignment.center),
+        header: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            textBaseline: TextBaseline.alphabetic,
+            children: <Widget>[
+              Icon(
+                Icons.attach_money,
+                color: Theme.of(context).accentColor,
               ),
-            ),
-            SizedBox(
-              height: 0.75,
-              width: double.infinity,
-              child: Container(
-                color: Colors.grey,
+              FittedBox(
+                child: Text(
+                  formatDate(transactions.first.date, [
+                    DD,
+                    ', ',
+                    dd,
+                    '/',
+                    mm,
+                    '/',
+                    yy,
+                  ]),
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
               ),
-            ),
-            Column(
+              Container(
+                width: 100,
+                child: Text(
+                  'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
+              )
+            ],
+          ),
+        ),
+        collapsed: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Card(
+            elevation: 3,
+            child: Column(
               children: transactions.map((tx) {
                 return TransactionTile(
                     transaction: tx,
@@ -61,7 +69,7 @@ class TransactionsCard extends StatelessWidget {
                     });
               }).toList(),
             ),
-          ],
+          ),
         ),
       ),
     );
