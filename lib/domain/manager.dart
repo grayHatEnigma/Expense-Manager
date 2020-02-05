@@ -1,7 +1,5 @@
-//flutter core
 import 'dart:collection';
 import "package:collection/collection.dart";
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 
 //external packages
@@ -10,11 +8,10 @@ import 'package:date_format/date_format.dart';
 //my imports
 import './models/transaction.dart';
 import './models/chart_bar.dart';
-import 'package:expense_manager/domain/models/category.dart';
-import 'package:expense_manager/domain/manager_database_contract.dart';
-import 'package:expense_manager/domain/manager_ui_contract.dart';
+import './models/category.dart';
+import './manager_database_contract.dart';
+import './manager_ui_contract.dart';
 
-/// The heart of the app
 class Manager
     with ChangeNotifier
     implements ManagerUiContract, ManagerDatabaseContract {
@@ -72,7 +69,7 @@ class Manager
 
   /// Sorting and Grouping Functions
 
-  // Sort Transaction List
+  // sort transaction list
   UnmodifiableListView<Transaction> get transactionsList {
     _transactions.sort((a, b) {
       return a.date.compareTo(b.date);
@@ -80,7 +77,7 @@ class Manager
     return UnmodifiableListView(_transactions.reversed.toList());
   }
 
-  // Group Transactions by Date
+  // a function that group - all - transactions by date
   @override
   List<List<Transaction>> get groupedTransactionsByDate {
     var newGroup = groupBy(transactionsList, (Transaction tx) => tx.dayDate);

@@ -1,4 +1,3 @@
-//flutter core
 import 'package:flutter/material.dart';
 
 //my imports

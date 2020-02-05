@@ -1,15 +1,12 @@
-//flutter core
-
-import 'package:expense_manager/infrastructure/ui/widgets/transactions_card_widget.dart';
 import 'package:flutter/material.dart';
 
 //external packages
 import 'package:provider/provider.dart';
 
 // my imports
-import './transaction_tile_widget.dart';
 import 'package:expense_manager/constants.dart';
 import 'package:expense_manager/domain/manager_ui_contract.dart';
+import './transactions_card_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override
@@ -39,21 +36,3 @@ class TransactionsList extends StatelessWidget {
           );
   }
 }
-
-/*
-Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: ListView.builder(
-                itemBuilder: (_, index) {
-                  return TransactionTile(
-                      transaction: transactions[index],
-                      deleteCallback: () {
-                        manager.deleteTransaction(index: index);
-                      });
-                },
-                itemCount: length,
-              ),
-            ),
-          );
- */
