@@ -17,70 +17,60 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     final manager = Provider.of<ManagerUiContract>(context);
     final int range =
         DateTime.now().difference(manager.getPlan().startDate).inDays;
-    final pieChartMap = manager.totalSpendingPerCategory(
-        manager.recentTransactions(differenceInDays: range));
+
     final double totalExpenses = manager.calculateTotalSpending(
+        manager.recentTransactions(differenceInDays: range));
+    final pieChartMap = manager.totalSpendingPerCategory(
         manager.recentTransactions(differenceInDays: range));
     return Card(
       elevation: 5,
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Flexible(
-                flex: 2,
-                child: PieChart(
-                  PieChartData(
-                    pieTouchData: PieTouchData(touchCallback: (touchResponse) {
-                      print(touchResponse.touchedSectionIndex);
-                      setState(() {
-                        touchedIndex = touchResponse.touchedSectionIndex;
-                      });
-                    }),
-                    startDegreeOffset: 0,
-                    sections: getSections(
-                        pieChartMap: pieChartMap, totalWeight: totalExpenses),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    sectionsSpace: 2,
-                    centerSpaceRadius: 30,
-                  ),
+          Flexible(
+            flex: 2,
+            child: PieChart(
+              PieChartData(
+                pieTouchData: PieTouchData(touchCallback: (touchResponse) {
+                  print(touchResponse.touchedSectionIndex);
+                  setState(() {
+                    touchedIndex = touchResponse.touchedSectionIndex;
+                  });
+                }),
+                startDegreeOffset: 0,
+                sections: getSections(
+                    pieChartMap: pieChartMap, totalWeight: totalExpenses),
+                borderData: FlBorderData(
+                  show: false,
                 ),
+                sectionsSpace: 2,
+                centerSpaceRadius: 30,
               ),
-              Flexible(
-                flex: 1,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(
-                    pieChartMap.entries.length,
-                    (index) {
-                      final Category category =
-                          pieChartMap.entries.toList()[index].key;
-
-                      return Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 3),
-                        child: Indicator(
-                          color: category.color,
-                          text: category.title,
-                          isSquare: true,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-          Text(
-            'Total Expenses: ${totalExpenses.toStringAsFixed(0)}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 15, letterSpacing: 1, fontWeight: FontWeight.bold),
+          Flexible(
+            flex: 1,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                pieChartMap.entries.length,
+                (index) {
+                  final Category category =
+                      pieChartMap.entries.toList()[index].key;
+
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 3),
+                    child: Indicator(
+                      color: category.color,
+                      text: category.title,
+                      isSquare: true,
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),
@@ -91,7 +81,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     List<PieChartSectionData> pieChartList =
         List.generate(pieChartMap.entries.length, (index) {
       final Category category = pieChartMap.entries.toList()[index].key;
-      final totalSpentInCategory = pieChartMap.entries.toList()[index].value;
+      final double totalSpentInCategory =
+          pieChartMap.entries.toList()[index].value;
       final isTouched = touchedIndex == index;
       final sectionWeight =
           ((totalSpentInCategory / totalWeight) * 100).round();
@@ -102,9 +93,11 @@ class _PieChartWidgetState extends State<PieChartWidget> {
             fontWeight: FontWeight.bold,
             color: Colors.white),
         titlePositionPercentageOffset: 0.65,
-        showTitle: sectionWeight >= 3 ? true : false,
+        showTitle: sectionWeight >= 5 ? true : false,
         value: totalSpentInCategory,
-        title: '$sectionWeight %',
+        title: isTouched
+            ? totalSpentInCategory.toStringAsFixed(0)
+            : '$sectionWeight %',
         color: category.color,
       );
     });

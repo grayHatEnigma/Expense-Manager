@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           '/plan_date': (context) => PlanDateScreen(),
           '/intro': (context) => IntroScreen(),
         },
-        initialRoute: _managerUiContract.hasPlan ? '/analysis' : '/intro',
+        initialRoute: _managerUiContract.hasPlan ? '/home' : '/intro',
       ),
     );
   }

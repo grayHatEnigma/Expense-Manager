@@ -77,6 +77,26 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               },
               mini: true,
             ),
+      drawer: SafeArea(
+        child: Container(
+          width: 100,
+          color: Colors.purple,
+          child: Column(
+            children: <Widget>[
+              IconButton(
+                iconSize: 40,
+                icon: Icon(
+                  Icons.assessment,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/analysis');
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: isLandscape
             ? Column(
