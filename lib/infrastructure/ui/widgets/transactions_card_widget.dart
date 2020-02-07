@@ -48,9 +48,11 @@ class TransactionsCard extends StatelessWidget {
               ),
               Container(
                 width: 100,
-                child: Text(
-                  'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                child: FittedBox(
+                  child: Text(
+                    'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
                 ),
               )
             ],

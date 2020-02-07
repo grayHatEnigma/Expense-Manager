@@ -18,7 +18,7 @@ class TransactionTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           CircleAvatar(
-            backgroundColor: transaction.categoryColor,
+            backgroundColor: transaction.category.color,
             radius: 40,
             child: Padding(
               padding: EdgeInsets.all(5.0),
@@ -41,7 +41,7 @@ class TransactionTile extends StatelessWidget {
                 transaction.title,
                 style: TextStyle(
                     fontSize: 17,
-                    color: transaction.categoryColor,
+                    color: transaction.category.color,
                     fontWeight: FontWeight.bold),
               ),
             ),

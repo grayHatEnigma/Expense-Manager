@@ -16,9 +16,10 @@ class _IntroScreenState extends State<IntroScreen>
 
   @override
   void initState() {
+    print('Intro Screen Created');
     super.initState();
     Future.delayed(Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(context, '/home'));
+        () => Navigator.pushReplacementNamed(context, '/plan_salary'));
     controller = AnimationController(vsync: this, duration: duration);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
