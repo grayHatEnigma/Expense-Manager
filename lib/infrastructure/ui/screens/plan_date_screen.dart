@@ -29,7 +29,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
 
             Navigator.pushNamed(context, '/home');
           }
-          //TODO: handle exception if user doesn't enter data / show toast
+          //TODO: handle exception if user doesn't enter date , Show a Toast
         },
         child: Icon(
           Icons.arrow_forward,

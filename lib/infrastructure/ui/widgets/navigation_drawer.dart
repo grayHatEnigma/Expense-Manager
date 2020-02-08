@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// TODO: improve the drawer and make it auto-close
+
 class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

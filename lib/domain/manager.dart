@@ -22,7 +22,7 @@ class Manager
   bool get hasPlan => _plan != null;
 
   Manager() {
-    //TODO: Some code to get _plan object for the current user if existed
+    //TODO: code to get _plan object for the current user if existed
   }
   // List of Transactions
   List<Transaction> _transactions = [

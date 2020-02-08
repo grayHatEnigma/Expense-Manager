@@ -12,6 +12,8 @@ import './infrastructure/ui/screens/intro_screen.dart';
 import './domain/manager.dart';
 import './infrastructure/ui/screens/home_screen.dart';
 
+//TODO: REFACTOR AND CLEAN THE CODE
+
 void main() {
   runApp(MyApp());
 }

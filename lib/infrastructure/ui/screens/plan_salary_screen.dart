@@ -20,7 +20,7 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
             incomeController.clear();
             Navigator.pushNamed(context, '/plan_date', arguments: income);
           }
-          //TODO: handle exception if user doesn't enter data  / show a toast
+          //TODO: handle exception if user doesn't enter salary , Show a Toast
         },
         child: Icon(
           Icons.arrow_forward,
