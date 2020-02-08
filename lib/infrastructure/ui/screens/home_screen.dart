@@ -1,4 +1,5 @@
 //flutter core
+import 'package:expense_manager/infrastructure/ui/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
@@ -39,15 +40,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    /// this line here will make this widget listens to changes from MediaQuery
-    /// so whenever data in MediaQuery changes this widget will call:
-    /// didChangeDependencies() function
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Center(
+          child: Text(
+            widget.title,
+            textAlign: TextAlign.center,
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -77,26 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               },
               mini: true,
             ),
-      drawer: SafeArea(
-        child: Container(
-          width: 100,
-          color: Colors.purple,
-          child: Column(
-            children: <Widget>[
-              IconButton(
-                iconSize: 40,
-                icon: Icon(
-                  Icons.assessment,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/analysis');
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: NavigationDrawer(),
       body: SafeArea(
         child: isLandscape
             ? Column(

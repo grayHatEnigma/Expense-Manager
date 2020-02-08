@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 class IntroScreen extends StatefulWidget {
+  final title;
+  IntroScreen({this.title});
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
@@ -29,7 +31,7 @@ class _IntroScreenState extends State<IntroScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -38,11 +40,11 @@ class _IntroScreenState extends State<IntroScreen>
           children: <Widget>[
             Center(
               child: Text(
-                'الفلوس راحت فين ؟',
+                widget.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 45,
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -61,8 +63,8 @@ class _IntroScreenState extends State<IntroScreen>
                   direction: Axis.horizontal,
                   size: 20,
                   animatedDuration: duration,
-                  backgroundColor: Theme.of(context).accentColor,
-                  progressColor: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).primaryColorDark,
+                  progressColor: Theme.of(context).accentColor,
                   currentValue: 100,
                   displayText: '%',
                 ),

@@ -12,7 +12,7 @@ class PlanDateScreen extends StatefulWidget {
 
 class _PlanDateScreenState extends State<PlanDateScreen> {
   var chosenDate;
-  String chosenDateText = 'No Date Chosen!';
+  String chosenDateText = 'اختار تاريخ لخطتك';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
         ModalRoute.of(context).settings.arguments as double;
     final manager = Provider.of<ManagerUiContract>(context);
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).primaryColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -29,12 +29,12 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
 
             Navigator.pushNamed(context, '/home');
           }
-          //TODO: handle exception if user doesn't enter data
+          //TODO: handle exception if user doesn't enter data / show toast
         },
         child: Icon(
-          Icons.chevron_right,
+          Icons.arrow_forward,
           size: 40,
-          color: Colors.green,
+          color: Theme.of(context).primaryColor,
         ),
         backgroundColor: Colors.white,
       ),
@@ -44,18 +44,18 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'بتقبض يوم كام ؟',
+              'بتقبض يوم كام؟',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 40, color: Colors.white),
             ),
             SizedBox(
               height: 20,
             ),
-            IconButton(
-              icon: Icon(
+            FlatButton(
+              child: Icon(
                 Icons.date_range,
                 color: Colors.white,
-                size: 60,
+                size: 40,
               ),
               onPressed: () async {
                 var userDate = await showDatePicker(
@@ -68,10 +68,11 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                   // update the chosen date on the screen
                   setState(() {
                     chosenDate = userDate;
-                    chosenDateText = 'Picked Date: ${formatDate(chosenDate, [
+                    chosenDateText =
+                        'تاريخ بداية الخطة\n${formatDate(chosenDate, [
                       dd,
                       '/',
-                      mm,
+                      MM,
                     ])}';
                   });
                 }
@@ -83,10 +84,8 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
             Text(
               chosenDateText,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 3,
-                  color: Colors.white),
+              textDirection: TextDirection.rtl,
+              style: TextStyle(letterSpacing: 3, color: Colors.white),
             ),
           ],
         ),

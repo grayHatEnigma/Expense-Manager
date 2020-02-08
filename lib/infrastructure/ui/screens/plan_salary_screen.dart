@@ -11,7 +11,7 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).primaryColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -20,12 +20,12 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
             incomeController.clear();
             Navigator.pushNamed(context, '/plan_date', arguments: income);
           }
-          //TODO: handle exception if user doesn't enter data
+          //TODO: handle exception if user doesn't enter data  / show a toast
         },
         child: Icon(
-          Icons.chevron_right,
+          Icons.arrow_forward,
           size: 40,
-          color: Colors.green,
+          color: Theme.of(context).primaryColor,
         ),
         backgroundColor: Colors.white,
       ),
@@ -35,7 +35,7 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'دخلك الشهري كام ؟',
+              'دخلك الشهري كام؟',
               style: TextStyle(fontSize: 40, color: Colors.white),
             ),
             SizedBox(

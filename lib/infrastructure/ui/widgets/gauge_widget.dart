@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gauge/flutter_gauge.dart';
+
 import 'package:provider/provider.dart';
+
 import 'package:expense_manager/domain/manager_ui_contract.dart';
 
-class GaugeWidget extends StatefulWidget {
-  @override
-  _GaugeWidgetState createState() => _GaugeWidgetState();
-}
-
-class _GaugeWidgetState extends State<GaugeWidget> {
+class GaugeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final manager = Provider.of<ManagerUiContract>(context);
@@ -18,43 +14,92 @@ class _GaugeWidgetState extends State<GaugeWidget> {
     final double totalExpenses = manager.calculateTotalSpending(
         manager.recentTransactions(differenceInDays: range));
     final double totalIncome = manager.getPlan().totalIncome;
-    return Container(
-      margin: EdgeInsets.only(
-        left: 15,
-        right: 15,
-        top: 15,
-      ),
-      child: Card(
-        elevation: 5,
-        child: Column(
+    final double percentage = totalExpenses / totalIncome;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        //
+        Text(
+          'Total Expenses: ${totalExpenses.toStringAsFixed(0)} EG',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 15,
+          ),
+        ),
+        //
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            FlutterGauge(
-              start: 0,
-              end: totalIncome.toInt(),
-              circleColor: Colors.white,
-              inactiveColor: Colors.purple,
-              activeColor: Colors.amber,
-              handColor: Colors.amber,
-              numberInAndOut: NumberInAndOut.inside,
-              handSize: 5,
-              index: totalExpenses,
-              hand: Hand.long,
-              number: Number.endAndCenterAndStart,
-              secondsMarker: SecondsMarker.minutes,
-              counterStyle: TextStyle(
-                color: Colors.amber,
-                fontSize: 25,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                '0',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 15),
               ),
             ),
-            Text(
-              'Total Expenses: ${totalExpenses.toStringAsFixed(0)}',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 15, letterSpacing: 1, fontWeight: FontWeight.bold),
+            Container(
+              width: 200,
+              height: 20,
+              child: Stack(
+                alignment: AlignmentDirectional.bottomStart,
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          (15),
+                        ),
+                      ),
+                    ),
+                    width: 200,
+                  ),
+                  FractionallySizedBox(
+                    widthFactor: percentage,
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(1),
+                        child: FittedBox(
+                          child: Text(
+                            '${(percentage * 100).toStringAsFixed(0)} %',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(
+                            (15),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            //
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                '${totalIncome.toStringAsFixed(0)} EG',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 15),
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

@@ -97,13 +97,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  flutter_gauge:
-    dependency: "direct main"
-    description:
-      name: flutter_gauge
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.8"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -186,13 +179,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.23.1"
   sky_engine:
     dependency: transitive
     description: flutter

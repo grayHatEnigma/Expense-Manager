@@ -24,18 +24,18 @@ class MyApp extends StatelessWidget {
       create: (context) => _managerUiContract,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Expense Manager',
+        title: 'الفلوس راحت فين؟',
         theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Tajawal',
         ),
         routes: {
-          '/home': (context) => HomeScreen(title: 'Expense Manager'),
-          '/analysis': (context) => AnalysisScreen(),
+          '/home': (context) => HomeScreen(title: 'الفلوس راحت فين؟'),
+          '/analysis': (context) => AnalysisScreen(title: 'الفلوس راحت فين؟'),
           '/plan_salary': (context) => PlanSalaryScreen(),
           '/plan_date': (context) => PlanDateScreen(),
-          '/intro': (context) => IntroScreen(),
+          '/intro': (context) => IntroScreen(title: 'الفلوس راحت فين؟'),
         },
         initialRoute: _managerUiContract.hasPlan ? '/home' : '/intro',
       ),

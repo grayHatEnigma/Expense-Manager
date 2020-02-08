@@ -20,7 +20,8 @@ class Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
           width: size,
@@ -30,16 +31,19 @@ class Indicator extends StatelessWidget {
             color: color,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: 4,
         ),
         Flexible(
           child: FittedBox(
-            fit: BoxFit.scaleDown,
             child: Text(
               text,
+              textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 13, fontWeight: FontWeight.bold, color: textColor),
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
             ),
           ),
         )

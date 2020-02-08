@@ -17,8 +17,8 @@ class Manager
     with ChangeNotifier
     implements ManagerUiContract, ManagerDatabaseContract {
   // Plan object for current user
-  Plan _plan =
-      Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
+  Plan _plan;
+  //Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
   bool get hasPlan => _plan != null;
 
   Manager() {
@@ -50,13 +50,13 @@ class Manager
         id: 't4',
         title: 'كوتشي جديد',
         amount: 535,
-        date: DateTime(2020, 2, 5),
+        date: DateTime(2020, 2, 7),
         category: Category(type: Type.Shopping)),
     Transaction(
       id: 't5',
       title: 'فاتورة نت',
       amount: 250,
-      date: DateTime(2020, 2, 5),
+      date: DateTime(2020, 2, 6),
       category: Category(type: Type.Bills),
     ),
     Transaction(
@@ -70,22 +70,15 @@ class Manager
       id: 't7',
       title: 'زيارات عائلية',
       amount: 150,
-      date: DateTime(2020, 2, 1),
+      date: DateTime(2020, 2, 2),
       category: Category(type: Type.Others),
     ),
     Transaction(
       id: 't8',
       title: 'رحلة أسوان',
       amount: 250,
-      date: DateTime(2020, 2, 1),
+      date: DateTime(2020, 2, 2),
       category: Category(type: Type.Travelling),
-    ),
-    Transaction(
-      id: 't9',
-      title: 'Emergency',
-      amount: 1000,
-      date: DateTime(2020, 2, 1),
-      category: Category(type: Type.Emergency),
     ),
   ];
 
