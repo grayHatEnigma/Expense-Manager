@@ -18,8 +18,9 @@ class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
   String chosenDateText = 'No Date Chosen!';
+  //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
-  Type chosenType;
+  Categories chosenCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,8 @@ class _AddTransactionState extends State<AddTransaction> {
             Center(
               child: Container(
                 padding: EdgeInsets.all(5),
-                child: DropdownButton<Type>(
-                  items: Type.values.map((value) {
+                child: DropdownButton<Categories>(
+                  items: Categories.values.map((value) {
                     return DropdownMenuItem(
                       value: value,
                       child: Text(value.toText()),
@@ -55,10 +56,10 @@ class _AddTransactionState extends State<AddTransaction> {
                   }).toList(),
                   onChanged: (newValue) {
                     setState(() {
-                      chosenType = newValue;
+                      chosenCategory = newValue;
                     });
                   },
-                  value: chosenType,
+                  value: chosenCategory,
                   hint: Text('Choose Category '),
                   icon: Icon(
                     Icons.assessment,
@@ -135,7 +136,8 @@ class _AddTransactionState extends State<AddTransaction> {
                     date: chosenDate,
                     id: chosenDate.hashCode.toString() +
                         titleController.text.hashCode.toString(),
-                    category: Category(type: chosenType),
+                    category:
+                        Category(category: chosenCategory ?? Categories.Others),
                   );
 
                   // clear the controllers
@@ -163,6 +165,6 @@ class _AddTransactionState extends State<AddTransaction> {
   }
 }
 
-extension on Type {
+extension on Categories {
   String toText() => this.toString().split('.').last;
 }

@@ -1,24 +1,22 @@
-import '../widgets/pie_chart_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
 
 //TODO: fix orientation problems in this screen
-class AnalysisScreen extends StatefulWidget {
+class AnalysisScreen extends StatelessWidget {
   final String title;
   AnalysisScreen({this.title});
-  @override
-  _AnalysisScreenState createState() => _AnalysisScreenState();
-}
 
-class _AnalysisScreenState extends State<AnalysisScreen> {
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text(
-            widget.title,
+            title,
             textAlign: TextAlign.center,
           ),
         ),
@@ -27,23 +25,20 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'مصاريفك',
-                style: TextStyle(fontSize: 30),
+            if (!isLandscape)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'مصاريفك',
+                  style: TextStyle(fontSize: 30),
+                ),
               ),
-            ),
             Flexible(
-              flex: 3,
-              fit: FlexFit.tight,
+              flex: 2,
               child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: PieChartWidget(),
               ),
-            ),
-            SizedBox(
-              height: 10,
             ),
             Flexible(
                 flex: 1,

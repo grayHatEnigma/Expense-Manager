@@ -22,6 +22,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         manager.recentTransactions(differenceInDays: range));
     final pieChartMap = manager.totalSpendingPerCategory(
         manager.recentTransactions(differenceInDays: range));
+    ///////////////////////////////////////////////////////////
     return Card(
       elevation: 5,
       child: Row(
@@ -74,7 +75,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
           ),
         ],
       ),
-    ); // PieChartSection;
+    );
+    // PieChartSection;
   }
 
   List<PieChartSectionData> getSections({Map pieChartMap, double totalWeight}) {

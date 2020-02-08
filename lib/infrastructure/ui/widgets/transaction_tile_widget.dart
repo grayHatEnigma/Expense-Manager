@@ -19,7 +19,7 @@ class TransactionTile extends StatelessWidget {
         children: <Widget>[
           CircleAvatar(
             backgroundColor: transaction.category.color,
-            radius: 40,
+            radius: 35,
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: FittedBox(
@@ -27,7 +27,7 @@ class TransactionTile extends StatelessWidget {
                   '${transaction.amount.toStringAsFixed(2)} ج.م',
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 15,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
@@ -40,7 +40,7 @@ class TransactionTile extends StatelessWidget {
               child: Text(
                 transaction.title,
                 style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     color: transaction.category.color,
                     fontWeight: FontWeight.bold),
               ),

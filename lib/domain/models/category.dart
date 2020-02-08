@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final Type type;
-  Category({this.type});
+  final Categories category;
+  Category({this.category});
 
-  String get title => type.toString().split('.').last;
+  String get title => category.toString().split('.').last;
   Color get color {
     Color categoryColor;
-    switch (type) {
-      case Type.Travelling:
+    switch (category) {
+      case Categories.Travelling:
         categoryColor = Colors.green;
         break;
-      case Type.Entertaining:
-        categoryColor = Colors.black;
+      case Categories.Entertaining:
+        categoryColor = Colors.teal;
         break;
-      case Type.Bills:
+      case Categories.Bills:
         categoryColor = Colors.red[700];
         break;
-      case Type.Grocery:
+      case Categories.Grocery:
         categoryColor = Colors.redAccent;
         break;
-      case Type.Medicine:
+      case Categories.Medicine:
         categoryColor = Colors.deepOrange;
         break;
-      case Type.Maintenance:
+      case Categories.Maintenance:
         categoryColor = Colors.blue;
         break;
-      case Type.Transportation:
+      case Categories.Transportation:
         categoryColor = Colors.lightBlue;
         break;
-      case Type.Shopping:
+      case Categories.Shopping:
         categoryColor = Colors.pink[400];
         break;
-      case Type.Emergency:
-        categoryColor = Colors.yellow;
+      case Categories.Emergency:
+        categoryColor = Colors.black;
         break;
-      case Type.Others:
+      case Categories.Others:
         categoryColor = Colors.grey;
         break;
     }
@@ -44,7 +44,7 @@ class Category {
   }
 }
 
-enum Type {
+enum Categories {
   Bills,
   Emergency,
   Entertaining,

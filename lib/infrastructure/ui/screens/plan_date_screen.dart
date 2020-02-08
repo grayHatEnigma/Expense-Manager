@@ -27,7 +27,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
           if (chosenDate != null) {
             manager.setPlan(startDate: chosenDate, totalIncome: totalIncome);
 
-            Navigator.pushNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, '/home');
           }
           //TODO: handle exception if user doesn't enter date , Show a Toast
         },

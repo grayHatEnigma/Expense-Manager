@@ -17,8 +17,8 @@ class Manager
     with ChangeNotifier
     implements ManagerUiContract, ManagerDatabaseContract {
   // Plan object for current user
-  Plan _plan;
-  //Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
+  Plan _plan =
+      Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
   bool get hasPlan => _plan != null;
 
   Manager() {
@@ -30,55 +30,55 @@ class Manager
         id: 't1',
         title: 'رواية الظل خارج الزمان',
         amount: 35,
-        category: Category(type: Type.Entertaining),
+        category: Category(category: Categories.Entertaining),
         date: DateTime.now()),
     Transaction(
       id: 't2',
       title: 'بطاطس',
       amount: 25,
       date: DateTime.now(),
-      category: Category(type: Type.Grocery),
+      category: Category(category: Categories.Grocery),
     ),
     Transaction(
       id: 't3',
       title: 'تذكرة قطر',
       amount: 40,
       date: DateTime.now(),
-      category: Category(type: Type.Transportation),
+      category: Category(category: Categories.Transportation),
     ),
     Transaction(
         id: 't4',
         title: 'كوتشي جديد',
         amount: 535,
         date: DateTime(2020, 2, 7),
-        category: Category(type: Type.Shopping)),
+        category: Category(category: Categories.Shopping)),
     Transaction(
       id: 't5',
       title: 'فاتورة نت',
       amount: 250,
       date: DateTime(2020, 2, 6),
-      category: Category(type: Type.Bills),
+      category: Category(category: Categories.Bills),
     ),
     Transaction(
       id: 't6',
       title: 'فاتورة التليفون الأرضي',
       amount: 79,
       date: DateTime(2020, 2, 3),
-      category: Category(type: Type.Bills),
+      category: Category(category: Categories.Bills),
     ),
     Transaction(
       id: 't7',
       title: 'زيارات عائلية',
       amount: 150,
       date: DateTime(2020, 2, 2),
-      category: Category(type: Type.Others),
+      category: Category(category: Categories.Others),
     ),
     Transaction(
       id: 't8',
       title: 'رحلة أسوان',
       amount: 250,
       date: DateTime(2020, 2, 2),
-      category: Category(type: Type.Travelling),
+      category: Category(category: Categories.Travelling),
     ),
   ];
 
@@ -113,12 +113,12 @@ class Manager
   @override
   Map<Category, double> totalSpendingPerCategory(
       List<Transaction> requiredTransactionsList) {
-    var newGroup =
-        groupBy(requiredTransactionsList, (Transaction tx) => tx.category.type);
+    var newGroup = groupBy(
+        requiredTransactionsList, (Transaction tx) => tx.category.category);
 
     final piChartMap = newGroup.map((categoryType, list) {
       return MapEntry(
-          Category(type: categoryType), calculateTotalSpending(list));
+          Category(category: categoryType), calculateTotalSpending(list));
     });
     return piChartMap;
   }

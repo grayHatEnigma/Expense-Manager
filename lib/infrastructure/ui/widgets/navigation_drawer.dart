@@ -24,7 +24,7 @@ class NavigationDrawer extends StatelessWidget {
             IconButton(
               iconSize: 40,
               icon: Icon(
-                Icons.edit,
+                Icons.settings,
                 color: Colors.white,
               ),
               onPressed: () {

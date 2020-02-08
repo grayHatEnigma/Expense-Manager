@@ -16,16 +16,19 @@ class GaugeWidget extends StatelessWidget {
     final double totalIncome = manager.getPlan().totalIncome;
     final double percentage = totalExpenses / totalIncome;
 
+    bool limitPassed = totalExpenses > totalIncome;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         //
         Text(
-          'Total Expenses: ${totalExpenses.toStringAsFixed(0)} EG',
+          'إجمالي المصاريف: ${totalExpenses.toStringAsFixed(0)}',
+          textDirection: TextDirection.rtl,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
-            fontSize: 15,
+            fontSize: 17,
           ),
         ),
         //
@@ -60,25 +63,27 @@ class GaugeWidget extends StatelessWidget {
                     width: 200,
                   ),
                   FractionallySizedBox(
-                    widthFactor: percentage,
+                    widthFactor: limitPassed ? 1 : percentage,
                     child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(1),
-                        child: FittedBox(
-                          child: Text(
-                            '${(percentage * 100).toStringAsFixed(0)} %',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ),
-                      ),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).accentColor,
+                        color: limitPassed
+                            ? Colors.red[700]
+                            : Theme.of(context).accentColor,
                         borderRadius: BorderRadius.all(
                           Radius.circular(
                             (15),
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Text(
+                        '${limitPassed ? 100 : (percentage * 100).toStringAsFixed(0)} %',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ),
@@ -91,7 +96,7 @@ class GaugeWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                '${totalIncome.toStringAsFixed(0)} EG',
+                '${totalIncome.toStringAsFixed(0)}',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Theme.of(context).primaryColor, fontSize: 15),
@@ -99,6 +104,13 @@ class GaugeWidget extends StatelessWidget {
             ),
           ],
         ),
+        limitPassed
+            ? Text(
+                'فلوسك طارت!',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(fontSize: 17, color: Colors.red[700]),
+              )
+            : Container(),
       ],
     );
   }
