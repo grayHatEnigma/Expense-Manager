@@ -15,14 +15,7 @@ class TransactionsList extends StatelessWidget {
     final groupedTransactions = manager.groupedTransactionsByDate;
     final length = groupedTransactions.length;
     return length == 0
-        ? Expanded(
-            child: Center(
-              child: Text(
-                'No Transaction added yet!',
-                style: kEmptyListTextStyle,
-              ),
-            ),
-          )
+        ? Expanded(child: kNoTransactionsText)
         : Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 15),

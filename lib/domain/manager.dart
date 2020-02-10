@@ -17,8 +17,8 @@ class Manager
     with ChangeNotifier
     implements ManagerUiContract, ManagerDatabaseContract {
   // Plan object for current user
-  Plan _plan =
-      Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
+  Plan _plan;
+  //  Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
   bool get hasPlan => _plan != null;
 
   Manager() {

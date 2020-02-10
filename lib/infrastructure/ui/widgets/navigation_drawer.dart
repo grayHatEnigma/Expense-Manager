@@ -1,50 +1,55 @@
+import 'package:expense_manager/infrastructure/ui/widgets/navigation_list_tile.dart';
 import 'package:flutter/material.dart';
 
-// TODO: improve the drawer and make it auto-close
+import 'package:expense_manager/constants.dart';
+import 'package:expense_manager/domain/models/navigation_model.dart';
 
 class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        width: 60,
-        color: Colors.purple,
-        child: Column(
-          children: <Widget>[
-            IconButton(
-              iconSize: 40,
-              icon: Icon(
-                Icons.assessment,
-                color: Colors.white,
+    return Container(
+      width: 250,
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          DrawerHeader(
+            child: Center(
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    'images/intro.png',
+                    height: 100,
+                    width: 100,
+                  ),
+                  Text(
+                    'الفلوس راحت فين؟',
+                    style: kTitleTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/analysis');
-              },
             ),
-            IconButton(
-              iconSize: 40,
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                //TODO add functionality to edit plan
-                print('edit button pressed');
-              },
+            decoration: BoxDecoration(
+              color: Colors.purple,
             ),
-            IconButton(
-              iconSize: 40,
-              icon: Icon(
-                Icons.info,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                //TODO add info screen (about)
-                print('info button pressed');
-              },
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemBuilder: (context, index) {
+                  final item = navigationItems[index];
+                  return NavigationListTile(
+                    title: item.title,
+                    icon: item.icon,
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, item.destination);
+                    },
+                  );
+                },
+                itemCount: navigationItems.length),
+          ),
+        ],
       ),
     );
   }

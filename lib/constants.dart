@@ -8,3 +8,16 @@ final kEmptyListTextStyle = TextStyle(
   color: Colors.black38,
   letterSpacing: 0.25,
 );
+
+final kTitleTextStyle = TextStyle(
+  fontSize: 28,
+  color: Colors.white,
+);
+
+final kNoTransactionsText = Center(
+  child: Text(
+    'مضفتش أي مصروفات لسه!',
+    textDirection: TextDirection.rtl,
+    style: kEmptyListTextStyle,
+  ),
+);

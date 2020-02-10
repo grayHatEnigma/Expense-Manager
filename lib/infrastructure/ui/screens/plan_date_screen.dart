@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:date_format/date_format.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import 'package:expense_manager/domain/manager_ui_contract.dart';
@@ -28,8 +29,16 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
             manager.setPlan(startDate: chosenDate, totalIncome: totalIncome);
 
             Navigator.pushReplacementNamed(context, '/home');
+          } else {
+            Fluttertoast.showToast(
+                msg: "ادخل تاريخ بداية خطة المصروفات",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIos: 2,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 17.0);
           }
-          //TODO: handle exception if user doesn't enter date , Show a Toast
         },
         child: Icon(
           Icons.arrow_forward,
@@ -51,13 +60,8 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
             SizedBox(
               height: 20,
             ),
-            FlatButton(
-              child: Icon(
-                Icons.date_range,
-                color: Colors.white,
-                size: 40,
-              ),
-              onPressed: () async {
+            InkWell(
+              onTap: () async {
                 var userDate = await showDatePicker(
                   context: context,
                   initialDate: DateTime.now(),
@@ -77,6 +81,20 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                   });
                 }
               },
+              splashColor: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Icon(
+                  Icons.date_range,
+                  color: Colors.white,
+                  size: 40,
+                ),
+              ),
             ),
             SizedBox(
               height: 50,

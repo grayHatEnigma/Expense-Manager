@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluttertoast/fluttertoast.dart';
+
 class PlanSalaryScreen extends StatefulWidget {
   @override
   _PlanSalaryScreenState createState() => _PlanSalaryScreenState();
@@ -15,12 +17,22 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          if (incomeController.text != null) {
-            double income = double.parse(incomeController.text);
-            incomeController.clear();
-            Navigator.pushNamed(context, '/plan_date', arguments: income);
+          try {
+            if (incomeController.text != null) {
+              double income = double.parse(incomeController.text);
+              incomeController.clear();
+              Navigator.pushNamed(context, '/plan_date', arguments: income);
+            }
+          } catch (e) {
+            Fluttertoast.showToast(
+                msg: "ادخل قيمة دخلك الشهري",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIos: 2,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 17.0);
           }
-          //TODO: handle exception if user doesn't enter salary , Show a Toast
         },
         child: Icon(
           Icons.arrow_forward,
