@@ -18,77 +18,18 @@ class Manager
     implements ManagerUiContract, ManagerDatabaseContract {
   // Plan object for current user
   Plan _plan;
-  //  Plan(id: 'testId', startDate: DateTime(2020, 1, 30), totalIncome: 5000);
+
   bool get hasPlan => _plan != null;
 
   Manager() {
-    //TODO: code to get _plan object for the current user if existed
+    //TODO: code to get _plan object -for the current user- if existed
   }
-  // List of Transactions
-  List<Transaction> _transactions = [
-    Transaction(
-        id: 't1',
-        title: 'رواية الظل خارج الزمان',
-        amount: 35,
-        category: Category(category: Categories.Entertaining),
-        date: DateTime.now()),
-    Transaction(
-      id: 't2',
-      title: 'بطاطس',
-      amount: 25,
-      date: DateTime.now(),
-      category: Category(category: Categories.Grocery),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'تذكرة قطر',
-      amount: 40,
-      date: DateTime.now(),
-      category: Category(category: Categories.Transportation),
-    ),
-    Transaction(
-        id: 't4',
-        title: 'كوتشي جديد',
-        amount: 535,
-        date: DateTime(2020, 2, 7),
-        category: Category(category: Categories.Shopping)),
-    Transaction(
-      id: 't5',
-      title: 'فاتورة نت',
-      amount: 250,
-      date: DateTime(2020, 2, 6),
-      category: Category(category: Categories.Bills),
-    ),
-    Transaction(
-      id: 't6',
-      title: 'فاتورة التليفون الأرضي',
-      amount: 79,
-      date: DateTime(2020, 2, 3),
-      category: Category(category: Categories.Bills),
-    ),
-    Transaction(
-      id: 't7',
-      title: 'زيارات عائلية',
-      amount: 150,
-      date: DateTime(2020, 2, 2),
-      category: Category(category: Categories.Others),
-    ),
-    Transaction(
-      id: 't8',
-      title: 'رحلة أسوان',
-      amount: 250,
-      date: DateTime(2020, 2, 2),
-      category: Category(category: Categories.Travelling),
-    ),
-  ];
 
   /// Plan
   @override
   void setPlan({@required DateTime startDate, @required double totalIncome}) {
     if (_plan == null) {
-      String id =
-          startDate.hashCode.toString() + totalIncome.hashCode.toString();
-      _plan = Plan(startDate: startDate, totalIncome: totalIncome, id: id);
+      _plan = Plan(startDate: startDate, totalIncome: totalIncome);
     }
 
     // else 'edit' an existing plan object
@@ -101,12 +42,12 @@ class Manager
 
   /// Sorting and Grouping Functions
 
-  // sort transaction list
+  // unmodifiable  sorted transaction list
   UnmodifiableListView<Transaction> get transactionsList {
-    _transactions.sort((a, b) {
+    _plan.transactions.sort((a, b) {
       return a.date.compareTo(b.date);
     });
-    return UnmodifiableListView(_transactions.reversed.toList());
+    return UnmodifiableListView(_plan.transactions.reversed.toList());
   }
 
   // a function that group - required - transactions by category
@@ -139,7 +80,7 @@ class Manager
 
   // a function to get  transactions list for a certain time
   List<Transaction> recentTransactions({int differenceInDays}) {
-    return _transactions.where((tx) {
+    return _plan.transactions.where((tx) {
       return (DateTime.now().difference(tx.date).inDays < differenceInDays);
     }).toList();
   }
@@ -176,7 +117,7 @@ class Manager
       String id,
       Category category}) {
     // add a new transaction
-    _transactions.add(
+    _plan.transactions.add(
       Transaction(
           title: title, amount: amount, date: date, id: id, category: category),
     );
@@ -187,9 +128,9 @@ class Manager
   @override
   void deleteTransaction({int index, String id}) {
     if (id == null) {
-      _transactions.removeAt(index);
+      _plan.transactions.removeAt(index);
     } else {
-      _transactions.removeWhere((tx) => tx.id == id);
+      _plan.transactions.removeWhere((tx) => tx.id == id);
     }
 //
 //    print('${_plan.totalIncome} , on ${_plan.startDate}');
@@ -201,12 +142,12 @@ class Manager
   /// Database Contract Functions
   @override
   List<Transaction> loadTXList() {
-    // TODO: implement loadTXList
+    // TODO: implement  getting Plan Object list from the database
     return null;
   }
 
   @override
   void saveTXList() {
-    // TODO: implement saveTXList
+    // TODO: implement saving Plan Object  list to the database
   }
 } // Manager class end

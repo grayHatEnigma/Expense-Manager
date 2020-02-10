@@ -1,3 +1,4 @@
+import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -26,18 +27,18 @@ class MyApp extends StatelessWidget {
       create: (context) => _managerUiContract,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'الفلوس راحت فين؟',
+        title: kTitle,
         theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Tajawal',
         ),
         routes: {
-          '/home': (context) => HomeScreen(title: 'الفلوس راحت فين؟'),
-          '/analysis': (context) => AnalysisScreen(title: 'الفلوس راحت فين؟'),
+          '/home': (context) => HomeScreen(title: kTitle),
+          '/analysis': (context) => AnalysisScreen(title: kTitle),
           '/plan_salary': (context) => PlanSalaryScreen(),
           '/plan_date': (context) => PlanDateScreen(),
-          '/intro': (context) => IntroScreen(title: 'الفلوس راحت فين؟'),
+          '/intro': (context) => IntroScreen(title: kTitle),
         },
         initialRoute: _managerUiContract.hasPlan ? '/home' : '/intro',
       ),

@@ -3,17 +3,20 @@
 an awesome expense manager application using flutter.
 
 # Preview
-<img src="https://grayhatenigma.files.wordpress.com/2020/01/screenshot_1579367583.png" width="330" height="600">
-<img src="https://grayhatenigma.files.wordpress.com/2020/01/screenshot_1579367573.png" width="600" height="330">
-<img src="https://grayhatenigma.files.wordpress.com/2020/01/screenshot_1579367576.png" width="600" height="330">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/untitled-3.gif" width="330" height="600">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581203079.png" width="330" height="600">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581308864.png" width="330" height="600">
 
 
 
 # What I've used to build this app
-- Provider package (version: 4.0.1) by Rémi Rousselet.
-- Date Format package (version: 1.0.8).
-- Adaptive Looking Widgets for both IOS and Android.
-- Implemented a Landscape UI.
+- date_format: ^1.0.8
+- provider: ^4.0.1
+- flutter_animation_progress_bar: ^1.0.0
+- expandable: ^4.1.2
+- fl_chart: ^0.8.0
+- fluttertoast: ^3.1.3
+- uuid: 2.0.4
 
 
 
