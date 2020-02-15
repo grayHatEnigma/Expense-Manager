@@ -13,8 +13,8 @@ abstract class ManagerUiContract with ChangeNotifier {
   /*
   Plan
   */
-  void setPlan({DateTime startDate, double totalIncome});
-  Plan getPlan();
+  void createPlan({DateTime startDate, double totalIncome});
+  Plan get plan;
   bool get hasPlan;
 
   /*

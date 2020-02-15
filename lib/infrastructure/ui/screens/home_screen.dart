@@ -1,6 +1,7 @@
 //flutter core
 import 'package:expense_manager/infrastructure/ui/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
+
 import 'dart:io';
 
 //my imports
@@ -66,7 +67,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Platform.isIOS
-          ? Container()
+          ? Container(
+              height: 80,
+            )
           : FloatingActionButton(
               child: Icon(
                 Icons.add,

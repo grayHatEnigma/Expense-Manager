@@ -26,8 +26,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (chosenDate != null) {
-            manager.setPlan(startDate: chosenDate, totalIncome: totalIncome);
-
+            manager.createPlan(startDate: chosenDate, totalIncome: totalIncome);
             Navigator.pushReplacementNamed(context, '/home');
           } else {
             Fluttertoast.showToast(
@@ -73,11 +72,9 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                   setState(() {
                     chosenDate = userDate;
                     chosenDateText =
-                        'تاريخ بداية الخطة\n${formatDate(chosenDate, [
-                      dd,
-                      '/',
-                      MM,
-                    ])}';
+                        'خطة المصروفات هتجدد تلقائياً يوم\n${formatDate(chosenDate, [
+                      d,
+                    ])} من كل شهر';
                   });
                 }
               },

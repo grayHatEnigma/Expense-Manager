@@ -1,4 +1,3 @@
-import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -12,15 +11,19 @@ import './infrastructure/ui/screens/plan_salary_screen.dart';
 import './infrastructure/ui/screens/intro_screen.dart';
 import './domain/manager.dart';
 import './infrastructure/ui/screens/home_screen.dart';
+import 'package:expense_manager/constants.dart';
 
 //TODO: REFACTOR AND CLEAN THE CODE
 
 void main() {
+  //To make sure it reads the shared preferences first .
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   final ManagerUiContract _managerUiContract = Manager();
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -34,13 +37,13 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Tajawal',
         ),
         routes: {
-          '/home': (context) => HomeScreen(title: kTitle),
-          '/analysis': (context) => AnalysisScreen(title: kTitle),
-          '/plan_salary': (context) => PlanSalaryScreen(),
-          '/plan_date': (context) => PlanDateScreen(),
-          '/intro': (context) => IntroScreen(title: kTitle),
+          kHomeScreenID: (context) => HomeScreen(title: kTitle),
+          kAnalysisScreenID: (context) => AnalysisScreen(title: kTitle),
+          kPlanSalaryScreenID: (context) => PlanSalaryScreen(),
+          kPlanDateScreenID: (context) => PlanDateScreen(),
+          kIntroScreenID: (context) => IntroScreen(title: kTitle),
         },
-        initialRoute: _managerUiContract.hasPlan ? '/home' : '/intro',
+        initialRoute: kIntroScreenID,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:expense_manager/constants.dart';
 
 class NavigationModel {
   final String title;
@@ -12,7 +13,7 @@ List<NavigationModel> navigationItems = [
   NavigationModel(
       title: 'تحليل المصاريف',
       icon: Icons.insert_chart,
-      destination: '/analysis'),
+      destination: kAnalysisScreenID),
   NavigationModel(
     title: 'الإعدادت',
     icon: Icons.settings,

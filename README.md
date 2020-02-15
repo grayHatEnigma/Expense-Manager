@@ -3,7 +3,9 @@
 an awesome expense manager application using flutter.
 
 # Preview
-<img src="https://grayhatenigma.files.wordpress.com/2020/02/untitled-3.gif" width="330" height="600">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581370957.png" width="330" height="600">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581371015.png" width="330" height="600">
+<img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581203038.png" width="330" height="600">
 <img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581203079.png" width="330" height="600">
 <img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581308864.png" width="330" height="600">
 

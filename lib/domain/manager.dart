@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 
 //external packages
 import 'package:date_format/date_format.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //my imports
 import './models/transaction.dart';
@@ -22,32 +23,60 @@ class Manager
   bool get hasPlan => _plan != null;
 
   Manager() {
-    //TODO: code to get _plan object -for the current user- if existed
+    readFromSharedPreferences();
+  }
+
+  /// Shared Preferences
+  // a method to save the plan values in shared preferences
+  void saveToSharedPreferences(DateTime date, double income) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    sharedPreferences.setString('startDate', date.toString());
+    sharedPreferences.setDouble('totalIncome', income);
+  }
+
+  // a method to read plan values from shared preferences if existed
+  void readFromSharedPreferences() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final dateString = sharedPreferences.getString('startDate');
+    final income = sharedPreferences.getDouble('totalIncome');
+
+    if (dateString != null && income != null) {
+      print('plan date : $dateString  , plan income : $income');
+      DateTime startDate = DateTime.parse(dateString);
+      double totalIncome = income;
+      createPlan(startDate: startDate, totalIncome: totalIncome);
+    }
   }
 
   /// Plan
   @override
-  void setPlan({@required DateTime startDate, @required double totalIncome}) {
+  void createPlan(
+      {@required DateTime startDate, @required double totalIncome}) {
     if (_plan == null) {
       _plan = Plan(startDate: startDate, totalIncome: totalIncome);
-    }
 
-    // else 'edit' an existing plan object
+      // shared pref part
+      saveToSharedPreferences(startDate, totalIncome);
+    }
   }
 
   @override
-  Plan getPlan() {
+  Plan get plan {
     return hasPlan ? _plan : throw 'Plan Not Found';
   }
+
+  // transactions list
+  List<Transaction> _transactions = List<Transaction>();
 
   /// Sorting and Grouping Functions
 
   // unmodifiable  sorted transaction list
   UnmodifiableListView<Transaction> get transactionsList {
-    _plan.transactions.sort((a, b) {
+    _transactions.sort((a, b) {
       return a.date.compareTo(b.date);
     });
-    return UnmodifiableListView(_plan.transactions.reversed.toList());
+    return UnmodifiableListView(_transactions.reversed.toList());
   }
 
   // a function that group - required - transactions by category
@@ -80,7 +109,7 @@ class Manager
 
   // a function to get  transactions list for a certain time
   List<Transaction> recentTransactions({int differenceInDays}) {
-    return _plan.transactions.where((tx) {
+    return _transactions.where((tx) {
       return (DateTime.now().difference(tx.date).inDays < differenceInDays);
     }).toList();
   }
@@ -117,7 +146,7 @@ class Manager
       String id,
       Category category}) {
     // add a new transaction
-    _plan.transactions.add(
+    _transactions.add(
       Transaction(
           title: title, amount: amount, date: date, id: id, category: category),
     );
@@ -128,14 +157,11 @@ class Manager
   @override
   void deleteTransaction({int index, String id}) {
     if (id == null) {
-      _plan.transactions.removeAt(index);
+      _transactions.removeAt(index);
     } else {
-      _plan.transactions.removeWhere((tx) => tx.id == id);
+      _transactions.removeWhere((tx) => tx.id == id);
     }
-//
-//    print('${_plan.totalIncome} , on ${_plan.startDate}');
-//    print(groupedTransactionsByCategory(
-//        recentTransactions(differenceInDays: 20)));
+
     notifyListeners();
   }
 
@@ -151,3 +177,61 @@ class Manager
     // TODO: implement saving Plan Object  list to the database
   }
 } // Manager class end
+
+// List of Transactions , this should be empty and the user populate it
+//  List<Transaction> transactions = [
+//    Transaction(
+//        id: 't1',
+//        title: 'رواية الظل خارج الزمان',
+//        amount: 35,
+//        category: Category(category: Categories.Entertaining),
+//        date: DateTime.now()),
+//    Transaction(
+//      id: 't2',
+//      title: 'بطاطس',
+//      amount: 25,
+//      date: DateTime.now(),
+//      category: Category(category: Categories.Grocery),
+//    ),
+//    Transaction(
+//      id: 't3',
+//      title: 'تذكرة قطر',
+//      amount: 40,
+//      date: DateTime.now(),
+//      category: Category(category: Categories.Transportation),
+//    ),
+//    Transaction(
+//        id: 't4',
+//        title: 'كوتشي جديد',
+//        amount: 535,
+//        date: DateTime(2020, 2, 7),
+//        category: Category(category: Categories.Shopping)),
+//    Transaction(
+//      id: 't5',
+//      title: 'فاتورة نت',
+//      amount: 250,
+//      date: DateTime(2020, 2, 6),
+//      category: Category(category: Categories.Bills),
+//    ),
+//    Transaction(
+//      id: 't6',
+//      title: 'فاتورة التليفون الأرضي',
+//      amount: 79,
+//      date: DateTime(2020, 2, 3),
+//      category: Category(category: Categories.Bills),
+//    ),
+//    Transaction(
+//      id: 't7',
+//      title: 'زيارات عائلية',
+//      amount: 150,
+//      date: DateTime(2020, 2, 2),
+//      category: Category(category: Categories.Others),
+//    ),
+//    Transaction(
+//      id: 't8',
+//      title: 'رحلة أسوان',
+//      amount: 250,
+//      date: DateTime(2020, 2, 2),
+//      category: Category(category: Categories.Travelling),
+//    ),
+//  ];

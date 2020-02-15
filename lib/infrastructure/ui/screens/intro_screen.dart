@@ -1,7 +1,9 @@
-//flutter core
+import 'package:expense_manager/constants.dart';
+import 'package:expense_manager/domain/manager_ui_contract.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
+import 'package:provider/provider.dart';
 
 class IntroScreen extends StatefulWidget {
   final title;
@@ -14,14 +16,18 @@ class _IntroScreenState extends State<IntroScreen>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
-  final duration = Duration(seconds: 3);
+  bool createPlan;
+  final duration = Duration(seconds: 4);
 
   @override
   void initState() {
     print('Intro Screen Created');
     super.initState();
-    Future.delayed(Duration(seconds: 4),
-        () => Navigator.pushReplacementNamed(context, '/plan_salary'));
+    Future.delayed(
+      Duration(seconds: 5),
+      () => Navigator.pushReplacementNamed(
+          context, createPlan ? kPlanSalaryScreenID : kHomeScreenID),
+    );
     controller = AnimationController(vsync: this, duration: duration);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
@@ -30,6 +36,8 @@ class _IntroScreenState extends State<IntroScreen>
 
   @override
   Widget build(BuildContext context) {
+    final manager = Provider.of<ManagerUiContract>(context);
+    createPlan = !manager.hasPlan;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(

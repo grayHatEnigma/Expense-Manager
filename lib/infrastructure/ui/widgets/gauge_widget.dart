@@ -8,12 +8,11 @@ class GaugeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final manager = Provider.of<ManagerUiContract>(context);
-    final int range =
-        DateTime.now().difference(manager.getPlan().startDate).inDays;
+    final int range = DateTime.now().difference(manager.plan.startDate).inDays;
 
     final double totalExpenses = manager.calculateTotalSpending(
         manager.recentTransactions(differenceInDays: range));
-    final double totalIncome = manager.getPlan().totalIncome;
+    final double totalIncome = manager.plan.totalIncome;
     final double percentage = totalExpenses / totalIncome;
 
     bool limitPassed = totalExpenses > totalIncome;

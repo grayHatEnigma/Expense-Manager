@@ -15,7 +15,7 @@ class TransactionsList extends StatelessWidget {
     final groupedTransactions = manager.groupedTransactionsByDate;
     final length = groupedTransactions.length;
     return length == 0
-        ? Expanded(child: kNoTransactionsText)
+        ? Expanded(child: kNoTransactionsWidget)
         : Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 15),

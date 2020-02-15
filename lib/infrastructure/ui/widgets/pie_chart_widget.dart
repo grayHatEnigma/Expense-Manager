@@ -18,8 +18,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
   @override
   Widget build(BuildContext context) {
     final manager = Provider.of<ManagerUiContract>(context);
-    final int range =
-        DateTime.now().difference(manager.getPlan().startDate).inDays;
+    final int range = DateTime.now().difference(manager.plan.startDate).inDays;
 
     final double totalExpenses = manager.calculateTotalSpending(
         manager.recentTransactions(differenceInDays: range));
@@ -27,9 +26,9 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         manager.recentTransactions(differenceInDays: range));
 
     final int length = pieChartMap.length;
-    ///////////////////////////////////////////////////////////
+
     return length == 0
-        ? kNoTransactionsText
+        ? kNoTransactionsWidget
         : Card(
             elevation: 5,
             child: Row(
