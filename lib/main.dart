@@ -1,3 +1,4 @@
+import 'package:expense_manager/domain/models/category.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -16,9 +17,20 @@ import 'package:expense_manager/constants.dart';
 //TODO: REFACTOR AND CLEAN THE CODE
 
 void main() {
-  //To make sure it reads the shared preferences first .
+  // To make sure it reads the shared preferences first .
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
+
+  // Debugging
+  String c = 'Bills';
+  final category = Category(c);
+
+  String encodedCategory = category.encodeToString();
+
+  Category decodedCategory = Category.decodeFromString(encodedCategory);
+
+  print('Category title : ${category.title}');
+  print('Decoded Category title : ${decodedCategory.title}');
 }
 
 class MyApp extends StatelessWidget {

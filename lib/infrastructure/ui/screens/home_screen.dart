@@ -140,7 +140,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   void didChangeDependencies() {
     _showChart = false;
-    print('didChangeDependencies');
     super.didChangeDependencies();
   }
 }

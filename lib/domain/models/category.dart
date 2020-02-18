@@ -1,42 +1,66 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final Categories category;
-  Category({this.category});
+  String _title;
+  Color _color;
 
-  String get title => category.toString().split('.').last;
+  Category(this._title);
+
+  // Encode and Decode a Category object
+
+  // a method to convert Category object to String
+  String encodeToString() {
+    return '$title.${color.value}';
+  }
+
+  // a constructor to create a category object back  from string
+  Category.decodeFromString(String encodedCategory) {
+    _title = encodedCategory.split('.').first;
+    _color = Color(int.parse(encodedCategory.split('.').last));
+  }
+
+  // getters for title and color
+  String get title => _title ?? 'Others';
   Color get color {
+    if (_color != null) {
+      return _color;
+    }
     Color categoryColor;
-    switch (category) {
-      case Categories.Travelling:
+    switch (title) {
+      case 'Travelling':
         categoryColor = Colors.green;
         break;
-      case Categories.Entertaining:
+      case 'Entertaining':
         categoryColor = Colors.teal;
         break;
-      case Categories.Bills:
+      case 'Bills':
         categoryColor = Colors.red[700];
         break;
-      case Categories.Grocery:
+      case 'Grocery':
         categoryColor = Colors.redAccent;
         break;
-      case Categories.Medicine:
+      case 'Medicine':
         categoryColor = Colors.deepOrange;
         break;
-      case Categories.Maintenance:
+      case 'Maintenance':
         categoryColor = Colors.blue;
         break;
-      case Categories.Transportation:
+      case 'Transportation':
         categoryColor = Colors.lightBlue;
         break;
-      case Categories.Shopping:
+      case 'Shopping':
         categoryColor = Colors.pink[400];
         break;
-      case Categories.Emergency:
+      case 'Emergency':
         categoryColor = Colors.black;
         break;
-      case Categories.Others:
+      case 'Others':
         categoryColor = Colors.grey;
+        break;
+      default:
+        {
+          categoryColor = Colors.grey;
+        }
         break;
     }
 
@@ -44,15 +68,18 @@ class Category {
   }
 }
 
-enum Categories {
-  Bills,
-  Emergency,
-  Entertaining,
-  Grocery,
-  Maintenance,
-  Medicine,
-  Others,
-  Shopping,
-  Transportation,
-  Travelling,
-}
+// List Of Categories
+// to add a new one you need to add here and in the switch statement above
+// with the appropriate color
+List<String> categories = [
+  'Bills',
+  'Emergency',
+  'Entertaining',
+  'Grocery',
+  'Maintenance',
+  'Medicine',
+  'Others',
+  'Shopping',
+  'Transportation',
+  'Travelling',
+];

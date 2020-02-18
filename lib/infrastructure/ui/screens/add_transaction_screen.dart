@@ -20,7 +20,7 @@ class _AddTransactionState extends State<AddTransaction> {
   String chosenDateText = 'No Date Chosen!';
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
-  Categories chosenCategory;
+  String chosenCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +47,11 @@ class _AddTransactionState extends State<AddTransaction> {
             Center(
               child: Container(
                 padding: EdgeInsets.all(5),
-                child: DropdownButton<Categories>(
-                  items: Categories.values.map((value) {
+                child: DropdownButton<String>(
+                  items: categories.map((value) {
                     return DropdownMenuItem(
                       value: value,
-                      child: Text(value.toText()),
+                      child: Text(value),
                     );
                   }).toList(),
                   onChanged: (newValue) {
@@ -134,10 +134,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     title: titleController.text,
                     amount: double.parse(amountController.text),
                     date: chosenDate,
-                    id: chosenDate.hashCode.toString() +
-                        titleController.text.hashCode.toString(),
-                    category:
-                        Category(category: chosenCategory ?? Categories.Others),
+                    category: Category(chosenCategory),
                   );
 
                   // clear the controllers
@@ -163,8 +160,4 @@ class _AddTransactionState extends State<AddTransaction> {
     amountController.dispose();
     titleController.dispose();
   }
-}
-
-extension on Categories {
-  String toText() => this.toString().split('.').last;
 }

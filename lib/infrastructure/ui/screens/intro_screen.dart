@@ -16,15 +16,16 @@ class _IntroScreenState extends State<IntroScreen>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
+  // to determine whether there is an existing plan or create a new one
   bool createPlan;
-  final duration = Duration(seconds: 4);
+  final duration = Duration(milliseconds: 4000);
 
   @override
   void initState() {
-    print('Intro Screen Created');
     super.initState();
+    // delayed navigation to either home or salary screen
     Future.delayed(
-      Duration(seconds: 5),
+      Duration(milliseconds: 4500),
       () => Navigator.pushReplacementNamed(
           context, createPlan ? kPlanSalaryScreenID : kHomeScreenID),
     );
@@ -86,8 +87,8 @@ class _IntroScreenState extends State<IntroScreen>
 
   @override
   void dispose() {
-    super.dispose();
     // dispose the animation controller to avoid memory leaks.
     controller.dispose();
+    super.dispose();
   }
 }

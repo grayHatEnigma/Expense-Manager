@@ -42,11 +42,7 @@ abstract class ManagerUiContract with ChangeNotifier {
   Add , Remove a transaction
   */
   void addTransaction(
-      {String title,
-      double amount,
-      DateTime date,
-      Category category,
-      String id});
+      {String title, double amount, DateTime date, Category category});
 
-  void deleteTransaction({int index, String id});
+  void deleteTransaction({int index, int id});
 }

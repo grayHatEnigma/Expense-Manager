@@ -11,12 +11,10 @@ import './models/transaction.dart';
 import './models/chart_bar.dart';
 import './models/category.dart';
 import './models/plan.dart';
-import './manager_database_contract.dart';
 import './manager_ui_contract.dart';
+import '../infrastructure/database/database_helper.dart';
 
-class Manager
-    with ChangeNotifier
-    implements ManagerUiContract, ManagerDatabaseContract {
+class Manager with ChangeNotifier implements ManagerUiContract {
   // Plan object for current user
   Plan _plan;
 
@@ -66,9 +64,6 @@ class Manager
     return hasPlan ? _plan : throw 'Plan Not Found';
   }
 
-  // transactions list
-  List<Transaction> _transactions = List<Transaction>();
-
   /// Sorting and Grouping Functions
 
   // unmodifiable  sorted transaction list
@@ -84,11 +79,10 @@ class Manager
   Map<Category, double> totalSpendingPerCategory(
       List<Transaction> requiredTransactionsList) {
     var newGroup = groupBy(
-        requiredTransactionsList, (Transaction tx) => tx.category.category);
+        requiredTransactionsList, (Transaction tx) => tx.category.title);
 
-    final piChartMap = newGroup.map((categoryType, list) {
-      return MapEntry(
-          Category(category: categoryType), calculateTotalSpending(list));
+    final piChartMap = newGroup.map((categoryTitle, list) {
+      return MapEntry(Category(categoryTitle), calculateTotalSpending(list));
     });
     return piChartMap;
   }
@@ -140,22 +134,17 @@ class Manager
   // Add a new transaction to the list
   @override
   void addTransaction(
-      {String title,
-      double amount,
-      DateTime date,
-      String id,
-      Category category}) {
+      {String title, double amount, DateTime date, Category category}) {
     // add a new transaction
     _transactions.add(
-      Transaction(
-          title: title, amount: amount, date: date, id: id, category: category),
+      Transaction(title: title, amount: amount, date: date, category: category),
     );
     notifyListeners();
   }
 
   // Delete an existing transaction from the list
   @override
-  void deleteTransaction({int index, String id}) {
+  void deleteTransaction({int index, int id}) {
     if (id == null) {
       _transactions.removeAt(index);
     } else {
@@ -165,73 +154,69 @@ class Manager
     notifyListeners();
   }
 
-  /// Database Contract Functions
-  @override
+  /// Database Part
+
+  // transactions list
+
+  List<Transaction> _transactions = [
+    Transaction(
+        id: 1,
+        title: 'رواية الظل خارج الزمان',
+        amount: 35,
+        category: Category('Entertaining'),
+        date: DateTime.now()),
+    Transaction(
+      id: 2,
+      title: 'بطاطس',
+      amount: 25,
+      date: DateTime.now(),
+      category: Category('Grocery'),
+    ),
+    Transaction(
+      id: 3,
+      title: 'تذكرة قطر',
+      amount: 40,
+      date: DateTime.now(),
+      category: Category('Transportation'),
+    ),
+    Transaction(
+        id: 4,
+        title: 'كوتشي جديد',
+        amount: 535,
+        date: DateTime(2020, 2, 14),
+        category: Category('Shopping')),
+    Transaction(
+      id: 5,
+      title: 'فاتورة نت',
+      amount: 250,
+      date: DateTime(2020, 2, 12),
+      category: Category('Bills'),
+    ),
+    Transaction(
+      id: 6,
+      title: 'فاتورة التليفون الأرضي',
+      amount: 79,
+      date: DateTime(2020, 2, 13),
+      category: Category('Bills'),
+    ),
+    Transaction(
+      id: 7,
+      title: 'زيارات عائلية',
+      amount: 150,
+      date: DateTime(2020, 2, 11),
+      category: Category('Others'),
+    ),
+    Transaction(
+      id: 8,
+      title: 'رحلة أسوان',
+      amount: 250,
+      date: DateTime(2020, 2, 10),
+      category: Category('Travelling'),
+    ),
+  ];
+
   List<Transaction> loadTXList() {
     // TODO: implement  getting Plan Object list from the database
     return null;
   }
-
-  @override
-  void saveTXList() {
-    // TODO: implement saving Plan Object  list to the database
-  }
 } // Manager class end
-
-// List of Transactions , this should be empty and the user populate it
-//  List<Transaction> transactions = [
-//    Transaction(
-//        id: 't1',
-//        title: 'رواية الظل خارج الزمان',
-//        amount: 35,
-//        category: Category(category: Categories.Entertaining),
-//        date: DateTime.now()),
-//    Transaction(
-//      id: 't2',
-//      title: 'بطاطس',
-//      amount: 25,
-//      date: DateTime.now(),
-//      category: Category(category: Categories.Grocery),
-//    ),
-//    Transaction(
-//      id: 't3',
-//      title: 'تذكرة قطر',
-//      amount: 40,
-//      date: DateTime.now(),
-//      category: Category(category: Categories.Transportation),
-//    ),
-//    Transaction(
-//        id: 't4',
-//        title: 'كوتشي جديد',
-//        amount: 535,
-//        date: DateTime(2020, 2, 7),
-//        category: Category(category: Categories.Shopping)),
-//    Transaction(
-//      id: 't5',
-//      title: 'فاتورة نت',
-//      amount: 250,
-//      date: DateTime(2020, 2, 6),
-//      category: Category(category: Categories.Bills),
-//    ),
-//    Transaction(
-//      id: 't6',
-//      title: 'فاتورة التليفون الأرضي',
-//      amount: 79,
-//      date: DateTime(2020, 2, 3),
-//      category: Category(category: Categories.Bills),
-//    ),
-//    Transaction(
-//      id: 't7',
-//      title: 'زيارات عائلية',
-//      amount: 150,
-//      date: DateTime(2020, 2, 2),
-//      category: Category(category: Categories.Others),
-//    ),
-//    Transaction(
-//      id: 't8',
-//      title: 'رحلة أسوان',
-//      amount: 250,
-//      date: DateTime(2020, 2, 2),
-//      category: Category(category: Categories.Travelling),
-//    ),
-//  ];
