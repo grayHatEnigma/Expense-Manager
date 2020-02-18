@@ -1,8 +1,8 @@
-import 'package:expense_manager/infrastructure/ui/widgets/navigation_list_tile.dart';
 import 'package:flutter/material.dart';
 
-import 'package:expense_manager/constants.dart';
-import 'package:expense_manager/domain/models/navigation_model.dart';
+import '../../../constants.dart';
+import '../../../domain/models/navigation_model.dart';
+import './navigation_list_tile.dart';
 
 class NavigationDrawer extends StatelessWidget {
   @override

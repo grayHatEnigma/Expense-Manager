@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:path/path.dart';
+
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:expense_manager/domain/models/transaction.dart' as my;
+import '../../domain/models/transaction.dart' as my;
 
 // database table and column names
 final String tableTransactions = 'transactions';

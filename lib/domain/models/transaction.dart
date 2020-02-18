@@ -1,5 +1,5 @@
 import './category.dart';
-import 'package:expense_manager/infrastructure/database/database_helper.dart';
+import '../../infrastructure/database/database_helper.dart';
 
 class Transaction {
   int id;

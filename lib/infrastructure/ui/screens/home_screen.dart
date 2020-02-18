@@ -1,10 +1,10 @@
 //flutter core
-import 'package:expense_manager/infrastructure/ui/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:io';
 
 //my imports
+import '../../../infrastructure/ui/widgets/navigation_drawer.dart';
 import '../screens/add_transaction_screen.dart';
 import '../widgets/chart_widget.dart';
 import '../widgets/transactions_list_widget.dart';

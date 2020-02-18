@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 
-import 'package:expense_manager/domain/manager_ui_contract.dart';
-import 'package:expense_manager/domain/models/category.dart';
+import '../../../constants.dart';
+import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/models/category.dart';
 import '../widgets/indicator.dart';
-import 'package:expense_manager/constants.dart';
 
 class PieChartWidget extends StatefulWidget {
   @override

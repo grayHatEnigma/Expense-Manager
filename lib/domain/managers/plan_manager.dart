@@ -2,7 +2,7 @@ import 'package:meta/meta.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './models/plan.dart';
+import '../models/plan.dart';
 
 /// Handle Reading and Saving Plan to Shared Preferences
 

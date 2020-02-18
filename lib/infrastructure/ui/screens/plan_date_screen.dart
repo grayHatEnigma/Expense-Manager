@@ -4,7 +4,7 @@ import 'package:date_format/date_format.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
-import 'package:expense_manager/domain/manager_ui_contract.dart';
+import '../../../domain/manager_ui_contract.dart';
 
 class PlanDateScreen extends StatefulWidget {
   @override

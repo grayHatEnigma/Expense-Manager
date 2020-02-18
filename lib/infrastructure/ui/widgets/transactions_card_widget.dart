@@ -4,8 +4,8 @@ import 'package:date_format/date_format.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable/expandable.dart';
 
-import 'package:expense_manager/domain/manager_ui_contract.dart';
-import 'package:expense_manager/domain/models/transaction.dart';
+import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/models/transaction.dart';
 import './transaction_tile_widget.dart';
 
 class TransactionsCard extends StatelessWidget {

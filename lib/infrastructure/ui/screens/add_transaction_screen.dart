@@ -1,5 +1,4 @@
 //flutter core
-import 'package:expense_manager/domain/models/category.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -7,7 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:date_format/date_format.dart';
 
 //my imports
-import 'package:expense_manager/domain/manager_ui_contract.dart';
+import '../../../domain/models/category.dart';
+import '../../../domain/manager_ui_contract.dart';
 
 class AddTransaction extends StatefulWidget {
   @override

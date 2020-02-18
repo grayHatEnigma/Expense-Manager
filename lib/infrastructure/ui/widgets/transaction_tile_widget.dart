@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //my imports
-import 'package:expense_manager/domain/models/transaction.dart';
+import '../../../domain/models/transaction.dart';
 
 class TransactionTile extends StatelessWidget {
   final Transaction transaction;

@@ -1,8 +1,6 @@
-//flutter core
 import 'package:flutter/material.dart';
 
 //Screen IDs
-
 const String kHomeScreenID = '/home';
 const String kAnalysisScreenID = '/analysis';
 const String kPlanSalaryScreenID = '/plan_salary';

@@ -1,8 +1,7 @@
-//flutter core
 import 'package:flutter/material.dart';
 
 //my imports
-import 'package:expense_manager/constants.dart';
+import '../../../constants.dart';
 
 class ChartBarWidget extends StatelessWidget {
   final double amount;

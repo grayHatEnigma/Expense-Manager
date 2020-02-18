@@ -1,4 +1,3 @@
-import 'package:expense_manager/domain/models/category.dart';
 import 'package:flutter/material.dart';
 
 //external packages
@@ -12,7 +11,7 @@ import './infrastructure/ui/screens/plan_salary_screen.dart';
 import './infrastructure/ui/screens/intro_screen.dart';
 import './domain/manager.dart';
 import './infrastructure/ui/screens/home_screen.dart';
-import 'package:expense_manager/constants.dart';
+import './constants.dart';
 
 //TODO: REFACTOR AND CLEAN THE CODE
 

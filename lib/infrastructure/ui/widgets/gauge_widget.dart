@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import 'package:expense_manager/domain/manager_ui_contract.dart';
+import '../../../domain/manager_ui_contract.dart';
 
 class GaugeWidget extends StatelessWidget {
   @override
