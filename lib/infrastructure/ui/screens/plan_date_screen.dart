@@ -1,3 +1,4 @@
+import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:date_format/date_format.dart';
@@ -28,7 +29,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
           if (chosenDate != null) {
             planManager.createPlan(
                 startDate: chosenDate, totalIncome: totalIncome);
-            Navigator.pushReplacementNamed(context, '/home');
+            Navigator.pushReplacementNamed(context, kHomeScreenID);
           } else {
             Fluttertoast.showToast(
                 msg: "ادخل تاريخ بداية خطة المصروفات",

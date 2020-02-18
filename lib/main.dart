@@ -17,15 +17,11 @@ import './domain/managers/database_manager.dart';
 //TODO: REFACTOR AND CLEAN THE CODE
 
 void main() {
-  // To make sure it reads the shared preferences first.
-  WidgetsFlutterBinding.ensureInitialized();
-  PlanManager();
+  // Run the app
+  runApp(MyApp());
 
   // Read from the Database immediately after creating the app.
   DatabaseManager();
-
-  // Run the app
-  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

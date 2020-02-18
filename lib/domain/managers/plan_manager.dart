@@ -22,7 +22,7 @@ class PlanManager with ChangeNotifier {
     return (_plan != null) ? _plan : throw 'Plan Not Found';
   }
 
-  bool get hasPlan => _plan != null;
+  Future<bool> get hasPlan => _readFromSharedPreferences();
 
   void createPlan(
       {@required DateTime startDate, @required double totalIncome}) {
@@ -47,17 +47,19 @@ class PlanManager with ChangeNotifier {
   }
 
   // to read plan values from shared preferences if existed
-  void _readFromSharedPreferences() async {
-    final shared = await _sharedPreferences;
+  Future<bool> _readFromSharedPreferences() async {
+    return _sharedPreferences.then((prefs) {
+      final dateString = prefs.getString('startDate');
+      final income = prefs.getDouble('totalIncome');
 
-    final dateString = shared.getString('startDate');
-    final income = shared.getDouble('totalIncome');
-
-    if (dateString != null && income != null) {
-      print('plan date : $dateString  , plan income : $income');
-      DateTime startDate = DateTime.parse(dateString);
-      double totalIncome = income;
-      createPlan(startDate: startDate, totalIncome: totalIncome);
-    }
+      if (dateString != null && income != null) {
+        print('plan date : $dateString  , plan income : $income');
+        DateTime startDate = DateTime.parse(dateString);
+        double totalIncome = income;
+        createPlan(startDate: startDate, totalIncome: totalIncome);
+        return true;
+      }
+      return false;
+    });
   }
 } //PlanManager

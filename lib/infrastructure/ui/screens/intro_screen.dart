@@ -18,32 +18,27 @@ class _IntroScreenState extends State<IntroScreen>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
-
-  bool hasSavedPlan = true;
-
   final duration = Duration(milliseconds: 4000);
 
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(
-      Duration(milliseconds: 4500),
-      () => Navigator.pushReplacementNamed(
-          context, hasSavedPlan ? kHomeScreenID : kPlanSalaryScreenID),
-    );
-
     controller = AnimationController(vsync: this, duration: duration);
     animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
-
     controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
     final planManager = Provider.of<PlanManager>(context);
-    hasSavedPlan = planManager.hasPlan;
-    print('has a saved plan: $hasSavedPlan');
+
+    planManager.hasPlan.then((hasSavedPlan) {
+      Future.delayed(
+        Duration(milliseconds: 4000),
+        () => Navigator.pushReplacementNamed(
+            context, hasSavedPlan ? kHomeScreenID : kPlanSalaryScreenID),
+      );
+    });
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,

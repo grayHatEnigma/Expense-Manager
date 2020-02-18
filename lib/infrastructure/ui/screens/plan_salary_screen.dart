@@ -1,3 +1,4 @@
+import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
@@ -21,7 +22,8 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
             if (incomeController.text != null) {
               double income = double.parse(incomeController.text);
               incomeController.clear();
-              Navigator.pushNamed(context, '/plan_date', arguments: income);
+              Navigator.pushNamed(context, kPlanDateScreenID,
+                  arguments: income);
             }
           } catch (e) {
             Fluttertoast.showToast(
