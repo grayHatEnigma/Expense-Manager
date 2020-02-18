@@ -1,4 +1,3 @@
-import 'package:expense_manager/domain/managers/database_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 
@@ -20,7 +19,7 @@ class PlanManager with ChangeNotifier {
 
   Plan _plan;
   Plan get plan {
-    return hasPlan ? _plan : throw 'Plan Not Found';
+    return (_plan != null) ? _plan : throw 'Plan Not Found';
   }
 
   bool get hasPlan => _plan != null;
@@ -43,13 +42,14 @@ class PlanManager with ChangeNotifier {
   void _saveToSharedPreferences(DateTime date, double income) async {
     final shared = await _sharedPreferences;
 
-    shared.setString('startDate', date.toString());
-    shared.setDouble('totalIncome', income);
+    await shared.setString('startDate', date.toString());
+    await shared.setDouble('totalIncome', income);
   }
 
   // to read plan values from shared preferences if existed
   void _readFromSharedPreferences() async {
     final shared = await _sharedPreferences;
+
     final dateString = shared.getString('startDate');
     final income = shared.getDouble('totalIncome');
 

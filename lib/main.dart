@@ -19,14 +19,13 @@ import './domain/managers/database_manager.dart';
 void main() {
   // To make sure it reads the shared preferences first.
   WidgetsFlutterBinding.ensureInitialized();
+  PlanManager();
 
   // Read from the Database immediately after creating the app.
   DatabaseManager();
 
   // Run the app
   runApp(MyApp());
-
-  // Debugging
 }
 
 class MyApp extends StatelessWidget {

@@ -35,7 +35,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         : Card(
             elevation: 5,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Flexible(
                   flex: 2,
@@ -43,7 +43,6 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                     PieChartData(
                       pieTouchData:
                           PieTouchData(touchCallback: (touchResponse) {
-                        print(touchResponse.touchedSectionIndex);
                         setState(() {
                           touchedIndex = touchResponse.touchedSectionIndex;
                         });
@@ -77,7 +76,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                           child: Indicator(
                             color: category.color,
                             text: category.title,
-                            isSquare: true,
+                            isSquare: false,
                           ),
                         );
                       },

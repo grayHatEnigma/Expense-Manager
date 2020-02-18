@@ -18,26 +18,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+class _HomeScreenState extends State<HomeScreen> {
   bool _showChart = false;
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    print(state);
-    super.didChangeAppLifecycleState(state);
-  }
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addObserver(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,8 +114,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       ),
     );
   }
-
-  /// Stateful widget life cycle debugging
 
   // This method will be called when the device orientation changes
   // so I re-initialize _showChart variable to false each time it is called.

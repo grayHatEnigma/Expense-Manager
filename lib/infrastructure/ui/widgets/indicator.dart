@@ -27,8 +27,8 @@ class Indicator extends StatelessWidget {
           width: size,
           height: size,
           decoration: BoxDecoration(
-            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
             color: color,
+            shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
           ),
         ),
         SizedBox(

@@ -17,7 +17,7 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  String chosenDateText = 'No Date Chosen!';
+  String chosenDateText = 'تاريخ اليوم';
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
   String chosenCategory;
@@ -37,11 +37,11 @@ class _AddTransactionState extends State<AddTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: InputDecoration(labelText: 'الاسم'),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
+              decoration: InputDecoration(labelText: 'القيمة'),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
             ),
@@ -61,9 +61,12 @@ class _AddTransactionState extends State<AddTransaction> {
                     });
                   },
                   value: chosenCategory,
-                  hint: Text('Choose Category '),
+                  hint: Text(
+                    'اختار تصنيف',
+                    textAlign: TextAlign.center,
+                  ),
                   icon: Icon(
-                    Icons.assessment,
+                    Icons.assignment,
                     color: Theme.of(context).accentColor,
                   ),
                   style: TextStyle(
@@ -83,7 +86,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 FlatButton(
                     child: Text(
-                      'Choose Date',
+                      'اختار تاريخ',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () async {
@@ -98,8 +101,7 @@ class _AddTransactionState extends State<AddTransaction> {
                         // update the chosen date on the screen
                         setState(() {
                           chosenDate = userDate;
-                          chosenDateText =
-                              'Picked Date: ${formatDate(chosenDate, [
+                          chosenDateText = '${formatDate(chosenDate, [
                             DD,
                             ' , ',
                             dd,
@@ -119,7 +121,7 @@ class _AddTransactionState extends State<AddTransaction> {
             RaisedButton(
               color: Theme.of(context).primaryColor,
               child: Text(
-                'Add Transaction',
+                'إضافة',
                 style: TextStyle(color: Colors.white, fontSize: 17),
               ),
               onPressed: () {
