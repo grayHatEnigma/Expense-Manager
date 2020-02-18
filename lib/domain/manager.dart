@@ -135,10 +135,13 @@ class Manager with ChangeNotifier implements ManagerUiContract {
   @override
   void addTransaction(
       {String title, double amount, DateTime date, Category category}) {
-    // add a new transaction
-    _transactions.add(
-      Transaction(title: title, amount: amount, date: date, category: category),
-    );
+    final transaction = Transaction(
+        title: title, amount: amount, date: date, category: category);
+    // add a new transaction to the list
+    _transactions.add(transaction);
+
+    // test add new transaction to the database
+    addTransactionToDatabase(transaction);
     notifyListeners();
   }
 
@@ -150,11 +153,9 @@ class Manager with ChangeNotifier implements ManagerUiContract {
     } else {
       _transactions.removeWhere((tx) => tx.id == id);
     }
-
+    deleteTransactionFromDatabase(id);
     notifyListeners();
   }
-
-  /// Database Part
 
   // transactions list
 
@@ -215,8 +216,27 @@ class Manager with ChangeNotifier implements ManagerUiContract {
     ),
   ];
 
-  List<Transaction> loadTXList() {
-    // TODO: implement  getting Plan Object list from the database
-    return null;
+  /// Database Part
+
+  final databaseHelper = DatabaseHelper();
+
+  void addTransactionToDatabase(Transaction transaction) async {
+    int id = await databaseHelper.insert(transaction);
+    print('id of added transaction $id');
+  }
+
+  void deleteTransactionFromDatabase(int id) {
+    databaseHelper.delete(id);
+    getTransactionsFromDatabase();
+  }
+
+  void getTransactionsFromDatabase() async {
+    var list = await databaseHelper.getAllTransactions();
+    print('Database');
+    _transactions = list;
+    list.forEach((tx) {
+      print(
+          'Transaction id: ${tx.id} , Transaction title: ${tx.title}\nTransaction amount: ${tx.amount} , Transaction category: ${tx.category.title}');
+    });
   }
 } // Manager class end

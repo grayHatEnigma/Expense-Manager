@@ -22,15 +22,6 @@ void main() {
   runApp(MyApp());
 
   // Debugging
-  String c = 'Bills';
-  final category = Category(c);
-
-  String encodedCategory = category.encodeToString();
-
-  Category decodedCategory = Category.decodeFromString(encodedCategory);
-
-  print('Category title : ${category.title}');
-  print('Decoded Category title : ${decodedCategory.title}');
 }
 
 class MyApp extends StatelessWidget {

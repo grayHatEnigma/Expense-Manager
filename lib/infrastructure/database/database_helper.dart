@@ -62,7 +62,7 @@ class DatabaseHelper {
                 $columnTitle TEXT NOT NULL,
                 $columnAmount REAL NOT NULL,
                 $columnCategory TEXT NOT NULL,
-                $columnDate TEXT NOT NULL,
+                $columnDate TEXT NOT NULL
               )
               ''');
   }
