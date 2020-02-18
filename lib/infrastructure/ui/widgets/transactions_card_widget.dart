@@ -4,7 +4,7 @@ import 'package:date_format/date_format.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable/expandable.dart';
 
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/models/transaction.dart';
 import './transaction_tile_widget.dart';
 
@@ -13,7 +13,7 @@ class TransactionsCard extends StatelessWidget {
   TransactionsCard(this.transactions);
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
+    final uiManager = Provider.of<UiManager>(context);
 
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -50,7 +50,7 @@ class TransactionsCard extends StatelessWidget {
                 width: 100,
                 child: FittedBox(
                   child: Text(
-                    'Expenses: ${manager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    'Expenses: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),
@@ -67,7 +67,7 @@ class TransactionsCard extends StatelessWidget {
                 return TransactionTile(
                     transaction: tx,
                     deleteCallback: () {
-                      manager.deleteTransaction(id: tx.id);
+                      uiManager.deleteTransaction(id: tx.id);
                     });
               }).toList(),
             ),

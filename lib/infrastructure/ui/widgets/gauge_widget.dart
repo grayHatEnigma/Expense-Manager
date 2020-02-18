@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
+import '../../../domain/managers/plan_manager.dart';
 
 class GaugeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
-    final int range = DateTime.now().difference(manager.plan.startDate).inDays;
+    final planManager = Provider.of<PlanManager>(context);
+    final uiManager = Provider.of<UiManager>(context);
+    final int range =
+        DateTime.now().difference(planManager.plan.startDate).inDays;
 
-    final double totalExpenses = manager.calculateTotalSpending(
-        manager.recentTransactions(differenceInDays: range));
-    final double totalIncome = manager.plan.totalIncome;
+    final double totalExpenses = uiManager.calculateTotalSpending(
+        uiManager.recentTransactions(differenceInDays: range));
+    final double totalIncome = planManager.plan.totalIncome;
     final double percentage = totalExpenses / totalIncome;
 
     bool limitPassed = totalExpenses > totalIncome;

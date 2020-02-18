@@ -73,7 +73,9 @@ class DatabaseHelper {
   // add a transaction to the database table and return the auto-gen id for it
   Future<int> insert(my.Transaction transaction) async {
     Database db = await database;
+
     int id = await db.insert(tableTransactions, transaction.toMap());
+    transaction.id = id;
     return id;
   }
 

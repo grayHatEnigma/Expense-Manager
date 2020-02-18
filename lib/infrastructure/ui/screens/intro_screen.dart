@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 import '../../../constants.dart';
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/plan_manager.dart';
 
 class IntroScreen extends StatefulWidget {
   final title;
@@ -39,8 +39,8 @@ class _IntroScreenState extends State<IntroScreen>
 
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
-    createPlan = !manager.hasPlan;
+    final planManager = Provider.of<PlanManager>(context, listen: false);
+    createPlan = !planManager.hasPlan;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(

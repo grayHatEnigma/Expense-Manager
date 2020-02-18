@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //my imports
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/models/chart_bar.dart';
 import './chart_bar_widget.dart';
 
 class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
+    final manager = Provider.of<UiManager>(context);
     final totalRecentSpending =
         manager.calculateTotalSpending(manager.lastWeekTransactions);
     final List<ChartBar> chartBars = manager.lastWeekSpendingByDay;

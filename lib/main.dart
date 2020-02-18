@@ -5,31 +5,42 @@ import 'package:provider/provider.dart';
 
 //my imports
 import './infrastructure/ui/screens/plan_date_screen.dart';
-import './domain/manager_ui_contract.dart';
 import './infrastructure/ui/screens/analysis_screen.dart';
 import './infrastructure/ui/screens/plan_salary_screen.dart';
 import './infrastructure/ui/screens/intro_screen.dart';
-import './domain/manager.dart';
 import './infrastructure/ui/screens/home_screen.dart';
 import './constants.dart';
+import './domain/managers/plan_manager.dart';
+import './domain/managers/ui_manager.dart';
+import './domain/managers/database_manager.dart';
 
 //TODO: REFACTOR AND CLEAN THE CODE
 
 void main() {
-  // To make sure it reads the shared preferences first .
+  // To make sure it reads the shared preferences first.
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Read from the Database immediately after creating the app.
+  DatabaseManager();
+
+  // Run the app
   runApp(MyApp());
 
   // Debugging
 }
 
 class MyApp extends StatelessWidget {
-  final ManagerUiContract _managerUiContract = Manager();
-
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => _managerUiContract,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => PlanManager(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UiManager(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: kTitle,

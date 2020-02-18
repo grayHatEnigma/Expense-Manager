@@ -5,14 +5,14 @@ import 'package:provider/provider.dart';
 
 // my imports
 import '../../../constants.dart';
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
 import './transactions_card_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
-    final groupedTransactions = manager.groupedTransactionsByDate;
+    final uiManager = Provider.of<UiManager>(context);
+    final groupedTransactions = uiManager.groupedTransactionsByDate;
     final length = groupedTransactions.length;
     return length == 0
         ? Expanded(child: kNoTransactionsWidget)

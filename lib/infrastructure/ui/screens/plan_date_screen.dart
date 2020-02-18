@@ -4,7 +4,7 @@ import 'package:date_format/date_format.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/plan_manager.dart';
 
 class PlanDateScreen extends StatefulWidget {
   @override
@@ -19,14 +19,15 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
   Widget build(BuildContext context) {
     final double totalIncome =
         ModalRoute.of(context).settings.arguments as double;
-    final manager = Provider.of<ManagerUiContract>(context);
+    final planManager = Provider.of<PlanManager>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (chosenDate != null) {
-            manager.createPlan(startDate: chosenDate, totalIncome: totalIncome);
+            planManager.createPlan(
+                startDate: chosenDate, totalIncome: totalIncome);
             Navigator.pushReplacementNamed(context, '/home');
           } else {
             Fluttertoast.showToast(

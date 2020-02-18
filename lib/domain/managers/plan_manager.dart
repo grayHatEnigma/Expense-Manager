@@ -1,3 +1,5 @@
+import 'package:expense_manager/domain/managers/database_manager.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,7 +8,7 @@ import '../models/plan.dart';
 
 /// Handle Reading and Saving Plan to Shared Preferences
 
-class PlanManager {
+class PlanManager with ChangeNotifier {
   static final instance = PlanManager._();
   PlanManager._() {
     // read plan values from shared preferences

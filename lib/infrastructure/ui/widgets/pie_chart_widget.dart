@@ -4,7 +4,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
+import '../../../domain/managers/plan_manager.dart';
 import '../../../domain/models/category.dart';
 import '../widgets/indicator.dart';
 
@@ -17,13 +18,15 @@ class _PieChartWidgetState extends State<PieChartWidget> {
   int touchedIndex;
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<ManagerUiContract>(context);
-    final int range = DateTime.now().difference(manager.plan.startDate).inDays;
+    final uiManager = Provider.of<UiManager>(context);
+    final planManager = Provider.of<PlanManager>(context);
+    final int range =
+        DateTime.now().difference(planManager.plan.startDate).inDays;
 
-    final double totalExpenses = manager.calculateTotalSpending(
-        manager.recentTransactions(differenceInDays: range));
-    final pieChartMap = manager.totalSpendingPerCategory(
-        manager.recentTransactions(differenceInDays: range));
+    final double totalExpenses = uiManager.calculateTotalSpending(
+        uiManager.recentTransactions(differenceInDays: range));
+    final pieChartMap = uiManager.totalSpendingPerCategory(
+        uiManager.recentTransactions(differenceInDays: range));
 
     final int length = pieChartMap.length;
 

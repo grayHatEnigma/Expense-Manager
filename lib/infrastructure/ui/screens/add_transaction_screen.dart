@@ -7,7 +7,7 @@ import 'package:date_format/date_format.dart';
 
 //my imports
 import '../../../domain/models/category.dart';
-import '../../../domain/manager_ui_contract.dart';
+import '../../../domain/managers/ui_manager.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
@@ -24,6 +24,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    final uiManager = Provider.of<UiManager>(context, listen: false);
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(
@@ -129,8 +130,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   print('Invaild amount input');
                 }
                 if (inputAmount > 0 && titleController.text.isNotEmpty) {
-                  Provider.of<ManagerUiContract>(context, listen: false)
-                      .addTransaction(
+                  uiManager.addTransaction(
                     title: titleController.text,
                     amount: double.parse(amountController.text),
                     date: chosenDate,
