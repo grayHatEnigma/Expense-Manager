@@ -5,8 +5,8 @@
 
   "kTitleTextFieldHint" : "العنوان",
   "kAmountTextFieldHint": "القيمة",
-  "kDropDownMenuHint": "اختار التصنيف",
-  "kPickDateButton": "اختار تاريخ",
+  "kDropDownMenuHint": "اختر التصنيف",
+  "kPickDateButton": "اختر تاريخ",
   "kChosenDateText": "تاريخ اليوم",
   "kAddButton": "إضافة",
 
@@ -29,5 +29,16 @@
 
   "kDateInputText" : "تاريخ بداية خطة المصروفات",
   "kDateToastMsg" : "من فضلك اختر تاريخ لبداية الخطة",
-  "kDateInputDescription" : "الخطة سوف تجدد شهرياً يوم"
+  "kDateInputDescription" : "الخطة سوف تجدد شهرياً يوم:",
+
+  "Bills" : "فواتير" ,
+  "Emergency" :  "طوارىء" ,
+  "Entertaining" :  "ترفيه",
+  "Grocery" :  "مواد غذائية",
+  "Maintenance":  "صيانة",
+  "Medicine":  "رعاية صحية",
+  "Others" :  "أخرى",
+  "Shopping" :  "تسوق وملابس",
+  "Transportation" :  "نقل ومواصلات",
+  "Travelling" : "سفر"
 }

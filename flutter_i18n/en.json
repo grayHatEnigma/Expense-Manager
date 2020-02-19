@@ -30,6 +30,16 @@
 
   "kDateInputText" : "Plan Starting Date",
   "kDateToastMsg" : "pick your plan date",
-  "kDateInputDescription" : "plan will be renewed monthly at"
+  "kDateInputDescription" : "plan will be renewed monthly at:",
 
+  "Bills" : "Bills" ,
+  "Emergency" :  "Emergency" ,
+  "Entertaining" :  "Entertaining",
+  "Grocery" :  "Grocery",
+  "Maintenance":  "Maintenance",
+  "Medicine":  "Medicine",
+  "Others" :  "Others",
+  "Shopping" :  "Shopping",
+  "Transportation" :  "Transportation",
+  "Travelling" : "Travelling"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import './empty_list_widget.dart';
 import '../../../domain/managers/ui_manager.dart';
@@ -75,7 +76,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
                               EdgeInsets.symmetric(horizontal: 5, vertical: 3),
                           child: Indicator(
                             color: category.color,
-                            text: category.title,
+                            text:
+                                FlutterI18n.translate(context, category.title),
                             isSquare: false,
                           ),
                         );

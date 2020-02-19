@@ -5,6 +5,11 @@ class Category {
   Color _color;
 
   Category(this._title);
+  Category.fromEnum(Categories type) {
+    final typeTitle = type.toString().split('.').last;
+    _title = typeTitle;
+    _color = color;
+  }
 
   // Encode and Decode a Category object
 
@@ -69,17 +74,15 @@ class Category {
 }
 
 // List Of Categories
-// to add a new one you need to add here and in the switch statement above
-// with the appropriate color
-List<String> categories = [
-  'Bills',
-  'Emergency',
-  'Entertaining',
-  'Grocery',
-  'Maintenance',
-  'Medicine',
-  'Others',
-  'Shopping',
-  'Transportation',
-  'Travelling',
-];
+enum Categories {
+  Bills,
+  Emergency,
+  Entertaining,
+  Grocery,
+  Maintenance,
+  Medicine,
+  Others,
+  Shopping,
+  Transportation,
+  Travelling,
+}

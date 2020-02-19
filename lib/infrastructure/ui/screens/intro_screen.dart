@@ -53,7 +53,7 @@ class _IntroScreenState extends State<IntroScreen>
                 widget.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 45,
+                  fontSize: 38,
                   color: Colors.white,
                 ),
               ),
@@ -64,8 +64,8 @@ class _IntroScreenState extends State<IntroScreen>
               child: FadeTransition(
                 child: Image.asset(
                   'images/wallet.png',
-                  height: 200,
-                  width: 200,
+                  height: 180,
+                  width: 180,
                 ),
                 opacity: animation,
               ),

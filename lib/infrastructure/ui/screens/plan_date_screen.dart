@@ -106,7 +106,6 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
             Text(
               '${FlutterI18n.translate(context, kDateInputDescription)}\n$chosenDateText',
               textAlign: TextAlign.center,
-              textDirection: TextDirection.rtl,
               style: TextStyle(letterSpacing: 3, color: Colors.white),
             ),
           ],

@@ -22,13 +22,14 @@ class _AddTransactionState extends State<AddTransaction> {
   String chosenDateText;
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
-  String chosenCategory;
+  Categories chosenCategory;
 
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context, listen: false);
 
     chosenDateText = FlutterI18n.translate(context, kChosenDateText);
+
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(
@@ -56,11 +57,11 @@ class _AddTransactionState extends State<AddTransaction> {
             Center(
               child: Container(
                 padding: EdgeInsets.all(5),
-                child: DropdownButton<String>(
-                  items: categories.map((value) {
+                child: DropdownButton<Categories>(
+                  items: Categories.values.map((value) {
                     return DropdownMenuItem(
                       value: value,
-                      child: Text(value),
+                      child: Text(value.toText(context)),
                     );
                   }).toList(),
                   onChanged: (newValue) {
@@ -144,7 +145,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     title: titleController.text,
                     amount: double.parse(amountController.text),
                     date: chosenDate,
-                    category: Category(chosenCategory),
+                    category: Category.fromEnum(chosenCategory),
                   );
 
                   // clear the controllers
@@ -169,5 +170,13 @@ class _AddTransactionState extends State<AddTransaction> {
     // dispose the text fields controllers
     amountController.dispose();
     titleController.dispose();
+  }
+}
+
+// Translate Category
+extension on Categories {
+  String toText(BuildContext context) {
+    final categoryTitle = this.toString().split('.').last;
+    return FlutterI18n.translate(context, categoryTitle);
   }
 }
