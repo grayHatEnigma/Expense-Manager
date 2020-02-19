@@ -8,8 +8,6 @@ import '../../../constants.dart';
 import '../../../domain/managers/plan_manager.dart';
 
 class IntroScreen extends StatefulWidget {
-  final title;
-  IntroScreen({this.title});
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
@@ -50,7 +48,7 @@ class _IntroScreenState extends State<IntroScreen>
           children: <Widget>[
             Center(
               child: Text(
-                widget.title,
+                kTitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 38,

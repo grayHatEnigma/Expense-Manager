@@ -9,11 +9,9 @@ import '../widgets/chart_widget.dart';
 import '../widgets/transactions_list_widget.dart';
 import '../widgets/navigation_drawer.dart';
 import '../widgets/adaptive_switch_widget.dart';
+import '../../../constants.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String title;
-  HomeScreen({this.title});
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -30,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            widget.title,
+            kTitle,
             textAlign: TextAlign.center,
           ),
         ),

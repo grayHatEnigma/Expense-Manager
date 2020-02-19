@@ -8,9 +8,6 @@ import '../../../constants.dart';
 
 // TODO: fix orientation problems in this screen
 class AnalysisScreen extends StatelessWidget {
-  final String title;
-  AnalysisScreen({this.title});
-
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -19,7 +16,7 @@ class AnalysisScreen extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            title,
+            kTitle,
             textAlign: TextAlign.center,
           ),
         ),
