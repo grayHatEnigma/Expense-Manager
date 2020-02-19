@@ -8,6 +8,8 @@ const String kAnalysisScreenID = '/analysis';
 const String kPlanSalaryScreenID = '/plan_salary';
 const String kPlanDateScreenID = '/plan_date';
 const String kIntroScreenID = '/intro';
+const String kSettingsScreenID = '/settings';
+const String kAboutScreenID = '/about';
 
 // App Title
 final kTitle = 'الفلوس راحت فين؟';
@@ -33,6 +35,11 @@ final kPickDateButton = 'kPickDateButton';
 final kChosenDateText = 'kChosenDateText';
 final kAddButton = 'kAddButton';
 
+// About Screen Texts Keys
+
+final kDeveloperText = 'kDeveloperText';
+final kDesignerText = 'kDesignerText';
+
 // HomeScreen/AdaptiveSwitch Text Key
 final kShowChartButton = 'kShowChartButton';
 
@@ -44,7 +51,6 @@ final kMoneyPrefix = 'kMoneyPrefix';
 final kDeleteButtonHint = 'kDeleteButtonHint';
 
 // Navigation Drawer Texts Keys
-
 final kNavAnalysis = 'kNavAnalysis';
 final kNavSettings = 'kNavSettings';
 final kNavAbout = 'kNavAbout';

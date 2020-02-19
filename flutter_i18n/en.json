@@ -32,6 +32,9 @@
   "kDateToastMsg" : "pick your plan date",
   "kDateInputDescription" : "plan will be renewed monthly at:",
 
+  "kDeveloperText" : "This app was developed by",
+  "kDesignerText" : "Icons in this app was made by Darius Dan from www.flaticon.com",
+
   "Bills" : "Bills" ,
   "Emergency" :  "Emergency" ,
   "Entertaining" :  "Entertaining",

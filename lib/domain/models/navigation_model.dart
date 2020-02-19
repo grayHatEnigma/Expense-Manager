@@ -15,9 +15,10 @@ List<NavigationModel> navigationItems = [
       icon: Icons.insert_chart,
       destination: kAnalysisScreenID),
   NavigationModel(
-    title: kNavSettings,
-    icon: Icons.settings,
-  ),
-  NavigationModel(title: kNavAbout, icon: Icons.info),
+      title: kNavSettings,
+      icon: Icons.settings,
+      destination: kSettingsScreenID),
+  NavigationModel(
+      title: kNavAbout, icon: Icons.info, destination: kAboutScreenID),
   NavigationModel(title: kNavRate, icon: Icons.star),
 ];

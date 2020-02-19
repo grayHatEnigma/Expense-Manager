@@ -31,6 +31,9 @@
   "kDateToastMsg" : "من فضلك اختر تاريخ لبداية الخطة",
   "kDateInputDescription" : "الخطة سوف تجدد شهرياً يوم:",
 
+  "kDeveloperText" : "هذا التطبيق تم تطويره بواسطة",
+  "kDesignerText" : "جميع أيقونات هذا التطبيق من تصميم Darius Dan من www.flaticon.com",
+
   "Bills" : "فواتير" ,
   "Emergency" :  "طوارىء" ,
   "Entertaining" :  "ترفيه",
