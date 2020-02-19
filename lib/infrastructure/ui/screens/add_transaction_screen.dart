@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //external packages
 import 'package:provider/provider.dart';
 import 'package:date_format/date_format.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 //my imports
 import '../../../domain/models/category.dart';
@@ -18,7 +19,7 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  String chosenDateText = kChosenDateText;
+  String chosenDateText;
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
   String chosenCategory;
@@ -26,6 +27,8 @@ class _AddTransactionState extends State<AddTransaction> {
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context, listen: false);
+
+    chosenDateText = FlutterI18n.translate(context, kChosenDateText);
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.only(
@@ -38,11 +41,15 @@ class _AddTransactionState extends State<AddTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: kTitleTextFieldHint),
+              decoration: InputDecoration(
+                  labelText:
+                      FlutterI18n.translate(context, kTitleTextFieldHint)),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: kAmountTextFieldHint),
+              decoration: InputDecoration(
+                  labelText:
+                      FlutterI18n.translate(context, kAmountTextFieldHint)),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
             ),
@@ -63,7 +70,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   },
                   value: chosenCategory,
                   hint: Text(
-                    kDropDownMenuHint,
+                    FlutterI18n.translate(context, kDropDownMenuHint),
                     textAlign: TextAlign.start,
                   ),
                   icon: Icon(
@@ -87,7 +94,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 FlatButton(
                     child: Text(
-                      kPickDateButton,
+                      FlutterI18n.translate(context, kPickDateButton),
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () async {
@@ -122,7 +129,7 @@ class _AddTransactionState extends State<AddTransaction> {
             RaisedButton(
               color: Theme.of(context).primaryColor,
               child: Text(
-                kAddButton,
+                FlutterI18n.translate(context, kAddButton),
                 style: TextStyle(color: Colors.white, fontSize: 17),
               ),
               onPressed: () {

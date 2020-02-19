@@ -10,69 +10,51 @@ const String kPlanDateScreenID = '/plan_date';
 const String kIntroScreenID = '/intro';
 
 // App Title
-
 final kTitle = 'الفلوس راحت فين؟';
 
-// Analysis Screen Texts
+// Plan Screens Texts Keys
+final kSalaryInputText = 'kSalaryInputText';
+final kSalaryToastMsg = 'kSalaryToastMsg';
 
-final kAnalysisTitle = 'Expenses Analysis';
-final kAnalysisGaugeTitle = 'Total Expenses';
-final kAnalysisLimitTitle = 'You Spent All Your Money!';
+final kDateInputText = 'kDateInputText';
+final kDateToastMsg = 'kDateToastMsg';
+final kDateInputDescription = 'kDateInputDescription';
 
-// Add Transaction Screen Texts
+// Analysis Screen Texts Keys
+final kAnalysisTitle = 'kAnalysisTitle';
+final kAnalysisGaugeTitle = 'kAnalysisGaugeTitle';
+final kAnalysisLimitTitle = 'kAnalysisLimitTitle';
 
-final kTitleTextFieldHint = 'Title';
-final kAmountTextFieldHint = 'Amount';
-final kDropDownMenuHint = 'Choose Category ';
-final kPickDateButton = 'Pick Date';
-final kChosenDateText = 'No Date Chosen';
-final kAddButton = 'Add';
+// Add Transaction Screen Texts Keys
+final kTitleTextFieldHint = 'kTitleTextFieldHint';
+final kAmountTextFieldHint = 'kAmountTextFieldHint';
+final kDropDownMenuHint = 'kDropDownMenuHint';
+final kPickDateButton = 'kPickDateButton';
+final kChosenDateText = 'kChosenDateText';
+final kAddButton = 'kAddButton';
 
-// Transactions Card Texts
-final kDailyExpenses = 'Expenses';
+// HomeScreen/AdaptiveSwitch Text Key
+final kShowChartButton = 'kShowChartButton';
 
-// Transactions Tile and Chart Bar Widget Texts
-final kMoneyPrefix = 'EG';
-final kDeleteButtonHint = 'Delete';
+// Transactions Card Texts Keys
+final kDailyExpenses = 'kDailyExpenses';
 
-// Navigation Drawer Texts
+// Transactions Tile and Chart Bar Widget Texts Keys
+final kMoneyPrefix = 'kMoneyPrefix';
+final kDeleteButtonHint = 'kDeleteButtonHint';
 
-final kNavAnalysis = 'Analysis';
-final kNavSettings = 'Settings';
-final kNavAbout = 'About';
-final kNavRate = 'Rate Us';
+// Navigation Drawer Texts Keys
 
-// No Transactions Widget
+final kNavAnalysis = 'kNavAnalysis';
+final kNavSettings = 'kNavSettings';
+final kNavAbout = 'kNavAbout';
+final kNavRate = 'kNavRate';
 
-final kNoTransactionsWidget = Center(
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Icon(
-        Icons.library_books,
-        color: Colors.black38,
-        size: 50,
-      ),
-      SizedBox(
-        height: 20,
-      ),
-      Text(
-        'مضفتش أي مصروفات لسه!',
-        textDirection: TextDirection.rtl,
-        style: TextStyle(
-          fontSize: 20,
-          color: Colors.black38,
-          letterSpacing: 0.25,
-        ),
-      ),
-    ],
-  ),
-);
+// No Transactions Widget Text Key
+final kEmptyList = 'kEmptyList';
 
 // Styles
-
 final kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
-
 final kTitleTextStyle = TextStyle(
   fontSize: 23,
   color: Colors.white,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 
-import '../../../constants.dart';
+import './empty_list_widget.dart';
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/managers/plan_manager.dart';
 import '../../../domain/models/category.dart';
@@ -31,7 +31,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     final int length = pieChartMap.length;
 
     return length == 0
-        ? kNoTransactionsWidget
+        ? EmptyListWidget()
         : Card(
             elevation: 5,
             child: Row(

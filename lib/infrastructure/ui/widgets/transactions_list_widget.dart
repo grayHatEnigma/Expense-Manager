@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../constants.dart';
 import '../../../domain/managers/ui_manager.dart';
 import './transactions_card_widget.dart';
+import './empty_list_widget.dart';
 
 class TransactionsList extends StatelessWidget {
   @override
@@ -15,7 +16,9 @@ class TransactionsList extends StatelessWidget {
     final groupedTransactions = uiManager.groupedTransactionsByDate;
     final length = groupedTransactions.length;
     return length == 0
-        ? Expanded(child: kNoTransactionsWidget)
+        ? Expanded(
+            child: EmptyListWidget(),
+          )
         : Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 15),

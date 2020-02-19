@@ -1,5 +1,35 @@
 {
 
+  "kAnalysisTitle" : "Expenses Analysis",
+  "kAnalysisGaugeTitle" : "Total Expenses",
+  "kAnalysisLimitTitle" : "You Spent All Your Money",
 
+  "kTitleTextFieldHint" : "Title",
+  "kAmountTextFieldHint": "Amount",
+  "kDropDownMenuHint": "Choose Category ",
+  "kPickDateButton": "Pick Date",
+  "kChosenDateText": "No Date Chosen",
+  "kAddButton": "Add",
+
+  "kShowChartButton" : "Show Chart",
+
+  "kDailyExpenses": "Expenses",
+
+  "kMoneyPrefix": "EG",
+  "kDeleteButtonHint": "Delete",
+
+  "kNavAnalysis": "Analysis",
+  "kNavSettings": "Settings",
+  "kNavAbout": "About",
+  "kNavRate": "Rate Us",
+
+  "kEmptyList" :"No Transactions Added Yet",
+
+  "kSalaryInputText" : "Enter Your Salary",
+  "kSalaryToastMsg" : "enter your salary first",
+
+  "kDateInputText" : "Plan Starting Date",
+  "kDateToastMsg" : "pick your plan date",
+  "kDateInputDescription" : "plan will be renewed monthly at"
 
 }

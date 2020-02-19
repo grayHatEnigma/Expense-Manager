@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
+
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
 import '../../../constants.dart';
@@ -27,11 +29,14 @@ class AnalysisScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             if (!isLandscape)
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text(
-                  kAnalysisTitle,
-                  style: TextStyle(fontSize: 25),
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    FlutterI18n.translate(context, kAnalysisTitle),
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               ),
             Flexible(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/managers/plan_manager.dart';
@@ -26,7 +27,7 @@ class GaugeWidget extends StatelessWidget {
       children: <Widget>[
         //
         Text(
-          '$kAnalysisGaugeTitle : ${totalExpenses.toStringAsFixed(0)}',
+          '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)}',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
@@ -47,18 +48,20 @@ class GaugeWidget extends StatelessWidget {
                     color: Theme.of(context).primaryColor, fontSize: 15),
               ),
             ),
+
             Container(
               width: 200,
               height: 20,
               child: Stack(
                 alignment: AlignmentDirectional.bottomStart,
+                //textDirection: TextDirection.rtl,
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.all(
                         Radius.circular(
-                          (15),
+                          (percentage * 10),
                         ),
                       ),
                     ),
@@ -73,7 +76,7 @@ class GaugeWidget extends StatelessWidget {
                             : Theme.of(context).accentColor,
                         borderRadius: BorderRadius.all(
                           Radius.circular(
-                            (15),
+                            (percentage * 10),
                           ),
                         ),
                       ),
@@ -108,8 +111,7 @@ class GaugeWidget extends StatelessWidget {
         ),
         limitPassed
             ? Text(
-                kAnalysisLimitTitle,
-                textDirection: TextDirection.rtl,
+                FlutterI18n.translate(context, kAnalysisLimitTitle),
                 style: TextStyle(fontSize: 17, color: Colors.red[700]),
               )
             : Container(),

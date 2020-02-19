@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
+
 class NavigationListTile extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -26,7 +28,7 @@ class NavigationListTile extends StatelessWidget {
               width: 10,
             ),
             Text(
-              title,
+              FlutterI18n.translate(context, title),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                   color: Theme.of(context).primaryColor,

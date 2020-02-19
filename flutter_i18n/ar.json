@@ -1,4 +1,33 @@
 {
+  "kAnalysisTitle" : "تحليل مصاريفك",
+  "kAnalysisGaugeTitle" : "إجمالي المصاريف",
+  "kAnalysisLimitTitle" : "فلوسك طارت!",
 
+  "kTitleTextFieldHint" : "العنوان",
+  "kAmountTextFieldHint": "القيمة",
+  "kDropDownMenuHint": "اختار التصنيف",
+  "kPickDateButton": "اختار تاريخ",
+  "kChosenDateText": "تاريخ اليوم",
+  "kAddButton": "إضافة",
 
+  "kShowChartButton" : "أظهر المخطط",
+
+  "kDailyExpenses": "الإجمالي",
+
+  "kMoneyPrefix": "ج.م",
+  "kDeleteButtonHint": "حذف",
+
+  "kNavAnalysis": "تحليل المصاريف",
+  "kNavSettings": "الإعدادات",
+  "kNavAbout": "عن التطبيق",
+  "kNavRate": "قيّم التطبيق",
+
+  "kEmptyList" :"لم يتم إضافة أي مصروفات",
+
+  "kSalaryInputText" : "قيمة دخلك الشهري",
+  "kSalaryToastMsg" : "من فضلك ادخل قيمة دخلك الشهري للاستمرار",
+
+  "kDateInputText" : "تاريخ بداية خطة المصروفات",
+  "kDateToastMsg" : "من فضلك اختر تاريخ لبداية الخطة",
+  "kDateInputDescription" : "الخطة سوف تجدد شهرياً يوم"
 }

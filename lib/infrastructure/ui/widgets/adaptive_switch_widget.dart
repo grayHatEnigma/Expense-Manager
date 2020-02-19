@@ -1,6 +1,10 @@
 //flutter core
 import 'package:flutter/material.dart';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
+
+import '../../../constants.dart';
+
 class AdaptiveSwitch extends StatefulWidget {
   final Function switchState;
   AdaptiveSwitch({this.switchState});
@@ -16,7 +20,7 @@ class _AdaptiveSwitchState extends State<AdaptiveSwitch> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Show Chart',
+          FlutterI18n.translate(context, kShowChartButton),
           style: TextStyle(fontSize: 17, color: Theme.of(context).primaryColor),
         ),
         Switch.adaptive(

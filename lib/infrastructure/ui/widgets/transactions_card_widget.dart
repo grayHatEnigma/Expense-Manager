@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable/expandable.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/models/transaction.dart';
@@ -51,7 +52,7 @@ class TransactionsCard extends StatelessWidget {
                 width: 100,
                 child: FittedBox(
                   child: Text(
-                    '$kDailyExpenses: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),

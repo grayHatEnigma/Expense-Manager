@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
+
 //my imports
 import '../../../domain/models/transaction.dart';
 import '../../../constants.dart';
@@ -17,6 +19,8 @@ class TransactionTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 12.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // force the tile to be left to right aligned
+        textDirection: TextDirection.ltr,
         children: <Widget>[
           CircleAvatar(
             backgroundColor: transaction.category.color,
@@ -25,7 +29,7 @@ class TransactionTile extends StatelessWidget {
               padding: EdgeInsets.all(5.0),
               child: FittedBox(
                 child: Text(
-                  '${transaction.amount.toStringAsFixed(2)} $kMoneyPrefix',
+                  '${transaction.amount.toStringAsFixed(2)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
                   style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
@@ -53,7 +57,7 @@ class TransactionTile extends StatelessWidget {
               children: <Widget>[
                 if (mediaQueryData.size.width > 450)
                   Text(
-                    kDeleteButtonHint,
+                    FlutterI18n.translate(context, kDeleteButtonHint),
                     style: TextStyle(color: Colors.red),
                   ),
                 const Icon(

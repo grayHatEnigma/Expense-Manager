@@ -1,7 +1,9 @@
-import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+
+import '../../../constants.dart';
 
 class PlanSalaryScreen extends StatefulWidget {
   @override
@@ -27,7 +29,7 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
             }
           } catch (e) {
             Fluttertoast.showToast(
-                msg: "ادخل قيمة دخلك الشهري",
+                msg: FlutterI18n.translate(context, kSalaryToastMsg),
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.BOTTOM,
                 timeInSecForIos: 2,
@@ -49,8 +51,8 @@ class _PlanSalaryScreenState extends State<PlanSalaryScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'دخلك الشهري كام؟',
-              style: TextStyle(fontSize: 40, color: Colors.white),
+              FlutterI18n.translate(context, kSalaryInputText),
+              style: TextStyle(fontSize: 32, color: Colors.white),
             ),
             SizedBox(
               height: 20,
