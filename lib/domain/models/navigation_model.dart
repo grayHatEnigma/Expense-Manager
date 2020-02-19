@@ -11,13 +11,13 @@ class NavigationModel {
 
 List<NavigationModel> navigationItems = [
   NavigationModel(
-      title: 'تحليل المصاريف',
+      title: kNavAnalysis,
       icon: Icons.insert_chart,
       destination: kAnalysisScreenID),
   NavigationModel(
-    title: 'الإعدادت',
+    title: kNavSettings,
     icon: Icons.settings,
   ),
-  NavigationModel(title: 'عن التطبيق', icon: Icons.info),
-  NavigationModel(title: 'قيّم التطبيق', icon: Icons.star),
+  NavigationModel(title: kNavAbout, icon: Icons.info),
+  NavigationModel(title: kNavRate, icon: Icons.star),
 ];

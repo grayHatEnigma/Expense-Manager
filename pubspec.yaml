@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^0.1.2
 
@@ -25,6 +27,8 @@ dependencies:
   sqflite: ^1.2.0
   path_provider: ^1.6.0
 
+  # translation dependencies
+  flutter_i18n: ^0.8.3
 
 
  
@@ -40,6 +44,7 @@ flutter:
 
 
   assets:
+    - flutter_i18n/
     - images/
 
 

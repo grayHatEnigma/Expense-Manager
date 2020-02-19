@@ -16,14 +16,15 @@ class NavigationDrawer extends StatelessWidget {
           DrawerHeader(
             child: Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Image.asset(
-                    'images/intro.png',
-                    height: 100,
-                    width: 100,
+                    'images/wallet.png',
+                    height: 70,
+                    width: 70,
                   ),
                   Text(
-                    'الفلوس راحت فين؟',
+                    kTitle,
                     style: kTitleTextStyle,
                     textAlign: TextAlign.center,
                   ),

@@ -21,6 +21,7 @@ an awesome expense manager application using flutter.
 - expandable: ^4.1.2
 - fl_chart: ^0.8.0
 - fluttertoast: ^3.1.3
+- flutter_i18n: ^0.8.3
 
 
 

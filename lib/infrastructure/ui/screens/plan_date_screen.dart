@@ -18,8 +18,8 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double totalIncome =
-        ModalRoute.of(context).settings.arguments as double;
+    final route = ModalRoute.of(context);
+    final double totalIncome = route.settings.arguments as double;
     final planManager = Provider.of<PlanManager>(context, listen: false);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -29,6 +29,10 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
           if (chosenDate != null) {
             planManager.createPlan(
                 startDate: chosenDate, totalIncome: totalIncome);
+
+            // remove the route below this.
+            Navigator.removeRouteBelow(context, route);
+            // navigate to home screen.
             Navigator.pushReplacementNamed(context, kHomeScreenID);
           } else {
             Fluttertoast.showToast(

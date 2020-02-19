@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
 
-//TODO: fix orientation problems in this screen
+// TODO: fix orientation problems in this screen
 class AnalysisScreen extends StatelessWidget {
   final String title;
   AnalysisScreen({this.title});

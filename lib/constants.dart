@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// This class serves as a simple constants provider across the entire app.
+
 //Screen IDs
 const String kHomeScreenID = '/home';
 const String kAnalysisScreenID = '/analysis';
@@ -7,10 +9,16 @@ const String kPlanSalaryScreenID = '/plan_salary';
 const String kPlanDateScreenID = '/plan_date';
 const String kIntroScreenID = '/intro';
 
-// Values and Widgets
-
+// App Title
 final kTitle = 'الفلوس راحت فين؟';
 
+// Navigation Drawer Texts
+final kNavAnalysis = 'تحليل المصاريف';
+final kNavSettings = 'الإعدادات';
+final kNavAbout = 'عن التطبيق';
+final kNavRate = 'قيّم التطبيق';
+
+// No Transactions Widget
 final kNoTransactionsWidget = Center(
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -37,10 +45,9 @@ final kNoTransactionsWidget = Center(
 );
 
 // Styles
-
 final kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 
 final kTitleTextStyle = TextStyle(
-  fontSize: 28,
+  fontSize: 23,
   color: Colors.white,
 );

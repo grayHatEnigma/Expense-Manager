@@ -60,8 +60,13 @@ class _IntroScreenState extends State<IntroScreen>
             ),
             Expanded(
               flex: 3,
+              // TODO: change this animation
               child: FadeTransition(
-                child: Image.asset('images/intro.png'),
+                child: Image.asset(
+                  'images/wallet.png',
+                  height: 200,
+                  width: 200,
+                ),
                 opacity: animation,
               ),
             ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 //external packages
 import 'package:provider/provider.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 //my imports
 import './infrastructure/ui/screens/plan_date_screen.dart';
@@ -14,7 +16,7 @@ import './domain/managers/plan_manager.dart';
 import './domain/managers/ui_manager.dart';
 import './domain/managers/database_manager.dart';
 
-//TODO: REFACTOR AND CLEAN THE CODE
+// TODO: REFACTOR AND CLEAN THE CODE
 
 void main() {
   // Run the app
@@ -37,6 +39,19 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        localizationsDelegates: [
+          FlutterI18nDelegate(
+              useCountryCode: false,
+              fallbackFile: 'en.json',
+              path: 'flutter_i18n'),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en'),
+          const Locale('ar'),
+        ],
         debugShowCheckedModeBanner: false,
         title: kTitle,
         theme: ThemeData(

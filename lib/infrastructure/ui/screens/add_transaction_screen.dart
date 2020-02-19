@@ -17,7 +17,7 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  String chosenDateText = 'تاريخ اليوم';
+  String chosenDateText = 'No Date Chosen (default is today)';
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
   String chosenCategory;
@@ -37,11 +37,11 @@ class _AddTransactionState extends State<AddTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'الاسم'),
+              decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'القيمة'),
+              decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
             ),
@@ -62,7 +62,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   },
                   value: chosenCategory,
                   hint: Text(
-                    'اختار تصنيف',
+                    'Choose Category',
                     textAlign: TextAlign.center,
                   ),
                   icon: Icon(
@@ -86,7 +86,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 FlatButton(
                     child: Text(
-                      'اختار تاريخ',
+                      'Pick a Date',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () async {
@@ -121,7 +121,7 @@ class _AddTransactionState extends State<AddTransaction> {
             RaisedButton(
               color: Theme.of(context).primaryColor,
               child: Text(
-                'إضافة',
+                'Add',
                 style: TextStyle(color: Colors.white, fontSize: 17),
               ),
               onPressed: () {

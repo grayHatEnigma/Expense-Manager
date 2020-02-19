@@ -24,6 +24,25 @@ class PlanManager with ChangeNotifier {
 
   Future<bool> get hasPlan => _readFromSharedPreferences();
 
+  // check plan date each time the app is lunched
+  void _checkPlanDate() {
+    final today = DateTime.now();
+    if (_plan != null) {
+      bool updatePlanDate = (_plan.startDate.day == today.day &&
+          (today.month - _plan.startDate.month == 1));
+      if (updatePlanDate) {
+        _plan.startDate = DateTime.now();
+        _saveToSharedPreferences(_plan.startDate, _plan.totalIncome);
+      }
+    }
+  }
+
+  // update or edit Plan.
+  void updateOrEditPlan({DateTime newPlanDate, double newPlanIncome}) {
+    // TODO: edit plan function.
+    // update only the given parameter of this method.
+  }
+
   void createPlan(
       {@required DateTime startDate, @required double totalIncome}) {
     if (_plan == null) {
@@ -54,6 +73,9 @@ class PlanManager with ChangeNotifier {
 
       if (dateString != null && income != null) {
         print('plan date : $dateString  , plan income : $income');
+
+        // check plan date
+        _checkPlanDate();
         DateTime startDate = DateTime.parse(dateString);
         double totalIncome = income;
         createPlan(startDate: startDate, totalIncome: totalIncome);
