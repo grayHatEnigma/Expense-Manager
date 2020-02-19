@@ -15,7 +15,6 @@ class NavigationListTile extends StatelessWidget {
         onTap: onPressed,
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          textDirection: TextDirection.rtl,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Icon(

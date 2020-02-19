@@ -8,6 +8,7 @@ import 'package:date_format/date_format.dart';
 //my imports
 import '../../../domain/models/category.dart';
 import '../../../domain/managers/ui_manager.dart';
+import '../../../constants.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  String chosenDateText = 'No Date Chosen (default is today)';
+  String chosenDateText = kChosenDateText;
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
   String chosenCategory;
@@ -37,11 +38,11 @@ class _AddTransactionState extends State<AddTransaction> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: InputDecoration(labelText: kTitleTextFieldHint),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
+              decoration: InputDecoration(labelText: kAmountTextFieldHint),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
             ),
@@ -62,8 +63,8 @@ class _AddTransactionState extends State<AddTransaction> {
                   },
                   value: chosenCategory,
                   hint: Text(
-                    'Choose Category',
-                    textAlign: TextAlign.center,
+                    kDropDownMenuHint,
+                    textAlign: TextAlign.start,
                   ),
                   icon: Icon(
                     Icons.assignment,
@@ -71,7 +72,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   ),
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                   isExpanded: false,
                 ),
@@ -86,7 +87,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 FlatButton(
                     child: Text(
-                      'Pick a Date',
+                      kPickDateButton,
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () async {
@@ -121,7 +122,7 @@ class _AddTransactionState extends State<AddTransaction> {
             RaisedButton(
               color: Theme.of(context).primaryColor,
               child: Text(
-                'Add',
+                kAddButton,
                 style: TextStyle(color: Colors.white, fontSize: 17),
               ),
               onPressed: () {

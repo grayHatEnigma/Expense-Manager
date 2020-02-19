@@ -7,6 +7,7 @@ import 'package:expandable/expandable.dart';
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/models/transaction.dart';
 import './transaction_tile_widget.dart';
+import '../../../constants.dart';
 
 class TransactionsCard extends StatelessWidget {
   final List<Transaction> transactions;
@@ -50,7 +51,7 @@ class TransactionsCard extends StatelessWidget {
                 width: 100,
                 child: FittedBox(
                   child: Text(
-                    'Expenses: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    '$kDailyExpenses: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),

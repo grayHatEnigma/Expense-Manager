@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //my imports
 import '../../../domain/models/transaction.dart';
+import '../../../constants.dart';
 
 class TransactionTile extends StatelessWidget {
   final Transaction transaction;
@@ -24,8 +25,7 @@ class TransactionTile extends StatelessWidget {
               padding: EdgeInsets.all(5.0),
               child: FittedBox(
                 child: Text(
-                  '${transaction.amount.toStringAsFixed(2)} ج.م',
-                  textDirection: TextDirection.rtl,
+                  '${transaction.amount.toStringAsFixed(2)} $kMoneyPrefix',
                   style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
@@ -52,8 +52,8 @@ class TransactionTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 if (mediaQueryData.size.width > 450)
-                  const Text(
-                    'Delete',
+                  Text(
+                    kDeleteButtonHint,
                     style: TextStyle(color: Colors.red),
                   ),
                 const Icon(

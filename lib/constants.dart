@@ -10,15 +10,40 @@ const String kPlanDateScreenID = '/plan_date';
 const String kIntroScreenID = '/intro';
 
 // App Title
+
 final kTitle = 'الفلوس راحت فين؟';
 
+// Analysis Screen Texts
+
+final kAnalysisTitle = 'Expenses Analysis';
+final kAnalysisGaugeTitle = 'Total Expenses';
+final kAnalysisLimitTitle = 'You Spent All Your Money!';
+
+// Add Transaction Screen Texts
+
+final kTitleTextFieldHint = 'Title';
+final kAmountTextFieldHint = 'Amount';
+final kDropDownMenuHint = 'Choose Category ';
+final kPickDateButton = 'Pick Date';
+final kChosenDateText = 'No Date Chosen';
+final kAddButton = 'Add';
+
+// Transactions Card Texts
+final kDailyExpenses = 'Expenses';
+
+// Transactions Tile and Chart Bar Widget Texts
+final kMoneyPrefix = 'EG';
+final kDeleteButtonHint = 'Delete';
+
 // Navigation Drawer Texts
-final kNavAnalysis = 'تحليل المصاريف';
-final kNavSettings = 'الإعدادات';
-final kNavAbout = 'عن التطبيق';
-final kNavRate = 'قيّم التطبيق';
+
+final kNavAnalysis = 'Analysis';
+final kNavSettings = 'Settings';
+final kNavAbout = 'About';
+final kNavRate = 'Rate Us';
 
 // No Transactions Widget
+
 final kNoTransactionsWidget = Center(
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -45,6 +70,7 @@ final kNoTransactionsWidget = Center(
 );
 
 // Styles
+
 final kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 
 final kTitleTextStyle = TextStyle(

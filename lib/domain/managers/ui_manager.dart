@@ -65,7 +65,7 @@ class UiManager with ChangeNotifier {
   // Get transactions list for a certain time period.
   List<Transaction> recentTransactions({int differenceInDays}) {
     return _transactions.where((tx) {
-      return (DateTime.now().difference(tx.date).inDays < differenceInDays);
+      return (DateTime.now().difference(tx.date).inDays <= differenceInDays);
     }).toList();
   }
 

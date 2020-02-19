@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/managers/plan_manager.dart';
+import '../../../constants.dart';
 
 class GaugeWidget extends StatelessWidget {
   @override
@@ -25,8 +26,7 @@ class GaugeWidget extends StatelessWidget {
       children: <Widget>[
         //
         Text(
-          'إجمالي المصاريف: ${totalExpenses.toStringAsFixed(0)}',
-          textDirection: TextDirection.rtl,
+          '$kAnalysisGaugeTitle : ${totalExpenses.toStringAsFixed(0)}',
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
@@ -108,7 +108,7 @@ class GaugeWidget extends StatelessWidget {
         ),
         limitPassed
             ? Text(
-                'فلوسك طارت!',
+                kAnalysisLimitTitle,
                 textDirection: TextDirection.rtl,
                 style: TextStyle(fontSize: 17, color: Colors.red[700]),
               )

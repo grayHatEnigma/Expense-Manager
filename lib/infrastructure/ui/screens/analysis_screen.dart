@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
+import '../../../constants.dart';
 
 // TODO: fix orientation problems in this screen
 class AnalysisScreen extends StatelessWidget {
@@ -29,8 +30,8 @@ class AnalysisScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'مصاريفك',
-                  style: TextStyle(fontSize: 30),
+                  kAnalysisTitle,
+                  style: TextStyle(fontSize: 25),
                 ),
               ),
             Flexible(
