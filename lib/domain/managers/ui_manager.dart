@@ -118,4 +118,15 @@ class UiManager with ChangeNotifier {
     // delete transaction from the database
     dbManager.deleteTransactionFromDatabase(id);
   }
+
+  // Reset / Delete all existing transactions in the database.
+  void reset() async {
+    _transactions = [];
+
+    // notify all widgets depends on this object
+    notifyListeners();
+
+    // delete transactions from the database
+    dbManager.deleteAllTransactionFromDatabase();
+  }
 }

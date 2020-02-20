@@ -12,6 +12,7 @@ import './infrastructure/ui/screens/plan_salary_screen.dart';
 import './infrastructure/ui/screens/intro_screen.dart';
 import './infrastructure/ui/screens/home_screen.dart';
 import './infrastructure/ui/screens/settings_screen.dart';
+import './infrastructure/ui/screens/settings_choice_screen.dart';
 import './infrastructure/ui/screens/about_screen.dart';
 import './constants.dart';
 import './domain/managers/plan_manager.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
           kIntroScreenID: (context) => IntroScreen(),
           kAboutScreenID: (context) => AboutScreen(),
           kSettingsScreenID: (context) => SettingsScreen(),
+          kSettingsChoiceScreenID: (context) => SettingsChoiceScreen()
         },
         initialRoute: kIntroScreenID,
       ),

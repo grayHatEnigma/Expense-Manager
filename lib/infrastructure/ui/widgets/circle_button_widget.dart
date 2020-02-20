@@ -10,30 +10,62 @@ class CircleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    bool isLandScape = mediaQuery.orientation == Orientation.landscape;
     return InkWell(
       onTap: onPressed,
       child: CircleAvatar(
-        radius: 60,
+        radius: isLandScape ? 45 : 70,
         backgroundColor: color,
-        child: Column(
-          children: <Widget>[
-            Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Icon(
+                    icon,
+                    color: Colors.white,
+                    size: 25,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      title,
+                      style: TextStyle(color: Colors.white, fontSize: 22),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+
+ Expanded(
               child: Icon(
                 icon,
                 color: Colors.white,
                 size: 27,
               ),
             ),
-            Expanded(
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 17),
-              ),
-            ),
-          ],
+
+
+             Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontSize: 17),
         ),
-      ),
-    );
-  }
-}
+ */

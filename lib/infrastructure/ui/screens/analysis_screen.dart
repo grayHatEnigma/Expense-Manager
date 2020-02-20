@@ -10,14 +10,11 @@ import '../../../constants.dart';
 class AnalysisScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text(
-            kTitle,
-            textAlign: TextAlign.center,
+            FlutterI18n.translate(context, kAnalysisTitle),
           ),
         ),
       ),
@@ -25,19 +22,8 @@ class AnalysisScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            if (!isLandscape)
-              Flexible(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text(
-                    FlutterI18n.translate(context, kAnalysisTitle),
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ),
-              ),
             Flexible(
-              flex: 2,
+              flex: 3,
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: PieChartWidget(),

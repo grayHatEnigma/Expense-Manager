@@ -38,9 +38,16 @@ class PlanManager with ChangeNotifier {
   }
 
   // update or edit Plan.
-  void updateOrEditPlan({DateTime newPlanDate, double newPlanIncome}) {
-    // TODO: edit plan function.
-    // update only the given parameter of this method.
+  void editPlan({DateTime newPlanDate, double newPlanIncome}) {
+    if (newPlanDate != null) {
+      _plan.startDate = newPlanDate;
+    }
+
+    if (newPlanIncome != null) {
+      _plan.totalIncome = newPlanIncome;
+    }
+
+    _saveToSharedPreferences(_plan.startDate, _plan.totalIncome);
   }
 
   void createPlan(

@@ -27,6 +27,11 @@ class DatabaseManager {
     print('number of affected items in the list: $count');
   }
 
+  void deleteAllTransactionFromDatabase() async {
+    int count = await databaseHelper.deleteAllTransactions();
+    print('number of affected items in the list: $count');
+  }
+
   void getTransactionsFromDatabase() async {
     var list = await databaseHelper.getAllTransactions();
     print('set database cached list');

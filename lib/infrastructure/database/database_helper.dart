@@ -87,7 +87,14 @@ class DatabaseHelper {
     return count;
   }
 
-// get a list of encoded to map transactions
+  // remove all transactions in the database
+  Future<int> deleteAllTransactions() async {
+    Database db = await database;
+    var count = await db.delete(tableTransactions);
+    return count;
+  }
+
+  // get a list of encoded to map transactions
   Future<List<Map<String, dynamic>>> queryAllTransactions() async {
     Database db = await database;
     var list = await db.query(tableTransactions);

@@ -1,39 +1,48 @@
 {
 
-  "kAnalysisTitle" : "Expenses Analysis",
-  "kAnalysisGaugeTitle" : "Total Expenses",
-  "kAnalysisLimitTitle" : "You Spent All Your Money",
+  "Expenses Analysis" : "Expenses Analysis",
+  "Total Expenses" : "Total Expenses",
+  "You Spent All Your Money" : "You Spent All Your Money",
 
-  "kTitleTextFieldHint" : "Title",
-  "kAmountTextFieldHint": "Amount",
-  "kDropDownMenuHint": "Choose Category ",
-  "kPickDateButton": "Pick Date",
-  "kChosenDateText": "No Date Chosen",
-  "kAddButton": "Add",
+  "Title" : "Title",
+  "Amount": "Amount",
+  "Choose Category": "Choose Category",
+  "Pick Date": "Pick Date",
+  "No Date Chosen": "No Date Chosen",
+  "Add": "Add",
 
-  "kShowChartButton" : "Show Chart",
+  "Show Chart" : "Show Chart",
 
-  "kDailyExpenses": "Expenses",
+  "Expenses" : "Expenses",
 
-  "kMoneyPrefix": "EG",
-  "kDeleteButtonHint": "Delete",
+  "EG": "EG",
+  "Delete": "Delete",
 
-  "kNavAnalysis": "Analysis",
-  "kNavSettings": "Settings",
-  "kNavAbout": "About",
-  "kNavRate": "Rate Us",
+  "Analysis": "Analysis",
+  "Settings": "Settings",
+  "About": "About",
+  "Rate Us": "Rate Us",
 
-  "kEmptyList" :"No Transactions Added Yet",
+  "No Transactions Added Yet" :"No Transactions Added Yet",
 
-  "kSalaryInputText" : "Enter Your Salary",
-  "kSalaryToastMsg" : "enter your salary first",
+  "Enter Your Salary" : "Enter Your Salary",
+  "enter your salary first" : "enter your salary first",
 
-  "kDateInputText" : "Plan Starting Date",
-  "kDateToastMsg" : "pick your plan date",
-  "kDateInputDescription" : "plan will be renewed monthly at:",
+  "Plan Starting Date" : "Plan Starting Date",
+  "pick your plan date" : "pick your plan date",
+  "plan will be renewed monthly on" : "plan will be renewed monthly on",
 
-  "kDeveloperText" : "This app was developed by",
-  "kDesignerText" : "Icons in this app was made by Darius Dan from www.flaticon.com",
+  "This app was developed by" : "This app was developed by",
+  "Icons in this app made by Darius Dan" : "Icons in this app made by Darius Dan from www.flaticon.com",
+
+
+  "Edit Salary" : "Edit Salary",
+  "Edit Plan Date" : "Edit Plan Date",
+   "Reset" : "Reset",
+
+  "Confirm" : "Confirm",
+  "Cancel" : "Cancel",
+  "Are You Sure You Want To Delete All Your Records?" : "Are You Sure You Want To Delete All Your Records?",
 
   "Bills" : "Bills" ,
   "Emergency" :  "Emergency" ,
