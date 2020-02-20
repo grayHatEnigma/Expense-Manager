@@ -8,8 +8,8 @@
   "Amount": "Amount",
   "Choose Category": "Choose Category",
   "Pick Date": "Pick Date",
-  "No Date Chosen": "No Date Chosen",
   "Add": "Add",
+  "please enter a valid value" : "please enter a valid value",
 
   "Show Chart" : "Show Chart",
 
@@ -21,9 +21,8 @@
   "Analysis": "Analysis",
   "Settings": "Settings",
   "About": "About",
-  "Rate Us": "Rate Us",
 
-  "No Transactions Added Yet" :"No Transactions Added Yet",
+  "No Records Added Yet" :"No Records Added Yet",
 
   "Enter Your Salary" : "Enter Your Salary",
   "enter your salary first" : "enter your salary first",

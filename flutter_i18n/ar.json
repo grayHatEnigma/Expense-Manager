@@ -7,10 +7,10 @@
   "Amount": "القيمة",
   "Choose Category": "اختر التصنيف",
   "Pick Date": "اختر تاريخ",
-  "No Date Chosen": "تاريخ اليوم",
   "Add": "إضافة",
+  "please enter a valid value" : "من فضلك ادخل قيمة صحيحة",
 
-  "Show Chart" : "أظهر المخطط",
+  "Show Chart" : "المخطط الأسبوعي",
 
   "Expenses": "الإجمالي",
 
@@ -20,9 +20,8 @@
   "Analysis": "تحليل المصاريف",
   "Settings": "الإعدادات",
   "About": "عن التطبيق",
- "Rate Us": "قيّم التطبيق",
 
-  "No Transactions Added Yet" :"لم يتم إضافة أي مصروفات",
+  "No Records Added Yet" :"لم يتم إضافة أي مصروفات",
 
   "Enter Your Salary" : "قيمة دخلك الشهري",
   "enter your salary first" : "من فضلك ادخل قيمة دخلك الشهري للاستمرار",

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 //external packages
 import 'package:provider/provider.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 
 //my imports
 import '../../../domain/models/category.dart';
@@ -23,12 +24,24 @@ class _AddTransactionState extends State<AddTransaction> {
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
   Categories chosenCategory;
+  Locale myLocale;
+
+  @override
+  void didChangeDependencies() {
+    /*
+     * we did the initialization here cause we depend on an inherited widget
+     * in our case Localization and this method is called each time the
+     * dependencies changes  then the build method is called after it.
+     *
+    */
+    myLocale = Localizations.localeOf(context);
+    chosenDateText = DateFormat.yMEd(myLocale.languageCode).format(chosenDate);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context, listen: false);
-
-    chosenDateText = FlutterI18n.translate(context, kChosenDateText);
 
     return SingleChildScrollView(
       child: Container(
@@ -110,15 +123,9 @@ class _AddTransactionState extends State<AddTransaction> {
                         // update the chosen date on the screen
                         setState(() {
                           chosenDate = userDate;
-                          chosenDateText = '${formatDate(chosenDate, [
-                            DD,
-                            ' , ',
-                            dd,
-                            '/',
-                            mm,
-                            '/',
-                            yy,
-                          ])}';
+                          chosenDateText =
+                              DateFormat.yMEd(myLocale.languageCode)
+                                  .format(userDate);
                         });
                       }
                     }),
@@ -138,14 +145,22 @@ class _AddTransactionState extends State<AddTransaction> {
                 try {
                   inputAmount = double.parse(amountController.text);
                 } catch (e) {
-                  print('Invaild amount input');
+                  Fluttertoast.showToast(
+                      msg: FlutterI18n.translate(context, kInvalidValueMsg),
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIos: 2,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 17.0);
                 }
                 if (inputAmount > 0 && titleController.text.isNotEmpty) {
                   uiManager.addTransaction(
                     title: titleController.text,
                     amount: double.parse(amountController.text),
                     date: chosenDate,
-                    category: Category.fromEnum(chosenCategory),
+                    category:
+                        Category.fromEnum(chosenCategory ?? Categories.Others),
                   );
 
                   // clear the controllers

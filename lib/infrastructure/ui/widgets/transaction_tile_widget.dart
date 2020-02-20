@@ -55,16 +55,16 @@ class TransactionTile extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                if (mediaQueryData.size.width > 450)
-                  Text(
-                    FlutterI18n.translate(context, kDeleteButtonHint),
-                    style: TextStyle(color: Colors.red),
-                  ),
                 const Icon(
                   Icons.delete,
                   size: 25,
                   color: Colors.red,
                 ),
+                if (mediaQueryData.size.width > 450)
+                  Text(
+                    FlutterI18n.translate(context, kDeleteButtonHint),
+                    style: TextStyle(color: Colors.red),
+                  ),
               ],
             ),
           ),

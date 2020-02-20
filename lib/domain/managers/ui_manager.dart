@@ -3,7 +3,7 @@ import "package:collection/collection.dart";
 import 'package:flutter/widgets.dart';
 
 //external packages
-import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 
 //my imports
 import '../models/transaction.dart';
@@ -86,7 +86,7 @@ class UiManager with ChangeNotifier {
           totalSum += tx.amount;
         }
       });
-      return ChartBar(weekDay: formatDate(currentDay, [D]), amount: totalSum);
+      return ChartBar(weekDay: currentDay, amount: totalSum);
     });
   }
 

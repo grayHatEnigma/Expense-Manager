@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// This class serves as a simple constants provider across the entire app.
+/// This file serves as a simple constants provider across the entire app.
 
 //Screen IDs
 const String kHomeScreenID = '/home';
@@ -32,8 +32,8 @@ const kTitleTextFieldHint = "Title";
 const kAmountTextFieldHint = "Amount";
 const kDropDownMenuHint = "Choose Category";
 const kPickDateButton = "Pick Date";
-const kChosenDateText = "No Date Chosen";
 const kAddButton = "Add";
+const kInvalidValueMsg = "please enter a valid value";
 
 // About Screen Texts Keys
 const kDeveloperText = "This app was developed by";
@@ -62,10 +62,9 @@ const kDeleteButtonHint = "Delete";
 const kNavAnalysis = "Analysis";
 const kNavSettings = "Settings";
 const kNavAbout = "About";
-const kNavRate = "Rate Us";
 
 // No Transactions Widget Text Key
-const kEmptyList = "No Transactions Added Yet";
+const kEmptyList = "No Records Added Yet";
 
 // Styles
 const kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);

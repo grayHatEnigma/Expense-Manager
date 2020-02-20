@@ -1,6 +1,6 @@
 # Expense Manager
 
-an awesome expense manager application using flutter.
+a great expense manager application with a bunch of useful features to record and analyze your expenses.
 
 # Preview
 <img src="https://grayhatenigma.files.wordpress.com/2020/02/screenshot_1581370957.png" width="330" height="600">
@@ -12,9 +12,8 @@ an awesome expense manager application using flutter.
 
 
 # What I've used to build this app
-- date_format: ^1.0.8
+- intl: ^0.16.0
 - provider: ^4.0.1
-- database dependencies
 - sqflite: ^1.2.0
 - path_provider: ^1.6.0
 - flutter_animation_progress_bar: ^1.0.0

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -79,9 +79,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                   // update the chosen date on the screen
                   setState(() {
                     chosenDate = userDate;
-                    chosenDateText = '${formatDate(chosenDate, [
-                      d,
-                    ])}';
+                    chosenDateText = DateFormat.d().format(userDate);
                   });
                 }
               },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:expense_manager/constants.dart';
+
+import '../../constants.dart';
 
 class NavigationModel {
   final String title;
@@ -20,5 +21,4 @@ List<NavigationModel> navigationItems = [
       destination: kSettingsScreenID),
   NavigationModel(
       title: kNavAbout, icon: Icons.info, destination: kAboutScreenID),
-  NavigationModel(title: kNavRate, icon: Icons.star),
 ];

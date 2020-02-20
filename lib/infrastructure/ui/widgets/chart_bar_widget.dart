@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:intl/intl.dart';
 
 //my imports
 import '../../../constants.dart';
 
 class ChartBarWidget extends StatelessWidget {
   final double amount;
-  final String weekDay;
+  final DateTime weekDay;
   final double percentage;
 
   ChartBarWidget({this.amount, this.weekDay, this.percentage});
   @override
   Widget build(BuildContext context) {
+    final myLocale = Localizations.localeOf(context);
+
     return LayoutBuilder(
       builder: (context, constrains) {
         return Container(
@@ -25,7 +28,7 @@ class ChartBarWidget extends StatelessWidget {
                 height: constrains.maxHeight * 0.10,
                 child: FittedBox(
                   child: Text(
-                    weekDay,
+                    DateFormat.E(myLocale.languageCode).format(weekDay),
                     style: kChartTextStyle,
                   ),
                 ),

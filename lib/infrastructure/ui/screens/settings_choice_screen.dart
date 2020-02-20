@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 
 import '../../../constants.dart';
 import '../../../domain/managers/plan_manager.dart';
@@ -18,9 +18,11 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
   final incomeController = TextEditingController();
   DateTime chosenDate;
   String chosenDateText = '';
+  Locale myLocale;
 
   @override
   Widget build(BuildContext context) {
+    myLocale = Localizations.localeOf(context);
     final planManager = Provider.of<PlanManager>(context);
     final uiManager = Provider.of<UiManager>(context);
 
@@ -147,9 +149,8 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
                 // update the chosen date on the screen
                 setState(() {
                   chosenDate = userDate;
-                  chosenDateText = '${formatDate(chosenDate, [
-                    d,
-                  ])}';
+                  chosenDateText =
+                      DateFormat.d(myLocale.languageCode).format(userDate);
                 });
               }
             },

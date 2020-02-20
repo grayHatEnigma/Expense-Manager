@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -13,10 +13,11 @@ import '../../../constants.dart';
 class TransactionsCard extends StatelessWidget {
   final List<Transaction> transactions;
   TransactionsCard(this.transactions);
+
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context);
-
+    final myLocale = Localizations.localeOf(context);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: ExpandablePanel(
@@ -30,21 +31,15 @@ class TransactionsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             textBaseline: TextBaseline.alphabetic,
             children: <Widget>[
-              Icon(
-                Icons.attach_money,
-                color: Theme.of(context).accentColor,
+              Image.asset(
+                'images/list.png',
+                height: 32,
+                width: 32,
               ),
               FittedBox(
                 child: Text(
-                  formatDate(transactions.first.date, [
-                    DD,
-                    ', ',
-                    dd,
-                    '/',
-                    mm,
-                    '/',
-                    yy,
-                  ]),
+                  DateFormat.yMEd(myLocale.languageCode)
+                      .format(transactions.first.date),
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               ),

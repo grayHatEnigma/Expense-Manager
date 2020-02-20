@@ -19,7 +19,7 @@ class NavigationDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Image.asset(
-                    'images/wallet.png',
+                    'images/plant.png',
                     height: 70,
                     width: 70,
                   ),
