@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 /// This file serves as a simple constants provider across the entire app.
 
+// Copy Rights and Privacy Policy
+const kPrivacyPolicy = "Privacy Policy";
+
+const kCopyRights = "Copy Rights";
+
 //Screen IDs
 const String kHomeScreenID = '/home';
 const String kAnalysisScreenID = '/analysis';
@@ -14,13 +19,14 @@ const String kAboutScreenID = '/about';
 
 // App Title
 const kTitle = 'الفلوس راحت فين؟';
+const kAppVersion = "1.0";
 
 // Plan Screens Texts Keys
 const kSalaryInputText = "Enter Your Salary";
 const kSalaryToastMsg = "enter your salary first";
 const kDateInputText = "Plan Starting Date";
-const kDateToastMsg = "pick your plan date";
-const kDateInputDescription = "plan will be renewed monthly on";
+const kDateToastMsg = "please pick your plan date";
+const kDateInputDescription = "plan date";
 
 // Analysis Screen Texts Keys
 const kAnalysisTitle = "Expenses Analysis";
@@ -69,6 +75,6 @@ const kEmptyList = "No Records Added Yet";
 // Styles
 const kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 const kTitleTextStyle = TextStyle(
-  fontSize: 23,
+  fontSize: 20,
   color: Colors.white,
 );

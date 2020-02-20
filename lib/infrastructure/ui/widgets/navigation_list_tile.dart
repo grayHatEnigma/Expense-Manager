@@ -4,10 +4,10 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 
 class NavigationListTile extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final String iconPath;
   final Function onPressed;
 
-  NavigationListTile({this.title, this.icon, this.onPressed});
+  NavigationListTile({this.title, this.iconPath, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class NavigationListTile extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Icon(
-              icon,
-              size: 30,
-              color: Theme.of(context).primaryColor,
+            Image.asset(
+              iconPath,
+              height: 30,
+              width: 30,
             ),
             SizedBox(
               width: 10,

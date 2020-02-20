@@ -2,9 +2,6 @@ import 'dart:collection';
 import "package:collection/collection.dart";
 import 'package:flutter/widgets.dart';
 
-//external packages
-import 'package:intl/intl.dart';
-
 //my imports
 import '../models/transaction.dart';
 import '../models/chart_bar.dart';

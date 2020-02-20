@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleButton(
                     color: Colors.teal,
-                    icon: Icons.monetization_on,
+                    iconPath: 'images/salary.png',
                     title: FlutterI18n.translate(context, kSalaryButton),
                     onPressed: () {
                       Navigator.pushNamed(context, kSettingsChoiceScreenID,
@@ -44,7 +44,7 @@ class SettingsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleButton(
                     color: Colors.pinkAccent,
-                    icon: Icons.date_range,
+                    iconPath: 'images/calendar.png',
                     title: FlutterI18n.translate(context, kPlanDateButton),
                     onPressed: () {
                       Navigator.pushNamed(context, kSettingsChoiceScreenID,
@@ -58,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: CircleButton(
                     color: Colors.red,
-                    icon: Icons.delete_forever,
+                    iconPath: 'images/reset.png',
                     title: FlutterI18n.translate(context, kResetButton),
                     onPressed: () {
                       Navigator.pushNamed(context, kSettingsChoiceScreenID,

@@ -17,16 +17,19 @@ class SettingsChoiceScreen extends StatefulWidget {
 class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
   final incomeController = TextEditingController();
   DateTime chosenDate;
-  String chosenDateText = '';
-  Locale myLocale;
+  Color calendarColor = Colors.black;
+  String planDateText;
 
   @override
   Widget build(BuildContext context) {
-    myLocale = Localizations.localeOf(context);
     final planManager = Provider.of<PlanManager>(context);
     final uiManager = Provider.of<UiManager>(context);
-
     final choice = ModalRoute.of(context).settings.arguments as Settings;
+
+    if (planDateText == null) {
+      planDateText = planManager.plan.planDateText;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -78,7 +81,6 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
                           onReset(uiManager);
                           break;
                       }
-                      Navigator.pop(context);
                     }),
               ],
             ),
@@ -108,9 +110,10 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.all(10),
-                suffixIcon: Icon(
-                  Icons.attach_money,
-                  color: Colors.black,
+                suffixIcon: Image.asset(
+                  'images/gold.png',
+                  height: 30,
+                  width: 30,
                 ),
               ),
               style: TextStyle(color: Colors.black, fontSize: 30),
@@ -135,7 +138,7 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
             style: TextStyle(fontSize: 32, color: Colors.black),
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           InkWell(
             onTap: () async {
@@ -149,8 +152,9 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
                 // update the chosen date on the screen
                 setState(() {
                   chosenDate = userDate;
-                  chosenDateText =
-                      DateFormat.d(myLocale.languageCode).format(userDate);
+                  calendarColor = Colors.green;
+
+                  planDateText = DateFormat.MMMd().format(userDate);
                 });
               }
             },
@@ -163,16 +167,16 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
               ),
               child: Icon(
                 Icons.date_range,
-                color: Colors.black,
+                color: calendarColor,
                 size: 40,
               ),
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 10,
           ),
           Text(
-            '${FlutterI18n.translate(context, kDateInputDescription)}\n$chosenDateText',
+            '${FlutterI18n.translate(context, kDateInputDescription)} : $planDateText',
             textAlign: TextAlign.center,
             style: TextStyle(letterSpacing: 3, color: Colors.black),
           ),
@@ -181,10 +185,23 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
     );
   }
 
+  Widget resetAllTransactions() {
+    return Container(
+      padding: const EdgeInsets.all(30),
+      child: Text(
+        FlutterI18n.translate(context, kResetMsg),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.red[700], fontSize: 20, fontStyle: FontStyle.italic),
+      ),
+    );
+  }
+
   void onEditPlanDate(PlanManager planManager) {
     if (chosenDate != null) {
       print('new plan date $chosenDate');
       planManager.editPlan(newPlanDate: chosenDate);
+      Navigator.pop(context);
     } else {
       Fluttertoast.showToast(
           msg: FlutterI18n.translate(context, kDateToastMsg),
@@ -204,6 +221,7 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
         incomeController.clear();
         print('new income $income');
         planManager.editPlan(newPlanIncome: income);
+        Navigator.pop(context);
       }
     } catch (e) {
       Fluttertoast.showToast(
@@ -217,20 +235,9 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
     }
   }
 
-  Widget resetAllTransactions() {
-    return Container(
-      padding: const EdgeInsets.all(30),
-      child: Text(
-        FlutterI18n.translate(context, kResetMsg),
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.red[700], fontSize: 20, fontStyle: FontStyle.italic),
-      ),
-    );
-  }
-
   void onReset(UiManager uiManager) {
     uiManager.reset();
+    Navigator.pop(context);
   }
 
   @override

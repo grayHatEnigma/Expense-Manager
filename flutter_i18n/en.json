@@ -1,4 +1,7 @@
 {
+   "Privacy Policy" :
+  "Privacy Policy\nYour data is saved locally (only) so it is 100 % safe and secure unless your device is hacked!",
+   "Copy Rights" : "All Rights Reserved © 2020",
 
   "Expenses Analysis" : "Expenses Analysis",
   "Total Expenses" : "Total Expenses",
@@ -28,8 +31,8 @@
   "enter your salary first" : "enter your salary first",
 
   "Plan Starting Date" : "Plan Starting Date",
-  "pick your plan date" : "pick your plan date",
-  "plan will be renewed monthly on" : "plan will be renewed monthly on",
+  "please pick your plan date" : "please pick your plan date",
+  "plan date" : "plan starting date",
 
   "This app was developed by" : "This app was developed by",
   "Icons in this app made by Darius Dan" : "Icons in this app made by Darius Dan from www.flaticon.com",

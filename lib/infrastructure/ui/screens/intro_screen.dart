@@ -7,6 +7,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import '../../../constants.dart';
 import '../../../domain/managers/plan_manager.dart';
 
+// TODO : handle the exception.
 class IntroScreen extends StatefulWidget {
   @override
   _IntroScreenState createState() => _IntroScreenState();
@@ -22,7 +23,7 @@ class _IntroScreenState extends State<IntroScreen>
   void initState() {
     super.initState();
     controller = AnimationController(vsync: this, duration: duration);
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    animation = CurvedAnimation(parent: controller, curve: Curves.bounceInOut);
     controller.forward();
   }
 
@@ -30,9 +31,10 @@ class _IntroScreenState extends State<IntroScreen>
   Widget build(BuildContext context) {
     final planManager = Provider.of<PlanManager>(context);
 
+    // check if the user has a saved plan or not
     planManager.hasPlan.then((hasSavedPlan) {
       Future.delayed(
-        Duration(milliseconds: 4000),
+        Duration(milliseconds: 4500),
         () => Navigator.pushReplacementNamed(
             context, hasSavedPlan ? kHomeScreenID : kPlanSalaryScreenID),
       );
@@ -58,14 +60,13 @@ class _IntroScreenState extends State<IntroScreen>
             ),
             Expanded(
               flex: 3,
-              // TODO: change this animation
-              child: FadeTransition(
+              child: RotationTransition(
                 child: Image.asset(
                   'images/wallet.png',
-                  height: 180,
-                  width: 180,
+                  height: 160,
+                  width: 160,
                 ),
-                opacity: animation,
+                turns: animation,
               ),
             ),
             Flexible(

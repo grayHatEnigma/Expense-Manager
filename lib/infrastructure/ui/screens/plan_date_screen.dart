@@ -14,8 +14,9 @@ class PlanDateScreen extends StatefulWidget {
 }
 
 class _PlanDateScreenState extends State<PlanDateScreen> {
-  var chosenDate;
-  String chosenDateText = '';
+  DateTime chosenDate;
+  Color calendarColor = Colors.white;
+  String planDateText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
               style: TextStyle(fontSize: 32, color: Colors.white),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             InkWell(
               onTap: () async {
@@ -79,11 +80,12 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                   // update the chosen date on the screen
                   setState(() {
                     chosenDate = userDate;
-                    chosenDateText = DateFormat.d().format(userDate);
+                    calendarColor = Theme.of(context).accentColor;
+
+                    planDateText = DateFormat.MMMd().format(userDate);
                   });
                 }
               },
-              splashColor: Theme.of(context).accentColor,
               borderRadius: BorderRadius.circular(50),
               child: Container(
                 width: 60,
@@ -93,16 +95,16 @@ class _PlanDateScreenState extends State<PlanDateScreen> {
                 ),
                 child: Icon(
                   Icons.date_range,
-                  color: Colors.white,
+                  color: calendarColor,
                   size: 40,
                 ),
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             Text(
-              '${FlutterI18n.translate(context, kDateInputDescription)}\n$chosenDateText',
+              '${FlutterI18n.translate(context, kDateInputDescription)}\n$planDateText',
               textAlign: TextAlign.center,
               style: TextStyle(letterSpacing: 3, color: Colors.white),
             ),

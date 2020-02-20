@@ -1,24 +1,24 @@
-import 'package:flutter/material.dart';
-
 import '../../constants.dart';
 
 class NavigationModel {
   final String title;
-  final IconData icon;
+  final String iconPath;
   final String destination;
 
-  NavigationModel({this.destination, this.title, this.icon});
+  NavigationModel({this.destination, this.title, this.iconPath});
 }
 
 List<NavigationModel> navigationItems = [
   NavigationModel(
       title: kNavAnalysis,
-      icon: Icons.insert_chart,
+      iconPath: 'images/analysis.png',
       destination: kAnalysisScreenID),
   NavigationModel(
       title: kNavSettings,
-      icon: Icons.settings,
+      iconPath: 'images/settings.png',
       destination: kSettingsScreenID),
   NavigationModel(
-      title: kNavAbout, icon: Icons.info, destination: kAboutScreenID),
+      title: kNavAbout,
+      iconPath: 'images/about.png',
+      destination: kAboutScreenID),
 ];

@@ -1,7 +1,7 @@
 void main() {
   print('scratch file');
   final test1 = Test();
-  final test2 = Test();
+
   final test3 = Test.instance;
 
   print('is identical ? ${identical(test1, test3)}');

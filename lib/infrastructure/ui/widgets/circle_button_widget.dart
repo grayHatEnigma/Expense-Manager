@@ -4,15 +4,15 @@ class CircleButton extends StatelessWidget {
   final Function onPressed;
   final Color color;
   final String title;
-  final IconData icon;
+  final String iconPath;
 
-  const CircleButton({this.onPressed, this.color, this.title, this.icon});
+  const CircleButton({this.onPressed, this.color, this.title, this.iconPath});
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     bool isLandScape = mediaQuery.orientation == Orientation.landscape;
-    return InkWell(
+    return GestureDetector(
       onTap: onPressed,
       child: CircleAvatar(
         radius: isLandScape ? 45 : 70,
@@ -23,13 +23,10 @@ class CircleButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Icon(
-                    icon,
-                    color: Colors.white,
-                    size: 25,
-                  ),
+                child: Image.asset(
+                  iconPath,
+                  height: 40,
+                  width: 40,
                 ),
               ),
               Expanded(
@@ -39,7 +36,7 @@ class CircleButton extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     child: Text(
                       title,
-                      style: TextStyle(color: Colors.white, fontSize: 22),
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
                 ),

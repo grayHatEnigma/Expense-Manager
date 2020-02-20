@@ -1,4 +1,8 @@
 {
+  "Privacy Policy" :
+  "سياسة الخصوصية\nبياناتك محفوظة على جهازك (فقط) ولا يتم استخدامها أو تداولها على الإنترنت بأي شكل من الأشكال.",
+  "Copy Rights" : "جميع الحقوق محفوظة © 2020",
+
   "Expenses Analysis" : "تحليل مصاريفك",
   "Total Expenses" : "إجمالي المصاريف",
   "You Spent All Your Money" : "فلوسك طارت!",
@@ -27,8 +31,8 @@
   "enter your salary first" : "من فضلك ادخل قيمة دخلك الشهري للاستمرار",
 
   "Plan Starting Date" : "تاريخ بداية خطة المصروفات",
-  "pick your plan date" : "من فضلك اختر تاريخ لبداية الخطة",
-  "plan will be renewed monthly on" : "الخطة سوف تجدد شهرياً يوم",
+  "please pick your plan date" : "من فضلك اختر تاريخ لبداية الخطة",
+  "plan date" : "تاريخ بداية الخطة",
 
   "This app was developed by" : "هذا التطبيق تم تطويره بواسطة",
   "Icons in this app made by Darius Dan" : "جميع أيقونات هذا التطبيق من تصميم Darius Dan من www.flaticon.com",

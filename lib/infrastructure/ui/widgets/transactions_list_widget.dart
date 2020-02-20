@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // my imports
-import '../../../constants.dart';
 import '../../../domain/managers/ui_manager.dart';
 import './transactions_card_widget.dart';
 import './empty_list_widget.dart';

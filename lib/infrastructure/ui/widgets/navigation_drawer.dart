@@ -41,7 +41,7 @@ class NavigationDrawer extends StatelessWidget {
                   final item = navigationItems[index];
                   return NavigationListTile(
                     title: item.title,
-                    icon: item.icon,
+                    iconPath: item.iconPath,
                     onPressed: () {
                       Navigator.pop(context);
                       Navigator.pushNamed(context, item.destination);
