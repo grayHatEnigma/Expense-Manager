@@ -79,10 +79,9 @@ class PlanManager with ChangeNotifier {
       final income = prefs.getDouble('totalIncome');
 
       if (dateString != null && income != null) {
-        print('plan date : $dateString  , plan income : $income');
-
         // check plan date
         _checkPlanDate();
+
         DateTime startDate = DateTime.parse(dateString);
         double totalIncome = income;
         createPlan(startDate: startDate, totalIncome: totalIncome);

@@ -55,19 +55,16 @@ class TransactionsCard extends StatelessWidget {
             ],
           ),
         ),
-        collapsed: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Card(
-            elevation: 3,
-            child: Column(
-              children: transactions.map((tx) {
-                return TransactionTile(
-                    transaction: tx,
-                    deleteCallback: () {
-                      uiManager.deleteTransaction(id: tx.id);
-                    });
-              }).toList(),
-            ),
+        collapsed: Card(
+          elevation: 3,
+          child: Column(
+            children: transactions.map((tx) {
+              return TransactionTile(
+                  transaction: tx,
+                  deleteCallback: () {
+                    uiManager.deleteTransaction(id: tx.id);
+                  });
+            }).toList(),
           ),
         ),
       ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
+import '../../../domain/managers/plan_manager.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
 import '../../../constants.dart';
@@ -9,14 +12,19 @@ import '../../../constants.dart';
 class AnalysisScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final planManager = Provider.of<PlanManager>(context);
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
+
+    final locale = Localizations.localeOf(context);
+    String monthTag =
+        DateFormat.MMMM(locale.languageCode).format(planManager.plan.startDate);
 
     return Scaffold(
         appBar: AppBar(
           title: Center(
             child: Text(
-              FlutterI18n.translate(context, kAnalysisTitle),
+              '${FlutterI18n.translate(context, kAnalysisTitle)} $monthTag',
             ),
           ),
         ),
