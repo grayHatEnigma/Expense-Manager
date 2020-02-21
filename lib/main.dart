@@ -18,6 +18,7 @@ import './constants.dart';
 import './domain/managers/plan_manager.dart';
 import './domain/managers/ui_manager.dart';
 import './domain/managers/database_manager.dart';
+import './domain/managers/localization_manager.dart';
 
 // TODO: REFACTOR AND CLEAN THE CODE
 
@@ -33,47 +34,55 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => PlanManager(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => UiManager(),
-        ),
-      ],
-      child: MaterialApp(
-        localizationsDelegates: [
-          FlutterI18nDelegate(
-              useCountryCode: false,
-              fallbackFile: 'en.json',
-              path: 'flutter_i18n'),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => PlanManager(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => UiManager(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => LocalizationManager(),
+          ),
         ],
-        supportedLocales: [
-          const Locale('en'),
-          const Locale('ar'),
-        ],
-        debugShowCheckedModeBanner: false,
-        title: kTitle,
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.amber,
-          fontFamily: 'Tajawal',
-        ),
-        routes: {
-          kHomeScreenID: (context) => HomeScreen(),
-          kAnalysisScreenID: (context) => AnalysisScreen(),
-          kPlanSalaryScreenID: (context) => PlanSalaryScreen(),
-          kPlanDateScreenID: (context) => PlanDateScreen(),
-          kIntroScreenID: (context) => IntroScreen(),
-          kAboutScreenID: (context) => AboutScreen(),
-          kSettingsScreenID: (context) => SettingsScreen(),
-          kSettingsChoiceScreenID: (context) => SettingsChoiceScreen()
-        },
-        initialRoute: kIntroScreenID,
-      ),
-    );
+        child: Consumer<LocalizationManager>(
+          builder: (context, localeManager, child) {
+            return MaterialApp(
+              locale: localeManager.preferredLocale,
+              localizationsDelegates: [
+                FlutterI18nDelegate(
+                    forcedLocale: localeManager.preferredLocale,
+                    useCountryCode: false,
+                    fallbackFile: 'en.json',
+                    path: 'flutter_i18n'),
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                const Locale('en'),
+                const Locale('ar'),
+              ],
+              debugShowCheckedModeBanner: false,
+              title: kTitle,
+              theme: ThemeData(
+                primarySwatch: Colors.purple,
+                accentColor: Colors.amber,
+                fontFamily: 'Tajawal',
+              ),
+              routes: {
+                kHomeScreenID: (context) => HomeScreen(),
+                kAnalysisScreenID: (context) => AnalysisScreen(),
+                kPlanSalaryScreenID: (context) => PlanSalaryScreen(),
+                kPlanDateScreenID: (context) => PlanDateScreen(),
+                kIntroScreenID: (context) => IntroScreen(),
+                kAboutScreenID: (context) => AboutScreen(),
+                kSettingsScreenID: (context) => SettingsScreen(),
+                kSettingsChoiceScreenID: (context) => SettingsChoiceScreen()
+              },
+              initialRoute: kIntroScreenID,
+            );
+          },
+        ));
   }
 }

@@ -32,32 +32,47 @@ class Category {
     }
     Color categoryColor;
     switch (title) {
-      case 'Travelling':
+      case 'Savings':
         categoryColor = Colors.green;
         break;
-      case 'Entertaining':
+      case 'Books':
+        categoryColor = Colors.cyan;
+        break;
+      case 'Education':
         categoryColor = Colors.teal;
         break;
-      case 'Bills':
-        categoryColor = Colors.red[700];
-        break;
-      case 'Grocery':
-        categoryColor = Colors.redAccent;
-        break;
-      case 'Medicine':
-        categoryColor = Colors.deepOrange;
+      case 'Entertaining':
+        categoryColor = Colors.indigo;
         break;
       case 'Maintenance':
         categoryColor = Colors.blue;
         break;
-      case 'Transportation':
+      case 'Bills':
         categoryColor = Colors.lightBlue;
         break;
+      case 'Transportation':
+        categoryColor = Colors.lightBlueAccent;
+        break;
       case 'Shopping':
-        categoryColor = Colors.pink[400];
+        categoryColor = Colors.pink;
+        break;
+      case 'Makeup':
+        categoryColor = Colors.pinkAccent;
         break;
       case 'Emergency':
-        categoryColor = Colors.black;
+        categoryColor = Colors.red;
+        break;
+      case 'Grocery':
+        categoryColor = Colors.redAccent;
+        break;
+      case 'Children':
+        categoryColor = Colors.orange;
+        break;
+      case 'Medicine':
+        categoryColor = Colors.deepOrange;
+        break;
+      case 'Travelling':
+        categoryColor = Colors.brown;
         break;
       case 'Others':
         categoryColor = Colors.grey;
@@ -76,6 +91,11 @@ class Category {
 // List Of Categories
 enum Categories {
   Bills,
+  Books,
+  Education,
+  Savings,
+  Makeup,
+  Children,
   Emergency,
   Entertaining,
   Grocery,

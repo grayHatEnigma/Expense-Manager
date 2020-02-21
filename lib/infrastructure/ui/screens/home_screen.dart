@@ -1,7 +1,9 @@
 //flutter core
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'dart:io';
+import 'package:provider/provider.dart';
 
 //my imports
 import '../screens/add_transaction_screen.dart';
@@ -10,6 +12,7 @@ import '../widgets/transactions_list_widget.dart';
 import '../widgets/navigation_drawer.dart';
 import '../widgets/adaptive_switch_widget.dart';
 import '../../../constants.dart';
+import '../../../domain/managers/localization_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -23,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final localeManager = Provider.of<LocalizationManager>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -41,6 +45,23 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               // open modal bottom sheet
               addNewTransaction(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.language,
+              color: Colors.white,
+            ),
+//            icon: Image.asset(
+//              'images/ar.png',
+//              height: 30,
+//              width: 30,
+//            ),
+            onPressed: () {
+              print('Toggle App Language');
+              Localizations.localeOf(context) == Locale('en')
+                  ? localeManager.setPreferredLocale = Locale('ar')
+                  : localeManager.setPreferredLocale = Locale('en');
             },
           )
         ],

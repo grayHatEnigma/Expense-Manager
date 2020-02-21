@@ -7,28 +7,44 @@ import '../../../constants.dart';
 class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    bool isLandscape = mediaQuery.orientation == Orientation.landscape;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            DeveloperWidget(),
-            DesignerWidget(),
-            PolicyWidget(),
-            Text(
-              FlutterI18n.translate(context, kCopyRights).toUpperCase(),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-                letterSpacing: 1,
-              ),
-            ),
-          ],
-        ),
+      body: SafeArea(
+        child: isLandscape
+            ? SingleChildScrollView(
+                child: Layout(),
+              )
+            : Layout(),
       ),
+    );
+  }
+}
+
+class Layout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        DeveloperWidget(),
+        DesignerWidget(),
+        PolicyWidget(),
+        Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Text(
+            FlutterI18n.translate(context, kCopyRights).toUpperCase(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              letterSpacing: 1,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -56,17 +72,14 @@ class DeveloperWidget extends StatelessWidget {
             letterSpacing: 3,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            'grayHatEnigma',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontFamily: 'Pacifico',
-                letterSpacing: 2),
-          ),
+        Text(
+          'grayHatEnigma',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: 'Pacifico',
+              letterSpacing: 2),
         ),
       ],
     );
@@ -107,24 +120,21 @@ class PolicyWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(10.0),
           child: Image.asset(
             'images/privacy.png',
             height: 50,
             width: 50,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Text(
-            FlutterI18n.translate(context, kPrivacyPolicy).toUpperCase(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              wordSpacing: 1,
-              letterSpacing: 2,
-            ),
+        Text(
+          FlutterI18n.translate(context, kPrivacyPolicy).toUpperCase(),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+            wordSpacing: 1,
+            letterSpacing: 2,
           ),
         ),
       ],
