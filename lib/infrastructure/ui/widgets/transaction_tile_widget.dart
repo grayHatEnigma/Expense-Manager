@@ -15,6 +15,8 @@ class TransactionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    bool isLtr = locale.languageCode == 'en';
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.20,
@@ -31,33 +33,53 @@ class TransactionTile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-              child: FittedBox(
-                child: Text(
-                  transaction.title,
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: transaction.category.color,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            CircleAvatar(
-              backgroundColor: transaction.category.color,
-              radius: 30,
-              child: Padding(
-                padding: EdgeInsets.all(5.0),
-                child: FittedBox(
-                  child: Text(
-                    '${transaction.amount.toStringAsFixed(2)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+            Row(
+              children: <Widget>[
+                if (isLtr)
+                  Icon(
+                    isLtr ? Icons.chevron_right : Icons.chevron_left,
+                    color: Colors.grey,
+                    size: 15,
+                  ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+                  child: FittedBox(
+                    child: Text(
+                      transaction.title,
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: transaction.category.color,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
-              ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: transaction.category.color,
+                  radius: 30,
+                  child: Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: FittedBox(
+                      child: Text(
+                        '${transaction.amount.toStringAsFixed(1)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+                if (!isLtr)
+                  Icon(
+                    isLtr ? Icons.chevron_right : Icons.chevron_left,
+                    color: Colors.grey,
+                    size: 15,
+                  ),
+              ],
             ),
           ],
         ),
@@ -65,30 +87,3 @@ class TransactionTile extends StatelessWidget {
     );
   }
 }
-
-/*
-
-Delete Button
-
-    GestureDetector(
-            onLongPress: deleteCallback,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                const Icon(
-                  Icons.cancel,
-                  size: 22,
-                  color: Colors.red,
-                ),
-                if (mediaQueryData.size.width > 450)
-                  Text(
-                    FlutterI18n.translate(context, kDeleteButtonHint),
-                    style: TextStyle(color: Colors.red),
-                  ),
-              ],
-            ),
-          ),
-
-
-
- */

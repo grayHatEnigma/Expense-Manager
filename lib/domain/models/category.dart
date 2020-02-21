@@ -36,7 +36,7 @@ class Category {
         categoryColor = Colors.green;
         break;
       case 'Books':
-        categoryColor = Colors.cyan;
+        categoryColor = Colors.purple;
         break;
       case 'Education':
         categoryColor = Colors.teal;
@@ -45,16 +45,16 @@ class Category {
         categoryColor = Colors.indigo;
         break;
       case 'Maintenance':
-        categoryColor = Colors.blue;
+        categoryColor = const Color(0xff404f24);
         break;
       case 'Bills':
-        categoryColor = Colors.lightBlue;
+        categoryColor = Colors.blue;
         break;
       case 'Transportation':
-        categoryColor = Colors.lightBlueAccent;
+        categoryColor = Colors.black;
         break;
       case 'Shopping':
-        categoryColor = Colors.pink;
+        categoryColor = const Color(0xff00344d);
         break;
       case 'Makeup':
         categoryColor = Colors.pinkAccent;
@@ -63,16 +63,16 @@ class Category {
         categoryColor = Colors.red;
         break;
       case 'Grocery':
-        categoryColor = Colors.redAccent;
+        categoryColor = Colors.brown;
         break;
       case 'Children':
-        categoryColor = Colors.orange;
+        categoryColor = Colors.amber;
         break;
-      case 'Medicine':
-        categoryColor = Colors.deepOrange;
+      case 'Medical':
+        categoryColor = const Color(0xff57527e);
         break;
       case 'Travelling':
-        categoryColor = Colors.brown;
+        categoryColor = const Color(0xff892034);
         break;
       case 'Others':
         categoryColor = Colors.grey;

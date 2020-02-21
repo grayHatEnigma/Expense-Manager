@@ -25,26 +25,28 @@ class AboutScreen extends StatelessWidget {
 class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        DeveloperWidget(),
-        DesignerWidget(),
-        PolicyWidget(),
-        Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Text(
-            FlutterI18n.translate(context, kCopyRights).toUpperCase(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              letterSpacing: 1,
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          DeveloperWidget(),
+          DesignerWidget(),
+          PolicyWidget(),
+          Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Text(
+              FlutterI18n.translate(context, kCopyRights).toUpperCase(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                letterSpacing: 1,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
