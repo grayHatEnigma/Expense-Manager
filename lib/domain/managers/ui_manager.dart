@@ -7,6 +7,7 @@ import '../models/transaction.dart';
 import '../models/chart_bar.dart';
 import '../models/category.dart';
 import './database_manager.dart';
+import './plan_manager.dart';
 
 /// This class serves as a 'middle-man' between domain and ui.
 class UiManager with ChangeNotifier {
@@ -20,6 +21,7 @@ class UiManager with ChangeNotifier {
 
   // Database Manager instance
   final dbManager = DatabaseManager();
+  final planManager = PlanManager();
 
   // Cached - in memory - list of transactions.
   List<Transaction> _transactions;
@@ -62,6 +64,12 @@ class UiManager with ChangeNotifier {
   // Get transactions list for a certain time period.
   List<Transaction> recentTransactions({int differenceInDays}) {
     return _transactions.where((tx) {
+      // extra check if difference in days = 0 special case
+      if (differenceInDays == 0) {
+        bool isSameDay = planManager.plan.startDate.day == tx.date.day;
+        return isSameDay;
+      }
+
       return (DateTime.now().difference(tx.date).inDays <= differenceInDays);
     }).toList();
   }

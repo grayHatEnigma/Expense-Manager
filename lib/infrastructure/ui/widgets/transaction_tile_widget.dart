@@ -17,7 +17,7 @@ class TransactionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
-      actionExtentRatio: 0.25,
+      actionExtentRatio: 0.20,
       actions: <Widget>[
         IconSlideAction(
           caption: FlutterI18n.translate(context, kDeleteButtonHint),

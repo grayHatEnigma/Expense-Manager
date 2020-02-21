@@ -24,6 +24,8 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     final int range =
         DateTime.now().difference(planManager.plan.startDate).inDays;
 
+    print('diffrence in days $range');
+
     final double totalExpenses = uiManager.calculateTotalSpending(
         uiManager.recentTransactions(differenceInDays: range));
     final pieChartMap = uiManager.totalSpendingPerCategory(
