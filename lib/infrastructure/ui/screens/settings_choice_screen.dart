@@ -25,9 +25,11 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
     final planManager = Provider.of<PlanManager>(context);
     final uiManager = Provider.of<UiManager>(context);
     final choice = ModalRoute.of(context).settings.arguments as Settings;
+    final locale = Localizations.localeOf(context);
 
     if (planDateText == null) {
-      planDateText = planManager.plan.planDateText;
+      planDateText = DateFormat.MMMd(locale.languageCode)
+          .format(planManager.plan.startDate);
     }
 
     return Scaffold(
@@ -154,7 +156,9 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
                   chosenDate = userDate;
                   calendarColor = Colors.green;
 
-                  planDateText = DateFormat.MMMd().format(userDate);
+                  planDateText = DateFormat.MMMd(
+                          Localizations.localeOf(context).languageCode)
+                      .format(userDate);
                 });
               }
             },

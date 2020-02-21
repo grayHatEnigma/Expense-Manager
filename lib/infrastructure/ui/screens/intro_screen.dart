@@ -7,7 +7,6 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import '../../../constants.dart';
 import '../../../domain/managers/plan_manager.dart';
 
-// TODO : handle the exception.
 class IntroScreen extends StatefulWidget {
   @override
   _IntroScreenState createState() => _IntroScreenState();

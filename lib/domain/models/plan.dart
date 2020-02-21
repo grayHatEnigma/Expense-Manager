@@ -6,6 +6,4 @@ class Plan {
   double totalIncome;
 
   Plan({@required this.startDate, @required this.totalIncome});
-
-  String get planDateText => DateFormat.MMMd().format(startDate);
 }
