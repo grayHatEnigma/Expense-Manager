@@ -42,15 +42,29 @@ class TransactionTile extends StatelessWidget {
                     size: 15,
                   ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 2, horizontal: 10),
-                  child: FittedBox(
-                    child: Text(
-                      transaction.title,
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: transaction.category.color,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      FittedBox(
+                        child: Text(
+                          transaction.title,
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: transaction.category.color,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        FlutterI18n.translate(
+                            context, transaction.category.title),
+                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                      )
+                    ],
                   ),
                 ),
               ],

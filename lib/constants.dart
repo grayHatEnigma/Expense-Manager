@@ -31,6 +31,7 @@ const kDateInputDescription = "plan date";
 // Analysis Screen Texts Keys
 const kAnalysisTitle = "Expenses Analysis";
 const kAnalysisGaugeTitle = "Total Expenses";
+const kAnalysisGaugeBalance = "Balance";
 const kAnalysisLimitTitle = "You Spent All Your Money";
 
 // Add Transaction Screen Texts Keys

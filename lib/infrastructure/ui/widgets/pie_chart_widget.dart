@@ -1,3 +1,4 @@
+import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -103,14 +104,14 @@ class _PieChartWidgetState extends State<PieChartWidget> {
       return PieChartSectionData(
         radius: isTouched ? 75 : 60,
         titleStyle: TextStyle(
-            fontSize: isTouched ? 18 : 12,
+            fontSize: isTouched ? 15 : 12,
             fontWeight: FontWeight.bold,
             color: Colors.white),
         titlePositionPercentageOffset: 0.65,
         showTitle: sectionWeight >= 5 ? true : false,
         value: totalSpentInCategory,
         title: isTouched
-            ? totalSpentInCategory.toStringAsFixed(0)
+            ? '${totalSpentInCategory.toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}'
             : '$sectionWeight %',
         color: category.color,
       );

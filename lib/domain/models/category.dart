@@ -100,7 +100,7 @@ enum Categories {
   Entertaining,
   Grocery,
   Maintenance,
-  Medicine,
+  Medical,
   Others,
   Shopping,
   Transportation,

@@ -26,12 +26,15 @@ class GaugeWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         //
-        Text(
-          '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)}',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 17,
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Text(
+            '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 17,
+            ),
           ),
         ),
         //
@@ -109,6 +112,19 @@ class GaugeWidget extends StatelessWidget {
             ),
           ],
         ),
+
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Text(
+            '${FlutterI18n.translate(context, kAnalysisGaugeBalance)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 17,
+            ),
+          ),
+        ),
+
         limitPassed
             ? Text(
                 FlutterI18n.translate(context, kAnalysisLimitTitle),

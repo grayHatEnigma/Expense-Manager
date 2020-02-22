@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
@@ -31,24 +32,13 @@ class TransactionsCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             textBaseline: TextBaseline.alphabetic,
             children: <Widget>[
-              Image.asset(
-                'images/list.png',
-                height: 32,
-                width: 32,
-              ),
-              FittedBox(
-                child: Text(
-                  DateFormat.yMEd(myLocale.languageCode)
-                      .format(transactions.first.date),
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
-                ),
-              ),
+              CardDateWidget(myLocale: myLocale, transactions: transactions),
               Container(
                 width: 100,
                 child: FittedBox(
                   child: Text(
                     '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: TextStyle(fontSize: 16, color: Colors.black87),
                   ),
                 ),
               )
@@ -68,6 +58,40 @@ class TransactionsCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+// Widget for displaying card date
+class CardDateWidget extends StatelessWidget {
+  const CardDateWidget({
+    @required this.myLocale,
+    @required this.transactions,
+  });
+
+  final Locale myLocale;
+  final List<Transaction> transactions;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 7),
+          child: Image.asset(
+            'images/list.png',
+            height: 32,
+            width: 32,
+          ),
+        ),
+        FittedBox(
+          child: Text(
+            DateFormat.yMMMEd(myLocale.languageCode)
+                .format(transactions.first.date),
+            style: TextStyle(fontSize: 16, color: Colors.black54),
+          ),
+        ),
+      ],
     );
   }
 }
