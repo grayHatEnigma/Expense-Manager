@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:intl/intl.dart';
 
 //my imports
@@ -80,7 +79,7 @@ class ChartBarWidget extends StatelessWidget {
                 height: constrains.maxHeight * 0.12,
                 child: FittedBox(
                   child: Text(
-                    '${amount.toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+                    '${amount.toStringAsFixed(0)}',
                     style: kChartTextStyle,
                     textAlign: TextAlign.center,
                   ),

@@ -29,7 +29,7 @@ class TransactionTile extends StatelessWidget {
         ),
       ],
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 7.0),
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -47,14 +47,13 @@ class TransactionTile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      FittedBox(
-                        child: Text(
-                          transaction.title,
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: transaction.category.color,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      Text(
+                        transaction.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: transaction.category.color,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 5,
@@ -78,9 +77,9 @@ class TransactionTile extends StatelessWidget {
                     padding: EdgeInsets.all(5.0),
                     child: FittedBox(
                       child: Text(
-                        '${transaction.amount.toStringAsFixed(1)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+                        '${transaction.amount.toStringAsFixed(1)}',
                         style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),

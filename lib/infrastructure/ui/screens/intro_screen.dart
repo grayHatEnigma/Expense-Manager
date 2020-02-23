@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 import '../../../constants.dart';
@@ -49,7 +50,7 @@ class _IntroScreenState extends State<IntroScreen>
           children: <Widget>[
             Center(
               child: Text(
-                kTitle,
+                FlutterI18n.translate(context, kTitle),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 38,

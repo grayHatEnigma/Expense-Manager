@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 //my imports
 import './infrastructure/ui/screens/plan_date_screen.dart';
 import './infrastructure/ui/screens/analysis_screen.dart';
+import './infrastructure/ui/screens/tabs_screen.dart';
 import './infrastructure/ui/screens/plan_salary_screen.dart';
 import './infrastructure/ui/screens/intro_screen.dart';
 import './infrastructure/ui/screens/home_screen.dart';
@@ -64,7 +65,7 @@ class MyApp extends StatelessWidget {
                 const Locale('ar'),
               ],
               debugShowCheckedModeBanner: false,
-              title: kTitle,
+              title: kTitleAr,
               theme: ThemeData(
                 primarySwatch: Colors.purple,
                 accentColor: Colors.amber,
@@ -78,7 +79,8 @@ class MyApp extends StatelessWidget {
                 kIntroScreenID: (context) => IntroScreen(),
                 kAboutScreenID: (context) => AboutScreen(),
                 kSettingsScreenID: (context) => SettingsScreen(),
-                kSettingsChoiceScreenID: (context) => SettingsChoiceScreen()
+                kSettingsChoiceScreenID: (context) => SettingsChoiceScreen(),
+                kTabsScreenID: (context) => TabsScreen(),
               },
               initialRoute: kIntroScreenID,
             );

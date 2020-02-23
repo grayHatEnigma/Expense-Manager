@@ -8,17 +8,20 @@ const kPrivacyPolicy = "Privacy Policy";
 const kCopyRights = "Copy Rights";
 
 //Screen IDs
-const String kHomeScreenID = '/home';
-const String kAnalysisScreenID = '/analysis';
-const String kPlanSalaryScreenID = '/plan_salary';
-const String kPlanDateScreenID = '/plan_date';
-const String kIntroScreenID = '/intro';
-const String kSettingsScreenID = '/settings';
-const String kSettingsChoiceScreenID = '/setteings_choice';
-const String kAboutScreenID = '/about';
+const kHomeScreenID = '/home';
+const kTabsScreenID = '/tabs';
+const kAnalysisScreenID = '/analysis';
+const kAnalysisDetailsScreen = '/analysis_details';
+const kPlanSalaryScreenID = '/plan_salary';
+const kPlanDateScreenID = '/plan_date';
+const kIntroScreenID = '/intro';
+const kSettingsScreenID = '/settings';
+const kSettingsChoiceScreenID = '/setteings_choice';
+const kAboutScreenID = '/about';
 
 // App Title
-const kTitle = 'الفلوس راحت فين؟';
+const kTitle = 'Flosi';
+const kTitleAr = 'فلوسي';
 const kAppVersion = "1.0";
 
 // Plan Screens Texts Keys
@@ -27,6 +30,10 @@ const kSalaryToastMsg = "enter your salary first";
 const kDateInputText = "Plan Starting Date";
 const kDateToastMsg = "please pick your plan date";
 const kDateInputDescription = "plan date";
+
+// Tabs Bar
+const kChartTitle = "Chart";
+const kAnalysisDetailsTitle = "Details";
 
 // Analysis Screen Texts Keys
 const kAnalysisTitle = "Expenses Analysis";
@@ -62,7 +69,7 @@ const kShowChartButton = "Show Chart";
 const kDailyExpenses = "Expenses";
 
 // Transactions Tile and Chart Bar Widget Texts Keys
-const kMoneyPrefix = "EG";
+//const kMoneyPrefix = "EG";
 const kDeleteButtonHint = "Delete";
 
 // Navigation Drawer Texts Keys
@@ -76,6 +83,6 @@ const kEmptyList = "No Records Added Yet";
 // Styles
 const kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 const kTitleTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 27,
   color: Colors.white,
 );

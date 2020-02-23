@@ -1,5 +1,4 @@
 import 'package:meta/meta.dart';
-import 'package:intl/intl.dart';
 
 class Plan {
   DateTime startDate;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
 import '../../../constants.dart';
 import '../../../domain/models/navigation_model.dart';
 import './navigation_list_tile.dart';
@@ -24,7 +25,7 @@ class NavigationDrawer extends StatelessWidget {
                     width: 70,
                   ),
                   Text(
-                    kTitle,
+                    FlutterI18n.translate(context, kTitle),
                     style: kTitleTextStyle,
                     textAlign: TextAlign.center,
                   ),

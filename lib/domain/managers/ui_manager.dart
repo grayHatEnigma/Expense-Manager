@@ -54,6 +54,15 @@ class UiManager with ChangeNotifier {
     return piChartMap;
   }
 
+  // Plan range ( in days ) to get transactions for the plan analysis.
+  int get planRange =>
+      DateTime.now().difference(planManager.plan.startDate).inDays;
+
+  // Get plan transactions required for PieChart Widget
+  List<Transaction> planTransactions() {
+    return recentTransactions(rangeInDays: planRange);
+  }
+
   // Calculate total spending amount for a transaction list.
   double calculateTotalSpending(List<Transaction> list) {
     double sum = 0;
@@ -62,21 +71,21 @@ class UiManager with ChangeNotifier {
   }
 
   // Get transactions list for a certain time period.
-  List<Transaction> recentTransactions({int differenceInDays}) {
+  List<Transaction> recentTransactions({int rangeInDays}) {
     return _transactions.where((tx) {
-      // extra check if difference in days = 0 special case
-      if (differenceInDays == 0) {
+      // extra check if difference in days = 0 * special case
+      if (rangeInDays == 0) {
         bool isSameDay = planManager.plan.startDate.day == tx.date.day;
         return isSameDay;
       }
 
-      return (DateTime.now().difference(tx.date).inDays <= differenceInDays);
+      return (DateTime.now().difference(tx.date).inDays <= rangeInDays);
     }).toList();
   }
 
   // Get the last week transactions list
   List<Transaction> get lastWeekTransactions {
-    return recentTransactions(differenceInDays: 7);
+    return recentTransactions(rangeInDays: 7);
   }
 
   // Get spending that are grouped by day of the week

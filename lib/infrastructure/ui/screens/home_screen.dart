@@ -1,9 +1,9 @@
 //flutter core
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-
 import 'dart:io';
+
 import 'package:provider/provider.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 //my imports
 import '../screens/add_transaction_screen.dart';
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Center(
           child: Text(
-            kTitle,
+            FlutterI18n.translate(context, kTitle),
             textAlign: TextAlign.center,
           ),
         ),

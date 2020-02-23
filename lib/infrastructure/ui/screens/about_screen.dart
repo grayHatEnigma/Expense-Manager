@@ -30,9 +30,30 @@ class Layout extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'images/wallet.png',
+                    height: 70,
+                    width: 70,
+                  ),
+                ),
+              ),
+              Text(
+                FlutterI18n.translate(context, kTitle),
+                style: kTitleTextStyle,
+              ),
+            ],
+          ),
+          Divider(),
           DeveloperWidget(),
           DesignerWidget(),
           PolicyWidget(),
+          Divider(),
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: Text(
@@ -59,7 +80,7 @@ class DeveloperWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Image.asset(
-            'images/search.png',
+            'images/programmer.png',
             height: 50,
             width: 50,
           ),

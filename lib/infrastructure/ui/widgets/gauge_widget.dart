@@ -16,7 +16,7 @@ class GaugeWidget extends StatelessWidget {
         DateTime.now().difference(planManager.plan.startDate).inDays;
 
     final double totalExpenses = uiManager.calculateTotalSpending(
-        uiManager.recentTransactions(differenceInDays: range));
+        uiManager.recentTransactions(rangeInDays: range));
     final double totalIncome = planManager.plan.totalIncome;
     final double percentage = totalExpenses / totalIncome;
 
@@ -29,7 +29,7 @@ class GaugeWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
-            '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+            '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)}',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Theme.of(context).primaryColor,
@@ -116,7 +116,7 @@ class GaugeWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
-            '${FlutterI18n.translate(context, kAnalysisGaugeBalance)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}',
+            '${FlutterI18n.translate(context, kAnalysisGaugeBalance)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)}',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Theme.of(context).primaryColor,
@@ -126,9 +126,12 @@ class GaugeWidget extends StatelessWidget {
         ),
 
         limitPassed
-            ? Text(
-                FlutterI18n.translate(context, kAnalysisLimitTitle),
-                style: TextStyle(fontSize: 17, color: Colors.red[700]),
+            ? Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  FlutterI18n.translate(context, kAnalysisLimitTitle),
+                  style: TextStyle(fontSize: 17, color: Colors.red[700]),
+                ),
               )
             : Container(),
       ],

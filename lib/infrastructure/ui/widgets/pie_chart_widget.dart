@@ -1,4 +1,3 @@
-import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -7,7 +6,6 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 
 import './empty_list_widget.dart';
 import '../../../domain/managers/ui_manager.dart';
-import '../../../domain/managers/plan_manager.dart';
 import '../../../domain/models/category.dart';
 import '../widgets/indicator.dart';
 
@@ -21,14 +19,11 @@ class _PieChartWidgetState extends State<PieChartWidget> {
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context);
-    final planManager = Provider.of<PlanManager>(context);
-    final int range =
-        DateTime.now().difference(planManager.plan.startDate).inDays;
 
-    final double totalExpenses = uiManager.calculateTotalSpending(
-        uiManager.recentTransactions(differenceInDays: range));
-    final pieChartMap = uiManager.totalSpendingPerCategory(
-        uiManager.recentTransactions(differenceInDays: range));
+    final double totalExpenses =
+        uiManager.calculateTotalSpending(uiManager.planTransactions());
+    final pieChartMap =
+        uiManager.totalSpendingPerCategory(uiManager.planTransactions());
 
     final int length = pieChartMap.length;
 
@@ -111,7 +106,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
         showTitle: sectionWeight >= 5 ? true : false,
         value: totalSpentInCategory,
         title: isTouched
-            ? '${totalSpentInCategory.toStringAsFixed(0)} ${FlutterI18n.translate(context, kMoneyPrefix)}'
+            ? '${totalSpentInCategory.toStringAsFixed(0)}'
             : '$sectionWeight %',
         color: category.color,
       );

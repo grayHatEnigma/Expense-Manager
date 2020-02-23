@@ -80,8 +80,8 @@ class CardDateWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Image.asset(
             'images/list.png',
-            height: 32,
-            width: 32,
+            height: 30,
+            width: 30,
           ),
         ),
         FittedBox(

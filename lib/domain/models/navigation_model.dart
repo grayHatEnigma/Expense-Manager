@@ -12,7 +12,7 @@ List<NavigationModel> navigationItems = [
   NavigationModel(
       title: kNavAnalysis,
       iconPath: 'images/analysis.png',
-      destination: kAnalysisScreenID),
+      destination: kTabsScreenID),
   NavigationModel(
       title: kNavSettings,
       iconPath: 'images/settings.png',

@@ -59,6 +59,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   labelText:
                       FlutterI18n.translate(context, kTitleTextFieldHint)),
               controller: titleController,
+              maxLength: 30,
             ),
             TextField(
               decoration: InputDecoration(

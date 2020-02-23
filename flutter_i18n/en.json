@@ -1,7 +1,13 @@
 {
+
+  "Flosi": "Flosi",
    "Privacy Policy" :
   "Privacy Policy\nYour data is saved locally (only) so it is 100 % safe and secure unless your device is hacked!",
    "Copy Rights" : "All Rights Reserved © 2020",
+
+
+  "Chart": "Chart",
+  "Details" : "Details",
 
   "Expenses Analysis" : "Expenses Analysis For",
   "Total Expenses" : "Total Expenses",
@@ -19,7 +25,6 @@
 
   "Expenses" : "Expenses",
 
-  "EG": "EG",
   "Delete": "Delete",
 
   "Analysis": "Analysis",
