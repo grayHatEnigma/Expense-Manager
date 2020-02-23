@@ -30,11 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            FlutterI18n.translate(context, kTitle),
-            textAlign: TextAlign.center,
-          ),
+        centerTitle: true,
+        title: Text(
+          FlutterI18n.translate(context, kTitle),
+          textAlign: TextAlign.center,
         ),
         actions: <Widget>[
           IconButton(

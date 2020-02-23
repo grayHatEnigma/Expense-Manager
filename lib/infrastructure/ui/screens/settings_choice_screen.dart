@@ -34,11 +34,10 @@ class _SettingsChoiceScreenState extends State<SettingsChoiceScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            FlutterI18n.translate(context, kSettingsTitle),
-            style: TextStyle(letterSpacing: 2),
-          ),
+        centerTitle: true,
+        title: Text(
+          FlutterI18n.translate(context, kSettingsTitle),
+          style: TextStyle(letterSpacing: 2),
         ),
       ),
       backgroundColor: Colors.grey[200],

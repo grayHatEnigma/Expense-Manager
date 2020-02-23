@@ -20,10 +20,9 @@ class TabsScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
-            child: Text(
-              '${FlutterI18n.translate(context, kAnalysisTitle)} $monthTag',
-            ),
+          centerTitle: true,
+          title: Text(
+            '${FlutterI18n.translate(context, kAnalysisTitle)} $monthTag',
           ),
           bottom: TabBar(
             indicatorWeight: 3.5,
@@ -33,7 +32,7 @@ class TabsScreen extends StatelessWidget {
                 text: FlutterI18n.translate(context, kChartTitle),
               ),
               Tab(
-                icon: Icon(Icons.view_headline),
+                icon: Icon(Icons.assignment),
                 text: FlutterI18n.translate(context, kAnalysisDetailsTitle),
               ),
             ],

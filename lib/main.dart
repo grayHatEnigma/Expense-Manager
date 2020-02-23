@@ -15,6 +15,7 @@ import './infrastructure/ui/screens/home_screen.dart';
 import './infrastructure/ui/screens/settings_screen.dart';
 import './infrastructure/ui/screens/settings_choice_screen.dart';
 import './infrastructure/ui/screens/about_screen.dart';
+import './infrastructure/ui/screens/category_list_screen.dart';
 import './constants.dart';
 import './domain/managers/plan_manager.dart';
 import './domain/managers/ui_manager.dart';
@@ -81,6 +82,7 @@ class MyApp extends StatelessWidget {
                 kSettingsScreenID: (context) => SettingsScreen(),
                 kSettingsChoiceScreenID: (context) => SettingsChoiceScreen(),
                 kTabsScreenID: (context) => TabsScreen(),
+                kCategoryListScreenID: (context) => CategoryListScreen(),
               },
               initialRoute: kIntroScreenID,
             );

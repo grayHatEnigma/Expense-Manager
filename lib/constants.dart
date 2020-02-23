@@ -18,6 +18,7 @@ const kIntroScreenID = '/intro';
 const kSettingsScreenID = '/settings';
 const kSettingsChoiceScreenID = '/setteings_choice';
 const kAboutScreenID = '/about';
+const kCategoryListScreenID = '/category_list';
 
 // App Title
 const kTitle = 'Flosi';
@@ -34,6 +35,8 @@ const kDateInputDescription = "plan date";
 // Tabs Bar
 const kChartTitle = "Chart";
 const kAnalysisDetailsTitle = "Details";
+
+const kCategoryListTitle = "Your Expenses in";
 
 // Analysis Screen Texts Keys
 const kAnalysisTitle = "Expenses Analysis";

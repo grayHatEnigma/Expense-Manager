@@ -41,8 +41,8 @@ class UiManager with ChangeNotifier {
     return newGroup.values.toList();
   }
 
-  // Group - required - transactions by category.
-  // required by the PieChart Widget
+  // Group - required - expenses by category.
+  // required by the PieChart Widget ( To Generate Pie Chart Section )
   Map<Category, double> totalSpendingPerCategory(
       List<Transaction> requiredTransactionsList) {
     var newGroup = groupBy(
@@ -61,6 +61,18 @@ class UiManager with ChangeNotifier {
   // Get plan transactions required for PieChart Widget
   List<Transaction> planTransactions() {
     return recentTransactions(rangeInDays: planRange);
+  }
+
+  // Group plan transactions by category required by details analysis
+
+  Map<Category, List<Transaction>> planTransactionsPerCategory() {
+    final Map<String, List<Transaction>> group =
+        groupBy(planTransactions(), (Transaction tx) => tx.category.title);
+    final Map<Category, List<Transaction>> requiredGroup =
+        group.map((categoryTitle, list) {
+      return MapEntry(Category(categoryTitle), list);
+    });
+    return requiredGroup;
   }
 
   // Calculate total spending amount for a transaction list.
