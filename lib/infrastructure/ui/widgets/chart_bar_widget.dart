@@ -79,7 +79,7 @@ class ChartBarWidget extends StatelessWidget {
                 height: constrains.maxHeight * 0.12,
                 child: FittedBox(
                   child: Text(
-                    '${amount.toStringAsFixed(0)}',
+                    '${amount.toInt()}',
                     style: kChartTextStyle,
                     textAlign: TextAlign.center,
                   ),

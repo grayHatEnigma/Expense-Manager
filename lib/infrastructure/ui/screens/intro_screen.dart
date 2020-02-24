@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 
 import '../../../constants.dart';
-import '../../../domain/managers/plan_manager.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -29,16 +27,10 @@ class _IntroScreenState extends State<IntroScreen>
 
   @override
   Widget build(BuildContext context) {
-    final planManager = Provider.of<PlanManager>(context);
-
-    // check if the user has a saved plan or not
-    planManager.hasPlan.then((hasSavedPlan) {
-      Future.delayed(
-        Duration(milliseconds: 4500),
-        () => Navigator.pushReplacementNamed(
-            context, hasSavedPlan ? kHomeScreenID : kPlanSalaryScreenID),
-      );
-    });
+    Future.delayed(
+      Duration(milliseconds: 4500),
+      () => Navigator.pushReplacementNamed(context, kHomeScreenID),
+    );
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,

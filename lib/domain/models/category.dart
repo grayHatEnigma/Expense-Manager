@@ -5,7 +5,7 @@ class Category {
   Color _color;
 
   Category(this._title);
-  Category.fromEnum(Categories type) {
+  Category.fromEnum(type) {
     final typeTitle = type.toString().split('.').last;
     _title = typeTitle;
     _color = color;
@@ -32,6 +32,21 @@ class Category {
     }
     Color categoryColor;
     switch (title) {
+      case 'Salary':
+        categoryColor = Colors.green[800];
+        break;
+      case 'Reward':
+        categoryColor = Colors.green[800];
+        break;
+      case 'Gift':
+        categoryColor = Colors.green[800];
+        break;
+      case 'Prize':
+        categoryColor = Colors.green[800];
+        break;
+      case 'Youtube':
+        categoryColor = Colors.green[800];
+        break;
       case 'Savings':
         categoryColor = Colors.green;
         break;
@@ -89,7 +104,7 @@ class Category {
 }
 
 // List Of Categories
-enum Categories {
+enum ExpensesCategories {
   Bills,
   Books,
   Education,
@@ -106,3 +121,5 @@ enum Categories {
   Transportation,
   Travelling,
 }
+
+enum IncomeCategories { Salary, Reward, Gift, Prize, Youtube }

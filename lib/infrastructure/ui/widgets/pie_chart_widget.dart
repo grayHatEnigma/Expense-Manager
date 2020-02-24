@@ -21,14 +21,15 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     final uiManager = Provider.of<UiManager>(context);
 
     final double totalExpenses =
-        uiManager.calculateTotalSpending(uiManager.planTransactions());
-    final pieChartMap =
-        uiManager.totalSpendingPerCategory(uiManager.planTransactions());
+        uiManager.calculateTotalAmount(uiManager.analysisTransactions());
+    final pieChartMap = uiManager.totalSpendingPerCategory();
 
     final int length = pieChartMap.length;
 
     return length == 0
-        ? EmptyListWidget()
+        ? EmptyListWidget(
+            screen: 'pie-chart',
+          )
         : Card(
             elevation: 5,
             child: Row(

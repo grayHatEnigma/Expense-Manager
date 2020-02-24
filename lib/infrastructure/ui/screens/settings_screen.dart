@@ -28,34 +28,6 @@ class SettingsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CircleButton(
-                    color: Colors.teal,
-                    iconPath: 'images/salary.png',
-                    title: FlutterI18n.translate(context, kSalaryButton),
-                    onPressed: () {
-                      Navigator.pushNamed(context, kSettingsChoiceScreenID,
-                          arguments: Settings.edit_salary);
-                    },
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleButton(
-                    color: Colors.pinkAccent,
-                    iconPath: 'images/calendar.png',
-                    title: FlutterI18n.translate(context, kPlanDateButton),
-                    onPressed: () {
-                      Navigator.pushNamed(context, kSettingsChoiceScreenID,
-                          arguments: Settings.edit_plan_date);
-                    },
-                  ),
-                ),
-              ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleButton(
                     color: Colors.red,
                     iconPath: 'images/reset.png',
                     title: FlutterI18n.translate(context, kResetButton),

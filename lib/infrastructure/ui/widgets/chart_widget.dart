@@ -11,10 +11,10 @@ import './chart_bar_widget.dart';
 class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final manager = Provider.of<UiManager>(context);
+    final uiManager = Provider.of<UiManager>(context);
     final totalRecentSpending =
-        manager.calculateTotalSpending(manager.lastWeekTransactions);
-    final List<ChartBar> chartBars = manager.lastWeekSpendingByDay;
+        uiManager.calculateTotalAmount(uiManager.lastWeekTransactions);
+    final List<ChartBar> chartBars = uiManager.lastWeekSpendingPerDay;
 
     return Card(
       elevation: 6,

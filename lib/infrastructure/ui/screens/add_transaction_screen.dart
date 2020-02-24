@@ -1,4 +1,5 @@
 //flutter core
+
 import 'package:flutter/material.dart';
 
 //external packages
@@ -23,8 +24,12 @@ class _AddTransactionState extends State<AddTransaction> {
   String chosenDateText;
   //fields chosen by user and their default values in case he doesn't enter any
   DateTime chosenDate = DateTime.now();
-  Categories chosenCategory;
+  var chosenCategory;
   Locale myLocale;
+
+  // to check the category type
+  bool chosenCategoryType;
+  bool expenses = true;
 
   @override
   void didChangeDependencies() {
@@ -68,38 +73,91 @@ class _AddTransactionState extends State<AddTransaction> {
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
             ),
-            Center(
-              child: Container(
-                padding: EdgeInsets.all(5),
-                child: DropdownButton<Categories>(
-                  items: Categories.values.map((value) {
-                    return DropdownMenuItem(
-                      value: value,
-                      child: Text(value.toText(context)),
-                    );
-                  }).toList(),
-                  onChanged: (newValue) {
-                    setState(() {
-                      chosenCategory = newValue;
-                    });
-                  },
-                  value: chosenCategory,
-                  hint: Text(
-                    FlutterI18n.translate(context, kDropDownMenuHint),
-                    textAlign: TextAlign.start,
-                  ),
-                  icon: Icon(
-                    Icons.assignment,
-                    color: Theme.of(context).accentColor,
-                  ),
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 14,
-                  ),
-                  isExpanded: false,
+
+            // Categories Drop Down Menu Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Radio(
+                      activeColor: Colors.red,
+                      value: true,
+                      groupValue: expenses,
+                      onChanged: (newVal) {
+                        setState(() {
+                          expenses = newVal;
+                          chosenCategory = null;
+                          print(expenses);
+                        });
+                      },
+                    ),
+                    Text(
+                      'مصروفات',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    Radio(
+                      activeColor: Colors.green,
+                      value: false,
+                      groupValue: expenses,
+                      onChanged: (newVal) {
+                        setState(() {
+                          expenses = newVal;
+                          chosenCategory = null;
+                          print(expenses);
+                        });
+                      },
+                    ),
+                    Text(
+                      'دخل',
+                      style: TextStyle(color: Colors.green),
+                    ),
+                  ],
                 ),
-              ),
+                Container(
+                    padding: EdgeInsets.all(5),
+                    child: DropdownButton(
+                      items: expenses
+                          ? ExpensesCategories.values.map((value) {
+                              return DropdownMenuItem<ExpensesCategories>(
+                                value: value,
+                                child: Text(value.toText(context)),
+                              );
+                            }).toList()
+                          : IncomeCategories.values.map((value) {
+                              return DropdownMenuItem<IncomeCategories>(
+                                value: value,
+                                child: Text(value.toText(context)),
+                              );
+                            }).toList(),
+                      onChanged: (newValue) {
+                        setState(() {
+                          chosenCategory = newValue;
+                        });
+                      },
+                      value: chosenCategory,
+                      hint: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          FlutterI18n.translate(context, kDropDownMenuHint),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      icon: Icon(
+                        Icons.assignment,
+                        color: Theme.of(context).accentColor,
+                      ),
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 14,
+                      ),
+                      isExpanded: false,
+                    )),
+              ],
             ),
+
+            // Date Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -158,10 +216,12 @@ class _AddTransactionState extends State<AddTransaction> {
                 if (inputAmount > 0 && titleController.text.isNotEmpty) {
                   uiManager.addTransaction(
                     title: titleController.text,
-                    amount: double.parse(amountController.text),
+                    amount: expenses
+                        ? -1 * double.parse(amountController.text)
+                        : double.parse(amountController.text),
                     date: chosenDate,
-                    category:
-                        Category.fromEnum(chosenCategory ?? Categories.Others),
+                    category: Category.fromEnum(
+                        chosenCategory ?? ExpensesCategories.Others),
                   );
 
                   // clear the controllers
@@ -190,7 +250,14 @@ class _AddTransactionState extends State<AddTransaction> {
 }
 
 // Translate Category
-extension on Categories {
+extension on ExpensesCategories {
+  String toText(BuildContext context) {
+    final categoryTitle = this.toString().split('.').last;
+    return FlutterI18n.translate(context, categoryTitle);
+  }
+}
+
+extension on IncomeCategories {
   String toText(BuildContext context) {
     final categoryTitle = this.toString().split('.').last;
     return FlutterI18n.translate(context, categoryTitle);

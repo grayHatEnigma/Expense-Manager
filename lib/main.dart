@@ -6,10 +6,10 @@ import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 //my imports
-import './infrastructure/ui/screens/plan_date_screen.dart';
+
 import './infrastructure/ui/screens/analysis_screen.dart';
 import './infrastructure/ui/screens/tabs_screen.dart';
-import './infrastructure/ui/screens/plan_salary_screen.dart';
+
 import './infrastructure/ui/screens/intro_screen.dart';
 import './infrastructure/ui/screens/home_screen.dart';
 import './infrastructure/ui/screens/settings_screen.dart';
@@ -17,7 +17,7 @@ import './infrastructure/ui/screens/settings_choice_screen.dart';
 import './infrastructure/ui/screens/about_screen.dart';
 import './infrastructure/ui/screens/category_list_screen.dart';
 import './constants.dart';
-import './domain/managers/plan_manager.dart';
+
 import './domain/managers/ui_manager.dart';
 import './domain/managers/database_manager.dart';
 import './domain/managers/localization_manager.dart';
@@ -37,9 +37,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (context) => PlanManager(),
-          ),
           ChangeNotifierProvider(
             create: (context) => UiManager(),
           ),
@@ -75,8 +72,6 @@ class MyApp extends StatelessWidget {
               routes: {
                 kHomeScreenID: (context) => HomeScreen(),
                 kAnalysisScreenID: (context) => AnalysisScreen(),
-                kPlanSalaryScreenID: (context) => PlanSalaryScreen(),
-                kPlanDateScreenID: (context) => PlanDateScreen(),
                 kIntroScreenID: (context) => IntroScreen(),
                 kAboutScreenID: (context) => AboutScreen(),
                 kSettingsScreenID: (context) => SettingsScreen(),

@@ -17,6 +17,7 @@ class TransactionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = Localizations.localeOf(context);
     bool isLtr = locale.languageCode == 'en';
+    bool isIncome = transaction.amount > 0;
     return Slidable(
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.20,
@@ -28,7 +29,10 @@ class TransactionTile extends StatelessWidget {
           onTap: deleteCallback,
         ),
       ],
-      child: Padding(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,12 +66,18 @@ class TransactionTile extends StatelessWidget {
                         FlutterI18n.translate(
                             context, transaction.category.title),
                         style: TextStyle(color: Colors.grey, fontSize: 13),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
+            if (isIncome)
+              Image.asset(
+                'images/income.png',
+                height: 22,
+                width: 22,
+              ),
             Row(
               children: <Widget>[
                 CircleAvatar(
@@ -77,7 +87,7 @@ class TransactionTile extends StatelessWidget {
                     padding: EdgeInsets.all(5.0),
                     child: FittedBox(
                       child: Text(
-                        '${transaction.amount.toStringAsFixed(1)}',
+                        '${transaction.amount.abs().toStringAsFixed(1)}',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.white,

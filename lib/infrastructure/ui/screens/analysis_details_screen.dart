@@ -11,13 +11,14 @@ class AnalysisDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context);
-    final categoryMap = uiManager.planTransactionsPerCategory();
+
+    final categoryMap = uiManager.analysisTransactionsPerCategory();
     return Container(
       padding: EdgeInsets.all(15),
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 200,
-            childAspectRatio: 3 / 2,
+            childAspectRatio: 5 / 2,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20),
         itemBuilder: (_, index) {

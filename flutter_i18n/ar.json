@@ -5,10 +5,10 @@
   "سياسة الخصوصية\nبياناتك محفوظة على جهازك (فقط) ولا يتم استخدامها أو تداولها على الإنترنت بأي شكل من الأشكال.",
   "Copy Rights" : "جميع الحقوق محفوظة © 2020",
 
-  "Expenses Analysis" : "تحليل مصاريفك لشهر",
+  "Expenses Analysis" : "تحليل مصاريف شهر",
+  "Total Income" : "إجمالي الدخل",
   "Total Expenses" : "إجمالي المصاريف",
   "Balance" : "الرصيد",
-  "You Spent All Your Money" : "مصروفاتك تخطت الحد المسموح به لهذا الشهر",
 
   "Chart": "المخطط",
   "Details" : "التفاصيل",
@@ -31,20 +31,14 @@
   "About": "عن التطبيق",
 
   "No Records Added Yet" :"لم يتم إضافة أي مصروفات",
+  "No Records For This Period" :"لم يتم إضافة أي مصروفات في هذه الفترة",
 
-  "Enter Your Salary" : "قيمة دخلك الشهري",
-  "enter your salary first" : "من فضلك ادخل قيمة دخلك الشهري للاستمرار",
-
-  "Plan Starting Date" : "تاريخ بداية خطة المصروفات",
-  "please pick your plan date" : "من فضلك اختر تاريخ لبداية الخطة",
-  "plan date" : "تاريخ استلام الراتب",
 
   "This app was developed by" : "هذا التطبيق تم تطويره بواسطة",
   "Icons in this app made by Darius Dan" : "جميع أيقونات هذا التطبيق من تصميم Darius Dan من www.flaticon.com",
 
 
-  "Edit Salary" : "تعديل الدخل",
-  "Edit Plan Date" : "تعديل التاريخ",
+
   "Reset" : "حذف المصروفات",
 
   "Confirm" : "تأكيد",
@@ -65,5 +59,10 @@
   "Others" :  "أخرى",
   "Shopping" :  "تسوق وملابس",
   "Transportation" :  "نقل ومواصلات",
-  "Travelling" : "سفر"
+  "Travelling" : "سفر",
+  "Salary":  "المرتب",
+  "Reward":  "مكافأة",
+  "Gift": "هدية",
+  "Prize":  "جائزة",
+  "Youtube": "أرباح يوتيوب"
 }

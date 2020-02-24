@@ -11,9 +11,9 @@ class Transaction {
   Transaction({this.id, this.title, this.amount, this.category, this.date});
 
   String get dayDate => '${date.day}${date.month}${date.year}';
-
+  String get monthDate => '${date.month}${date.year}';
   // Database related methods
-  // convenience constructor to create a Word object
+  // convenience constructor to create a Transaction object
   Transaction.fromMap(Map<String, dynamic> map) {
     id = map[columnId];
     title = map[columnTitle];

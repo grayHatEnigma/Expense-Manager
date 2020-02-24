@@ -37,7 +37,7 @@ class TransactionsCard extends StatelessWidget {
                 width: 100,
                 child: FittedBox(
                   child: Text(
-                    '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalSpending(transactions).toStringAsFixed(0)}',
+                    '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalAmount(uiManager.getExpensesOnly(transactions)).toStringAsFixed(0)}',
                     style: TextStyle(fontSize: 16, color: Colors.black87),
                   ),
                 ),

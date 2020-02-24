@@ -42,27 +42,43 @@ class TransactionChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final myLocale = Localizations.localeOf(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      padding: const EdgeInsets.only(right: 25, left: 25, top: 5),
       child: Card(
         color: transaction.category.color,
-        child: ListTile(
-          leading: Icon(
-            Icons.monetization_on,
-            color: Colors.white,
-          ),
-          title: Text(
-            transaction.title,
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(
-            DateFormat.yMMMEd(myLocale.languageCode).format(transaction.date),
-            style: TextStyle(color: Colors.white),
-          ),
-          trailing: Text(
-            transaction.amount.toStringAsFixed(1),
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Text(
+                      transaction.title,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Text(
+                    DateFormat.yMMMEd(myLocale.languageCode)
+                        .format(transaction.date),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+              Text(
+                transaction.amount.abs().toStringAsFixed(1),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
         ),
       ),

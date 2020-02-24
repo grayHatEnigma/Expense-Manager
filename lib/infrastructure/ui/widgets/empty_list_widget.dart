@@ -5,6 +5,9 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import '../../../constants.dart';
 
 class EmptyListWidget extends StatelessWidget {
+  final String screen;
+
+  const EmptyListWidget({this.screen});
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,7 +26,8 @@ class EmptyListWidget extends StatelessWidget {
               height: 20,
             ),
             Text(
-              FlutterI18n.translate(context, kEmptyList),
+              FlutterI18n.translate(
+                  context, screen == 'pie-chart' ? kNoRecords : kEmptyList),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontSize: 20,

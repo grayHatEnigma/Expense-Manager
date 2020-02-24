@@ -4,136 +4,69 @@ import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../../domain/managers/ui_manager.dart';
-import '../../../domain/managers/plan_manager.dart';
 import '../../../constants.dart';
 
 class GaugeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final planManager = Provider.of<PlanManager>(context);
     final uiManager = Provider.of<UiManager>(context);
-    final int range =
-        DateTime.now().difference(planManager.plan.startDate).inDays;
 
-    final double totalExpenses = uiManager.calculateTotalSpending(
-        uiManager.recentTransactions(rangeInDays: range));
-    final double totalIncome = planManager.plan.totalIncome;
-    final double percentage = totalExpenses / totalIncome;
-
-    bool limitPassed = totalExpenses > totalIncome;
-
+    final double totalExpenses =
+        uiManager.calculateTotalAmount(uiManager.analysisTransactions());
+    final double totalIncome =
+        uiManager.calculateTotalAmount(uiManager.incomeTransactions());
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        //
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Text(
-            '${FlutterI18n.translate(context, kAnalysisGaugeTitle)} : ${totalExpenses.toStringAsFixed(0)}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 17,
+        Flexible(
+          child: Chip(
+            backgroundColor: Colors.green,
+            elevation: 4,
+            avatar: Image.asset('images/income.png'),
+            label: Text(
+              '${FlutterI18n.translate(context, kAnalysisIncomeTitle)} : ${totalIncome.toStringAsFixed(0)}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
             ),
+            padding: EdgeInsets.all(5),
           ),
         ),
-        //
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '0',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 15),
+        Flexible(
+          child: Chip(
+            backgroundColor: Colors.red,
+            elevation: 4,
+            avatar: Image.asset('images/expenses.png'),
+            label: Text(
+              '${FlutterI18n.translate(context, kAnalysisExpensesTitle)} : ${totalExpenses.toStringAsFixed(0)}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
               ),
             ),
-
-            Container(
-              width: 200,
-              height: 20,
-              child: Stack(
-                alignment: AlignmentDirectional.bottomStart,
-                //textDirection: TextDirection.rtl,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          (percentage * 10),
-                        ),
-                      ),
-                    ),
-                    width: 200,
-                  ),
-                  FractionallySizedBox(
-                    widthFactor: limitPassed ? 1 : percentage,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: limitPassed
-                            ? Colors.red[700]
-                            : Theme.of(context).accentColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            (percentage * 10),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(2),
-                      child: Text(
-                        '${limitPassed ? 100 : (percentage * 100).toStringAsFixed(0)} %',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            //
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                '${totalIncome.toStringAsFixed(0)}',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 15),
-              ),
-            ),
-          ],
-        ),
-
-        Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Text(
-            '${FlutterI18n.translate(context, kAnalysisGaugeBalance)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 17,
-            ),
+            padding: EdgeInsets.all(5),
           ),
         ),
-
-        limitPassed
-            ? Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  FlutterI18n.translate(context, kAnalysisLimitTitle),
-                  style: TextStyle(fontSize: 17, color: Colors.red[700]),
-                ),
-              )
-            : Container(),
+        Flexible(
+          child: Chip(
+            backgroundColor: Theme.of(context).primaryColor,
+            elevation: 4,
+            avatar: Image.asset('images/balance.png'),
+            label: Text(
+              '${FlutterI18n.translate(context, kAnalysisBalanceTitle)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 13,
+              ),
+            ),
+            padding: EdgeInsets.all(5),
+          ),
+        ),
       ],
     );
   }

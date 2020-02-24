@@ -11,9 +11,10 @@
   "Your Expenses in": "Your Expenses in",
 
   "Expenses Analysis" : "Expenses Analysis For",
+  "Total Income": "Total Income",
   "Total Expenses" : "Total Expenses",
   "Balance" : "Balance",
-  "You Spent All Your Money" : "You Spent All Your Money",
+
 
   "Title" : "Title",
   "Amount": "Amount",
@@ -33,20 +34,16 @@
   "About": "About",
 
   "No Records Added Yet" :"No Records Added Yet",
+  "No Records For This Period" :"No Records For This Period",
 
-  "Enter Your Salary" : "Enter Your Salary",
-  "enter your salary first" : "enter your salary first",
 
-  "Plan Starting Date" : "Plan Starting Date",
-  "please pick your plan date" : "please pick your plan date",
-  "plan date" : "salary pay date",
+
+
 
   "This app was developed by" : "This app was developed by",
   "Icons in this app made by Darius Dan" : "Icons in this app made by Darius Dan from www.flaticon.com",
 
 
-  "Edit Salary" : "Edit Salary",
-  "Edit Plan Date" : "Edit Plan Date",
    "Reset" : "Reset",
 
   "Confirm" : "Confirm",
@@ -67,5 +64,10 @@
   "Others" :  "Others",
   "Shopping" :  "Shopping",
   "Transportation" :  "Transportation",
-  "Travelling" : "Travelling"
+  "Travelling" : "Travelling",
+  "Salary":  "Salary",
+  "Reward":  "Reward",
+  "Gift": "Gift",
+  "Prize":  "Prize",
+  "Youtube": "Youtube"
 }

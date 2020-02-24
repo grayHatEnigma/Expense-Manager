@@ -39,10 +39,7 @@ class Layout extends StatelessWidget {
         ),
         Flexible(
           flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: GaugeWidget(),
-          ),
+          child: GaugeWidget(),
         ),
       ],
     );
