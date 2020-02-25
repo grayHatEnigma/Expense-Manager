@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
+
 import '../../../constants.dart';
 import '../../../domain/models/navigation_model.dart';
 import './navigation_list_tile.dart';

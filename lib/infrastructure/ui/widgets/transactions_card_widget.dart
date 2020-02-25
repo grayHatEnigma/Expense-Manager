@@ -36,9 +36,10 @@ class TransactionsCard extends StatelessWidget {
               Container(
                 width: 100,
                 child: FittedBox(
+                  fit: BoxFit.scaleDown,
                   child: Text(
                     '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalAmount(uiManager.getExpensesOnly(transactions)).toStringAsFixed(0)}',
-                    style: TextStyle(fontSize: 16, color: Colors.black87),
+                    style: TextStyle(fontSize: 15, color: Colors.black87),
                   ),
                 ),
               )
@@ -85,10 +86,11 @@ class CardDateWidget extends StatelessWidget {
           ),
         ),
         FittedBox(
+          fit: BoxFit.scaleDown,
           child: Text(
             DateFormat.yMMMEd(myLocale.languageCode)
                 .format(transactions.first.date),
-            style: TextStyle(fontSize: 16, color: Colors.black54),
+            style: TextStyle(fontSize: 15, color: Colors.black54),
           ),
         ),
       ],

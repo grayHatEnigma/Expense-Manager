@@ -55,7 +55,7 @@ class GaugeWidget extends StatelessWidget {
           child: Chip(
             backgroundColor: Theme.of(context).primaryColor,
             elevation: 4,
-            avatar: Image.asset('images/balance.png'),
+            avatar: Image.asset('images/wallet.png'),
             label: Text(
               '${FlutterI18n.translate(context, kAnalysisBalanceTitle)} : ${(totalIncome - totalExpenses).toStringAsFixed(0)}',
               textAlign: TextAlign.center,

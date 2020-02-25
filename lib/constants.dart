@@ -39,6 +39,8 @@ const kAnalysisBalanceTitle = "Balance";
 const kTitleTextFieldHint = "Title";
 const kAmountTextFieldHint = "Amount";
 const kDropDownMenuHint = "Choose Category";
+const kIncomeCategoryRadio = "Income Radio";
+const kExpensesCategoryRadio = "Expenses Radio";
 const kPickDateButton = "Pick Date";
 const kAddButton = "Add";
 const kInvalidValueMsg = "please enter a valid value";
@@ -58,7 +60,7 @@ const kResetMsg = "Are You Sure You Want To Delete All Your Records?";
 const kShowChartButton = "Show Chart";
 
 // Transactions Card Texts Keys
-const kDailyExpenses = "Expenses";
+const kDailyExpenses = "Daily Expenses";
 
 // Transactions Tile and Chart Bar Widget Texts Keys
 
@@ -80,4 +82,9 @@ const kChartTextStyle = TextStyle(color: Colors.white, fontSize: 15);
 const kTitleTextStyle = TextStyle(
   fontSize: 27,
   color: Colors.white,
+);
+
+const kAppBarTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 17,
 );

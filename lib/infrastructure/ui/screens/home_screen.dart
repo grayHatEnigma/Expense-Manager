@@ -51,11 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
               Icons.language,
               color: Colors.white,
             ),
-//            icon: Image.asset(
-//              'images/ar.png',
-//              height: 30,
-//              width: 30,
-//            ),
             onPressed: () {
               print('Toggle App Language');
               Localizations.localeOf(context) == Locale('en')

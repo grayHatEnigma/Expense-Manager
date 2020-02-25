@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
 
-import '../../../constants.dart';
-
 class EmptyListWidget extends StatelessWidget {
-  final String screen;
+  final String textToDisplay;
 
-  const EmptyListWidget({this.screen});
+  const EmptyListWidget({this.textToDisplay});
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,8 +24,7 @@ class EmptyListWidget extends StatelessWidget {
               height: 20,
             ),
             Text(
-              FlutterI18n.translate(
-                  context, screen == 'pie-chart' ? kNoRecords : kEmptyList),
+              FlutterI18n.translate(context, textToDisplay),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontSize: 20,

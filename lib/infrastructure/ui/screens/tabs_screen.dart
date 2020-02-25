@@ -19,50 +19,60 @@ class TabsScreen extends StatelessWidget {
     final analysisDate = uiManager.analysisDate;
 
     String monthTag = DateFormat.MMMM(locale.languageCode).format(analysisDate);
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            '${FlutterI18n.translate(context, kAnalysisTitle)} $monthTag',
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.date_range),
-              onPressed: () async {
-                var userDate = await showMonthPicker(
+    return WillPopScope(
+      onWillPop: () async {
+        // reset analysis date to current month on back button pressed
+        uiManager.analysisDate = DateTime.now();
+        Navigator.pop(context);
+        return false;
+      },
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+                '${FlutterI18n.translate(context, kAnalysisTitle)} $monthTag',
+                style: kAppBarTextStyle),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.date_range),
+                onPressed: () async {
+                  var userDate = await showMonthPicker(
                     context: context,
-                    firstDate: DateTime(DateTime.now().year - 1, 5),
-                    lastDate: DateTime(DateTime.now().year + 1, 9),
-                    initialDate: DateTime.now());
+                    firstDate: DateTime(
+                        DateTime.now().year - 1, DateTime.now().month + 1),
+                    lastDate: DateTime.now(),
+                    initialDate: DateTime.now(),
+                  );
 
-                if (userDate != null) {
-                  // update the chosen date on the screen
-                  uiManager.analysisDate = userDate;
-                }
-              },
-            )
-          ],
-          bottom: TabBar(
-            indicatorWeight: 3.5,
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.pie_chart),
-                text: FlutterI18n.translate(context, kChartTitle),
-              ),
-              Tab(
-                icon: Icon(Icons.assignment),
-                text: FlutterI18n.translate(context, kAnalysisDetailsTitle),
-              ),
+                  if (userDate != null) {
+                    // update the chosen date on the screen
+                    uiManager.analysisDate = userDate;
+                  }
+                },
+              )
+            ],
+            bottom: TabBar(
+              indicatorWeight: 3.5,
+              tabs: <Widget>[
+                Tab(
+                  icon: Icon(Icons.pie_chart),
+                  text: FlutterI18n.translate(context, kChartTitle),
+                ),
+                Tab(
+                  icon: Icon(Icons.assignment),
+                  text: FlutterI18n.translate(context, kAnalysisDetailsTitle),
+                ),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              AnalysisScreen(),
+              AnalysisDetailsScreen(),
             ],
           ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            AnalysisScreen(),
-            AnalysisDetailsScreen(),
-          ],
         ),
       ),
     );

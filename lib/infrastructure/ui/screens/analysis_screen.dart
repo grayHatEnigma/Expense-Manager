@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import '../../../domain/managers/ui_manager.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/gauge_widget.dart';
 
 class AnalysisScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final uiManager = Provider.of<UiManager>(context);
+    final length = uiManager.totalSpendingPerCategory().length;
+    bool isEmpty = length == 0;
+
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
@@ -14,16 +21,20 @@ class AnalysisScreen extends StatelessWidget {
           ? SingleChildScrollView(
               child: Layout(
                 size: MainAxisSize.min,
+                isEmpty: isEmpty,
               ),
             )
-          : Layout(),
+          : Layout(
+              isEmpty: isEmpty,
+            ),
     );
   }
 }
 
 class Layout extends StatelessWidget {
   final MainAxisSize size;
-  Layout({this.size = MainAxisSize.max});
+  final bool isEmpty;
+  Layout({this.size = MainAxisSize.max, this.isEmpty = false});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,10 +48,11 @@ class Layout extends StatelessWidget {
             child: PieChartWidget(),
           ),
         ),
-        Flexible(
-          flex: 1,
-          child: GaugeWidget(),
-        ),
+        if (!isEmpty)
+          Flexible(
+            flex: 1,
+            child: GaugeWidget(),
+          ),
       ],
     );
   }

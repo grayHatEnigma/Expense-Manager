@@ -1,9 +1,10 @@
-import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
+import '../../../constants.dart';
+import '../widgets/empty_list_widget.dart';
 import '../../../domain/managers/ui_manager.dart';
 import '../../../domain/models/category.dart';
 
@@ -15,18 +16,22 @@ class AnalysisDetailsScreen extends StatelessWidget {
     final categoryMap = uiManager.analysisTransactionsPerCategory();
     return Container(
       padding: EdgeInsets.all(15),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200,
-            childAspectRatio: 5 / 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20),
-        itemBuilder: (_, index) {
-          return CategoryCardWidget(categoryMap.keys.toList()[index],
-              categoryMap.values.toList()[index]);
-        },
-        itemCount: categoryMap.length,
-      ),
+      child: categoryMap.length == 0
+          ? EmptyListWidget(
+              textToDisplay: kNoRecords,
+            )
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 5 / 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20),
+              itemBuilder: (_, index) {
+                return CategoryCardWidget(categoryMap.keys.toList()[index],
+                    categoryMap.values.toList()[index]);
+              },
+              itemCount: categoryMap.length,
+            ),
     );
   }
 }

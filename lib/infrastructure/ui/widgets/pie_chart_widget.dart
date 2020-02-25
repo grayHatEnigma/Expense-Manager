@@ -1,3 +1,4 @@
+import 'package:expense_manager/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
@@ -28,7 +29,7 @@ class _PieChartWidgetState extends State<PieChartWidget> {
 
     return length == 0
         ? EmptyListWidget(
-            screen: 'pie-chart',
+            textToDisplay: kNoRecords,
           )
         : Card(
             elevation: 5,

@@ -64,7 +64,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   labelText:
                       FlutterI18n.translate(context, kTitleTextFieldHint)),
               controller: titleController,
-              maxLength: 30,
+              maxLength: 25,
             ),
             TextField(
               decoration: InputDecoration(
@@ -82,6 +82,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Radio(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       activeColor: Colors.red,
                       value: true,
                       groupValue: expenses,
@@ -94,10 +95,14 @@ class _AddTransactionState extends State<AddTransaction> {
                       },
                     ),
                     Text(
-                      'مصروفات',
+                      FlutterI18n.translate(context, kExpensesCategoryRadio),
                       style: TextStyle(color: Colors.red),
                     ),
+                    SizedBox(
+                      width: 8,
+                    ),
                     Radio(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       activeColor: Colors.green,
                       value: false,
                       groupValue: expenses,
@@ -110,7 +115,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       },
                     ),
                     Text(
-                      'دخل',
+                      FlutterI18n.translate(context, kIncomeCategoryRadio),
                       style: TextStyle(color: Colors.green),
                     ),
                   ],

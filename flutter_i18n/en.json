@@ -19,13 +19,15 @@
   "Title" : "Title",
   "Amount": "Amount",
   "Choose Category": "Choose Category",
+  "Income Radio": "Income",
+  "Expenses Radio": "Expenses",
   "Pick Date": "Pick Date",
   "Add": "Add",
   "please enter a valid value" : "please enter a valid value",
 
   "Show Chart" : "Show Chart",
 
-  "Expenses" : "Expenses",
+  "Daily Expenses" : "Total Expenses",
 
   "Delete": "Delete",
 

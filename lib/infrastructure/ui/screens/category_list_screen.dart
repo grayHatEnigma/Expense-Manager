@@ -19,6 +19,7 @@ class CategoryListScreen extends StatelessWidget {
           centerTitle: true,
           title: Text(
             '${FlutterI18n.translate(context, kCategoryListTitle)} ${FlutterI18n.translate(context, category.title)}',
+            style: kAppBarTextStyle,
           ),
         ),
         body: ListView.builder(

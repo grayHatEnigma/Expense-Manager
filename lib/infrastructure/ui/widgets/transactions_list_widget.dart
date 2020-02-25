@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 // my imports
 import '../../../domain/managers/ui_manager.dart';
+import '../../../constants.dart';
 import './transactions_card_widget.dart';
 import './empty_list_widget.dart';
 
@@ -16,7 +17,9 @@ class TransactionsList extends StatelessWidget {
     final length = groupedTransactions.length;
     return length == 0
         ? Expanded(
-            child: EmptyListWidget(),
+            child: EmptyListWidget(
+              textToDisplay: kEmptyList,
+            ),
           )
         : Expanded(
             child: Padding(

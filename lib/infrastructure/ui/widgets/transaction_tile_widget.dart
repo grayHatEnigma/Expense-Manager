@@ -72,17 +72,19 @@ class TransactionTile extends StatelessWidget {
                 ),
               ],
             ),
-            if (isIncome)
-              Image.asset(
-                'images/income.png',
-                height: 22,
-                width: 22,
-              ),
             Row(
               children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Image.asset(
+                    'images/${isIncome ? 'income.png' : 'expenses.png'}',
+                    height: 22,
+                    width: 22,
+                  ),
+                ),
                 CircleAvatar(
                   backgroundColor: transaction.category.color,
-                  radius: 30,
+                  radius: 28,
                   child: Padding(
                     padding: EdgeInsets.all(5.0),
                     child: FittedBox(

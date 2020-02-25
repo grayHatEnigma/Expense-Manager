@@ -17,13 +17,15 @@
   "Title" : "العنوان",
   "Amount": "القيمة",
   "Choose Category": "اختر التصنيف",
+  "Income Radio": "دخل",
+  "Expenses Radio": "مصروفات",
   "Pick Date": "اختر تاريخ",
   "Add": "إضافة",
   "please enter a valid value" : "من فضلك ادخل قيمة صحيحة",
 
   "Show Chart" : "المخطط الأسبوعي",
 
-  "Expenses": "الإجمالي",
+  "Daily Expenses": "إجمالي المصاريف",
   "Delete": "حذف",
 
   "Analysis": "تحليل المصاريف",
