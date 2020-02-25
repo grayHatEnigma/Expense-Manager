@@ -48,6 +48,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           IconButton(
             icon: Icon(
+              Icons.filter_list,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // open filters screen
+              Navigator.pushNamed(context, kFiltersScreenID);
+            },
+          ),
+          IconButton(
+            icon: Icon(
               Icons.language,
               color: Colors.white,
             ),

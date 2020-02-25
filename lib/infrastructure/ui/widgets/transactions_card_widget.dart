@@ -7,6 +7,7 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 import '../../../domain/managers/ui_manager.dart';
+import '../../../domain/managers/filters_manager.dart';
 import '../../../domain/models/transaction.dart';
 import './transaction_tile_widget.dart';
 import '../../../constants.dart';
@@ -18,48 +19,60 @@ class TransactionsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final uiManager = Provider.of<UiManager>(context);
+    final filtersManager = Provider.of<FiltersManager>(context);
     final myLocale = Localizations.localeOf(context);
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ExpandablePanel(
-        theme: ExpandableThemeData(
-            iconColor: Theme.of(context).primaryColor,
-            collapseIcon: Icons.list,
-            expandIcon: Icons.arrow_drop_up,
-            headerAlignment: ExpandablePanelHeaderAlignment.center),
-        header: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            textBaseline: TextBaseline.alphabetic,
-            children: <Widget>[
-              CardDateWidget(myLocale: myLocale, transactions: transactions),
-              Container(
-                width: 100,
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalAmount(uiManager.getExpensesOnly(transactions)).toStringAsFixed(0)}',
-                    style: TextStyle(fontSize: 15, color: Colors.black87),
-                  ),
+    //
+    // Filter Manager to get Filters State
+    // and filters the lists according to it
+
+    // filter transactions according to filters state in filters manager.
+    final filteredTransactions = filtersManager.filter(transactions);
+
+    return filteredTransactions.length == 0
+        ? Container()
+        : Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ExpandablePanel(
+              controller: ExpandableController(initialExpanded: false),
+              theme: ExpandableThemeData(
+                  iconColor: Theme.of(context).primaryColor,
+                  collapseIcon: Icons.list,
+                  expandIcon: Icons.arrow_drop_up,
+                  headerAlignment: ExpandablePanelHeaderAlignment.center),
+              header: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: <Widget>[
+                    CardDateWidget(
+                        myLocale: myLocale, transactions: transactions),
+                    Container(
+                      width: 100,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          '${FlutterI18n.translate(context, kDailyExpenses)}: ${uiManager.calculateTotalAmount(uiManager.getExpensesOnly(transactions)).toStringAsFixed(0)}',
+                          style: TextStyle(fontSize: 15, color: Colors.black87),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
-        ),
-        collapsed: Card(
-          elevation: 3,
-          child: Column(
-            children: transactions.map((tx) {
-              return TransactionTile(
-                  transaction: tx,
-                  deleteCallback: () {
-                    uiManager.deleteTransaction(id: tx.id);
-                  });
-            }).toList(),
-          ),
-        ),
-      ),
-    );
+              ),
+              collapsed: Card(
+                elevation: 3,
+                child: Column(
+                  children: filteredTransactions.map((tx) {
+                    return TransactionTile(
+                        transaction: tx,
+                        deleteCallback: () {
+                          uiManager.deleteTransaction(id: tx.id);
+                        });
+                  }).toList(),
+                ),
+              ),
+            ),
+          );
   }
 }
 

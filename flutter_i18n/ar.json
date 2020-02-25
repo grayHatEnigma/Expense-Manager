@@ -14,6 +14,12 @@
   "Details" : "التفاصيل",
   "Your Expenses in": "مصاريفك في تصنيف",
 
+  "Filters"  : "فلاتر العرض" ,
+  "Show Income" : "عرض الدخل" ,
+  "Show income transactions only" : "عرض سجلات الدخل فقط",
+  "Show Expenses" : "عرض المصروفات" ,
+  "Show expenses transactions only" : "عرض سجلات المصروفات فقط",
+
   "Title" : "العنوان",
   "Amount": "القيمة",
   "Choose Category": "اختر التصنيف",
@@ -62,7 +68,7 @@
   "Shopping" :  "تسوق وملابس",
   "Transportation" :  "نقل ومواصلات",
   "Travelling" : "سفر",
-  "Salary":  "المرتب",
+  "Salary":  "مرتب",
   "Reward":  "مكافأة",
   "Gift": "هدية",
   "Prize":  "جائزة",

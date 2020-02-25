@@ -9,18 +9,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import './infrastructure/ui/screens/analysis_screen.dart';
 import './infrastructure/ui/screens/tabs_screen.dart';
-
 import './infrastructure/ui/screens/intro_screen.dart';
 import './infrastructure/ui/screens/home_screen.dart';
 import './infrastructure/ui/screens/settings_screen.dart';
 import './infrastructure/ui/screens/settings_choice_screen.dart';
 import './infrastructure/ui/screens/about_screen.dart';
 import './infrastructure/ui/screens/category_list_screen.dart';
+import './infrastructure/ui/screens/filters_screen.dart';
 import './constants.dart';
 
 import './domain/managers/ui_manager.dart';
 import './domain/managers/database_manager.dart';
 import './domain/managers/localization_manager.dart';
+import './domain/managers/filters_manager.dart';
 
 // TODO: REFACTOR AND CLEAN THE CODE
 
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => LocalizationManager(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => FiltersManager(),
           ),
         ],
         child: Consumer<LocalizationManager>(
@@ -78,6 +82,7 @@ class MyApp extends StatelessWidget {
                 kSettingsChoiceScreenID: (context) => SettingsChoiceScreen(),
                 kTabsScreenID: (context) => TabsScreen(),
                 kCategoryListScreenID: (context) => CategoryListScreen(),
+                kFiltersScreenID: (context) => FiltersScreen(),
               },
               initialRoute: kIntroScreenID,
             );

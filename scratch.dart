@@ -1,10 +1,11 @@
 void main() {
-  print('scratch file');
-  final test1 = Test();
+  bool x1 = true;
+  bool x2 = false;
 
-  final test3 = Test.instance;
+  bool result = !(x1 ^ x2);
+  bool showAll = !result;
 
-  print('is identical ? ${identical(test1, test3)}');
+  print(showAll);
 }
 
 class Test {

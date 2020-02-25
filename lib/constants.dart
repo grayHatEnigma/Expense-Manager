@@ -17,6 +17,7 @@ const kSettingsScreenID = '/settings';
 const kSettingsChoiceScreenID = '/setteings_choice';
 const kAboutScreenID = '/about';
 const kCategoryListScreenID = '/category_list';
+const kFiltersScreenID = '/filters';
 
 // App Title
 const kTitle = 'Flosi';
@@ -29,6 +30,12 @@ const kAnalysisDetailsTitle = "Details";
 
 const kCategoryListTitle = "Your Expenses in";
 
+// Filters Screen Texts Keys
+const kFiltersScreenTitle = "Filters";
+const kIncomeSwitch = "Show Income";
+const kIncomeSwitchSubtitle = "Show income transactions only";
+const kExpensesSwitch = "Show Expenses";
+const kExpensesSwitchSubtitle = "Show expenses transactions only";
 // Analysis Screen Texts Keys
 const kAnalysisTitle = "Expenses Analysis";
 const kAnalysisIncomeTitle = "Total Income";

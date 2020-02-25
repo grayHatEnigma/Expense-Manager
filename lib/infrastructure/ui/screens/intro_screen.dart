@@ -22,15 +22,20 @@ class _IntroScreenState extends State<IntroScreen>
     super.initState();
     controller = AnimationController(vsync: this, duration: duration);
     animation = CurvedAnimation(parent: controller, curve: Curves.bounceInOut);
+
     controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(
-      Duration(milliseconds: 4500),
-      () => Navigator.pushReplacementNamed(context, kHomeScreenID),
-    );
+    controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        Future.delayed(
+          Duration(milliseconds: 500),
+          () => Navigator.pushReplacementNamed(context, kHomeScreenID),
+        );
+      }
+    });
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,

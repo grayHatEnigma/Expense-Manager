@@ -10,6 +10,12 @@
   "Details" : "Details",
   "Your Expenses in": "Your Expenses in",
 
+  "Filters"  : "Filters" ,
+  "Show Income" : "Show Income" ,
+  "Show income transactions only" : "Show income transactions only",
+  "Show Expenses" : "Show Expenses" ,
+  "Show expenses transactions only" : "Show expenses transactions only",
+
   "Expenses Analysis" : "Expenses Analysis For",
   "Total Income": "Total Income",
   "Total Expenses" : "Total Expenses",
