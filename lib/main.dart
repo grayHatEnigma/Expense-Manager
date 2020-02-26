@@ -22,6 +22,7 @@ import './domain/managers/ui_manager.dart';
 import './domain/managers/database_manager.dart';
 import './domain/managers/localization_manager.dart';
 import './domain/managers/filters_manager.dart';
+import './domain/managers/notifications_manager.dart';
 
 // TODO: REFACTOR AND CLEAN THE CODE
 
@@ -31,6 +32,9 @@ void main() {
 
   // Read from the Database immediately after creating the app.
   DatabaseManager();
+
+  // Initialize Notifications Manager
+  NotificationsManger();
 }
 
 class MyApp extends StatelessWidget {

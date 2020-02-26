@@ -33,7 +33,9 @@ class TransactionsCard extends StatelessWidget {
         : Padding(
             padding: const EdgeInsets.all(20.0),
             child: ExpandablePanel(
-              controller: ExpandableController(initialExpanded: false),
+              // todo: fix a bug
+              // There is a bug here
+              // if you use controller the icon will not change
               theme: ExpandableThemeData(
                   iconColor: Theme.of(context).primaryColor,
                   collapseIcon: Icons.list,

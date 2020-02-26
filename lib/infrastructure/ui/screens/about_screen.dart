@@ -104,6 +104,15 @@ class DeveloperWidget extends StatelessWidget {
               fontFamily: 'Pacifico',
               letterSpacing: 2),
         ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'salama92work@gmail.com',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white, fontSize: 12, letterSpacing: 0.5),
+          ),
+        ),
       ],
     );
   }

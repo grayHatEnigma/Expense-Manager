@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:provider/provider.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 //my imports
 import '../screens/add_transaction_screen.dart';
@@ -21,6 +22,60 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _showChart = false;
+//  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+//  void initialize() async {
+//    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+//    // initialise the plugin.
+//    var androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+//    var iosSettings = IOSInitializationSettings(
+//      requestSoundPermission: true,
+//      requestBadgePermission: true,
+//      requestAlertPermission: true,
+//    );
+//
+//    var initializationSettings =
+//        InitializationSettings(androidSettings, iosSettings);
+//    await flutterLocalNotificationsPlugin.initialize(
+//      initializationSettings,
+//      onSelectNotification: onSelectNotification,
+//    );
+//  }
+
+//  Future onSelectNotification(payload) async {
+//    print(payload);
+//    return true;
+//  }
+//  Future _showNotificationWithDefaultSound() async {
+//    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+//        'your channel id', 'your channel name', 'your channel description',
+//        importance: Importance.Max, priority: Priority.High);
+//    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+//    var platformChannelSpecifics = new NotificationDetails(
+//        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+//    await flutterLocalNotificationsPlugin.show(
+//      0,
+//      'Learn Local Notification',
+//      'A Local Notification On Button Click',
+//      platformChannelSpecifics,
+//      payload: 'Default_Sound',
+//    );
+//  }
+
+//  Future scheduleAtParticularTime(Time timee) async {
+//    var time = Time(timee.hour, timee.minute, timee.second);
+//
+//    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+//        'repeatDailyAtTime channel id',
+//        'repeatDailyAtTime channel name',
+//        'repeatDailyAtTime description');
+//    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+//    var platformChannelSpecifics = new NotificationDetails(
+//        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+//    flutterLocalNotificationsPlugin.showDailyAtTime(1, 'سجل مصاريفك',
+//        'لا تنسى تسجيل مصاريفك أولاً بأول', time, platformChannelSpecifics,
+//        payload: 'hi this is me');
+//    print('scheduled');
+//  }
 
   @override
   Widget build(BuildContext context) {
