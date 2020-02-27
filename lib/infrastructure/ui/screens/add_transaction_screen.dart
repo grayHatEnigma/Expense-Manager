@@ -225,8 +225,10 @@ class _AddTransactionState extends State<AddTransaction> {
                         ? -1 * double.parse(amountController.text)
                         : double.parse(amountController.text),
                     date: chosenDate,
-                    category: Category.fromEnum(
-                        chosenCategory ?? ExpensesCategories.Others),
+                    category: Category.fromEnum(chosenCategory ??
+                        (expenses
+                            ? ExpensesCategories.Others
+                            : IncomeCategories.Salary)),
                   );
 
                   // clear the controllers

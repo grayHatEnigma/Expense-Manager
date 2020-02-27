@@ -15,6 +15,8 @@
   "Your Expenses in": "مصاريفك في تصنيف",
 
   "Filters"  : "فلاتر العرض" ,
+  "Show Current Month": "عرض الشهر الحالي",
+  "Show current month transactions only": "عرض سجلات الشهر الحالي فقط",
   "Show Income" : "عرض الدخل" ,
   "Show income transactions only" : "عرض سجلات الدخل فقط",
   "Show Expenses" : "عرض المصروفات" ,

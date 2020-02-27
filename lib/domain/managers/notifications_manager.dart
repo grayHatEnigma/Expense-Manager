@@ -10,10 +10,10 @@ class NotificationsManger {
     _initialize();
   }
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-  Time _scheduleTime = Time(4, 0, 0);
+  Time _scheduleTime = Time(18, 0, 0);
   void _initialize() async {
     // initialise the plugin.
-    var androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var androidSettings = AndroidInitializationSettings('icon');
     var iosSettings = IOSInitializationSettings(
       requestSoundPermission: true,
       requestBadgePermission: true,
@@ -32,14 +32,16 @@ class NotificationsManger {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'repeatDailyAtTime channel id',
         'repeatDailyAtTime channel name',
-        'repeatDailyAtTime description');
+        'repeatDailyAtTime description',
+        largeIconBitmapSource: BitmapSource.Drawable,
+        largeIcon: 'large');
     var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
     var platformChannelSpecifics = new NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
     flutterLocalNotificationsPlugin.showDailyAtTime(
         1,
         'سجل مصاريفك',
-        'لا تنسى تسجيل مصاريفك أولاً بأول',
+        'سجل مصاريفك النهاردة عشان تعرف فلوسك راحت فين',
         _scheduleTime,
         platformChannelSpecifics);
   }

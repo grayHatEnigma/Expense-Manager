@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:intl/intl.dart';
 
@@ -37,7 +38,7 @@ class ChartBarWidget extends StatelessWidget {
               ),
               Container(
                 height: constrains.maxHeight * 0.5,
-                width: 13,
+                width: 12,
                 child: Stack(
                   alignment: AlignmentDirectional.bottomEnd,
                   children: <Widget>[
@@ -45,9 +46,7 @@ class ChartBarWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            (15),
-                          ),
+                          Radius.circular(1),
                         ),
                       ),
                     ),
@@ -57,11 +56,9 @@ class ChartBarWidget extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Theme.of(context).accentColor,
                           border: Border.all(
-                              width: 1, color: Theme.of(context).accentColor),
+                              width: 0, color: Theme.of(context).accentColor),
                           borderRadius: BorderRadius.all(
-                            Radius.circular(
-                              (15),
-                            ),
+                            Radius.circular(1),
                           ),
                         ),
                       ),

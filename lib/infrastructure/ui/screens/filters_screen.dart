@@ -31,35 +31,89 @@ class _FiltersScreenState extends State<FiltersScreen> {
         padding: const EdgeInsets.all(15.0),
         child: ListView(
           children: <Widget>[
-            SwitchListTile(
-              title: Text(
-                FlutterI18n.translate(context, kIncomeSwitch),
-                style: TextStyle(color: Colors.black),
-              ),
-              subtitle: Text(
-                FlutterI18n.translate(context, kIncomeSwitchSubtitle),
-              ),
-              value: filtersManager.showIncomeTransactions,
-              onChanged: (newValue) {
-                setState(() {
-                  filtersManager.showIncomeTransactions = newValue;
-                });
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Image.asset(
+                  'images/calendar.png',
+                  height: 25,
+                  width: 25,
+                ),
+                Flexible(
+                  child: SwitchListTile(
+                    title: Text(
+                      FlutterI18n.translate(context, kDateSwitch),
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    subtitle: Text(
+                      FlutterI18n.translate(context, kDateSwitchSubtitle),
+                    ),
+                    value: filtersManager.showCurrentMonth,
+                    onChanged: (newValue) {
+                      setState(() {
+                        filtersManager.showCurrentMonth = newValue;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-            SwitchListTile(
-              title: Text(
-                FlutterI18n.translate(context, kExpensesSwitch),
-                style: TextStyle(color: Colors.black),
-              ),
-              subtitle: Text(
-                FlutterI18n.translate(context, kExpensesSwitchSubtitle),
-              ),
-              value: filtersManager.showExpensesTransactions,
-              onChanged: (newValue) {
-                setState(() {
-                  filtersManager.showExpensesTransactions = newValue;
-                });
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Image.asset(
+                  'images/income.png',
+                  height: 25,
+                  width: 25,
+                ),
+                Flexible(
+                  child: SwitchListTile(
+                    title: Text(
+                      FlutterI18n.translate(context, kIncomeSwitch),
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    subtitle: Text(
+                      FlutterI18n.translate(context, kIncomeSwitchSubtitle),
+                    ),
+                    value: filtersManager.showIncomeTransactions,
+                    onChanged: (newValue) {
+                      setState(() {
+                        filtersManager.showIncomeTransactions = newValue;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Image.asset(
+                  'images/expenses.png',
+                  height: 25,
+                  width: 25,
+                ),
+                Flexible(
+                  child: SwitchListTile(
+                    title: Text(
+                      FlutterI18n.translate(context, kExpensesSwitch),
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    subtitle: Text(
+                      FlutterI18n.translate(context, kExpensesSwitchSubtitle),
+                    ),
+                    value: filtersManager.showExpensesTransactions,
+                    onChanged: (newValue) {
+                      setState(() {
+                        filtersManager.showExpensesTransactions = newValue;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),

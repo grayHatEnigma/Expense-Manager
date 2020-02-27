@@ -9,6 +9,17 @@ class FiltersManager with ChangeNotifier {
   FiltersManager._();
 
   // filters booleans
+
+  // date filters
+  // show current month only
+  bool _showCurrentMonth = false;
+  bool get showCurrentMonth => _showCurrentMonth;
+  set showCurrentMonth(bool value) {
+    _showCurrentMonth = value;
+    notifyListeners();
+  }
+
+  // type filters
   bool _showIncomeTransactions = false;
   bool get showIncomeTransactions => _showIncomeTransactions;
   set showIncomeTransactions(value) {
@@ -35,11 +46,17 @@ class FiltersManager with ChangeNotifier {
   // a filter function that returns a new filtered list
   // according to filters booleans
   List<Transaction> filter(List<Transaction> transactions) {
+    final currentMonth = DateTime.now();
+    final dateFilter = _showCurrentMonth
+        ? transactions.where((tx) => (tx.date.year == currentMonth.year &&
+            tx.date.month == currentMonth.month))
+        : transactions;
+
     final filteredList = _showAllTransactions
-        ? transactions
+        ? dateFilter
         : _showIncomeTransactions
-            ? transactions.where((tx) => tx.amount > 0)
-            : transactions.where((tx) => tx.amount < 0);
+            ? dateFilter.where((tx) => tx.amount > 0)
+            : dateFilter.where((tx) => tx.amount < 0);
 
     return filteredList.toList();
   }

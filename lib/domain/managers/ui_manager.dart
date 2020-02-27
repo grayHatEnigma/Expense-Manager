@@ -7,6 +7,7 @@ import '../models/transaction.dart';
 import '../models/chart_bar.dart';
 import '../models/category.dart';
 import './database_manager.dart';
+import './filters_manager.dart';
 
 /// This class serves as a 'middle-man' between domain and ui.
 class UiManager with ChangeNotifier {
@@ -20,6 +21,9 @@ class UiManager with ChangeNotifier {
 
   // Database Manager instance
   final dbManager = DatabaseManager();
+
+  // Filters Manager
+  final filtersManager = FiltersManager();
 
   // Analyze Date
   DateTime _analysisDate = DateTime.now();
@@ -40,10 +44,12 @@ class UiManager with ChangeNotifier {
     return UnmodifiableListView(_transactions.reversed.toList());
   }
 
+  List<Transaction> get filteredList => filtersManager.filter(transactionsList);
+
   // Group - all - transactions by date.
-  // required by the Transaction List/Card Widgets
+  // required by the Transaction List/Card Widgets on Main Page
   List<List<Transaction>> get groupedTransactionsByDate {
-    var newGroup = groupBy(transactionsList, (Transaction tx) => tx.dayDate);
+    var newGroup = groupBy(filteredList, (Transaction tx) => tx.dayDate);
     return newGroup.values.toList();
   }
 

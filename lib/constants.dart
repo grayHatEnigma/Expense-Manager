@@ -32,6 +32,8 @@ const kCategoryListTitle = "Your Expenses in";
 
 // Filters Screen Texts Keys
 const kFiltersScreenTitle = "Filters";
+const kDateSwitch = "Show Current Month";
+const kDateSwitchSubtitle = "Show current month transactions only";
 const kIncomeSwitch = "Show Income";
 const kIncomeSwitchSubtitle = "Show income transactions only";
 const kExpensesSwitch = "Show Expenses";
